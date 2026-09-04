@@ -5,5 +5,6 @@ export const my = {
   list: 'စာရင်း',
   no_title: 'ခေါင်းစဉ်မရှိပါ',
   daily: 'နေ့ရက်မှာ',
-  no_events: 'ဘာမှမလုပ်ပါနှင့်'
+  no_events: 'ဘာမှမလုပ်ပါနှင့်',
+  all_day: 'တစ်ရက်လုံး'
 }

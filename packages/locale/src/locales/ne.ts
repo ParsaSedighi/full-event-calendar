@@ -5,5 +5,6 @@ export const ne = {
   list: 'सूची',
   no_title: 'कुनै शीर्षक छैन',
   daily: 'प्रतिदिन',
-  no_events: 'कुनै घटना छैन'
+  no_events: 'कुनै घटना छैन',
+  all_day: 'सम्पूर्ण दिन'
 }

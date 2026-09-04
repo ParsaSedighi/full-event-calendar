@@ -25,7 +25,13 @@ interface TimeRangeProps {
 export const TimeRange: FComponent<TimeRangeProps> = (props) => {
   // const [resiserGr, setResizer] = createSignal<EventClass | null>(null)
   let refr: any = null
-  const { onmousedownH, draggedData } = useResize('addEventWithResize', resizeCb, () => props.editable)
+  const { onmousedownH, draggedData } = useResize(
+    'addEventWithResize',
+    resizeCb,
+    () => props.editable,
+    undefined,
+    props.locale
+  )
 
   function resizeCb(sourceEv: SourceEvent) {
     if (!props.editable) return

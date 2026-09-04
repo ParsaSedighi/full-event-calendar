@@ -5,5 +5,6 @@ export const kk = {
   list: 'Тізім',
   no_title: 'Тақырып жоқ',
   daily: 'Күнделікті',
-  no_events: 'Оқиғалар жоқ'
+  no_events: 'Оқиғалар жоқ',
+  all_day: 'Күні бойы'
 }

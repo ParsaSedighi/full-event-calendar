@@ -49,6 +49,15 @@
     user-select: none;
     background-color: var(--ca-color);
   }
+  // rtl : the time bullet and paddings are mirrored
+  .fec-rtl & {
+    padding-left: 0;
+    padding-right: 22px;
+    &:before {
+      left: auto;
+      right: 5px;
+    }
+  }
 }
 .fec-event-time-month {
   font-size: 12px;
@@ -62,4 +71,8 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  .fec-rtl & {
+    padding-left: 0;
+    padding-right: 4px;
+  }
 }

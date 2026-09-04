@@ -3,7 +3,7 @@ import { EventClass, FComponent } from '@full-event-calendar/shared-ts'
 //solid.js
 import { For, Show, createMemo, mergeProps } from 'solid-js'
 //utils
-import { formatDD, formatDM, formatRange, useSlotModal } from '@full-event-calendar/utils'
+import { formatDD, formatDM, formatRange, getFirstDayOfWeek, useSlotModal } from '@full-event-calendar/utils'
 
 import { calendarLocale } from '@full-event-calendar/locale'
 import { GroupEventMap } from './lib/EventListCollection'
@@ -40,7 +40,13 @@ const defaultProps = {
 export const List: FComponent<ListGridProps> = (props) => {
   const mergedProps = mergeProps(defaultProps, props)
   const generateGroup = createMemo(() => {
-    let groupEventMap = new GroupEventMap(mergedProps.listMode, mergedProps.initialDate, mergedProps.calendar)
+    // week grouping starts on the locale first day of week (fa-IR weeks start on Saturday)
+    let groupEventMap = new GroupEventMap(
+      mergedProps.listMode,
+      mergedProps.initialDate,
+      mergedProps.calendar,
+      getFirstDayOfWeek(mergedProps.locale)
+    )
     return groupEventMap.group(mergedProps.events)
   })
 
@@ -93,7 +99,9 @@ export const List: FComponent<ListGridProps> = (props) => {
                         <div onclick={[itemClick, item]} class="fec-fec-event-list-item-des">
                           <div class="fec-event-date-list">
                             <div class="fec-event-dot" style={`background-color:${item.color}`}></div>
-                            {item.isAllDay() ? 'all day' : formatRange(item.start, item.end, mergedProps.locale)}
+                            {item.isAllDay()
+                              ? calendarLocale(mergedProps.locale, 'all_day')
+                              : formatRange(item.start, item.end, mergedProps.locale)}
                           </div>
                           <div>{item.name}</div>
                         </div>

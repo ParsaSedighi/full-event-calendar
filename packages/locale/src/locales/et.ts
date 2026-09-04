@@ -5,5 +5,6 @@ export const et = {
   list: 'Nimekiri',
   no_title: 'Pealkirja pole',
   daily: 'Iga päev',
-  no_events: 'Sündmusi pole'
+  no_events: 'Sündmusi pole',
+  all_day: 'Kogu päev'
 }

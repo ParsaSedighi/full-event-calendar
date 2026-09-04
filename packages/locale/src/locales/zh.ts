@@ -5,5 +5,6 @@ export const zh = {
   list: '清单',
   no_title: '没有标题',
   daily: '每日',
-  no_events: '没有活动'
+  no_events: '没有活动',
+  all_day: '全天'
 }

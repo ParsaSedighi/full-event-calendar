@@ -57,6 +57,7 @@ export class FullEventCalendar extends Component<CalendarSourceOptions & FullEve
       timeZone: this.props.timeZone,
       calendar: this.props.calendar,
       locale: this.props.locale,
+      direction: this.props.direction,
       initialDate: this.props.initialDate,
       plugins: this.props.plugins,
       stopAddEvent: this.props.stopAddEvent,

@@ -5,5 +5,6 @@ export const bn = {
   list: 'তালিকা',
   no_title: 'কোনো শিরোনাম নেই',
   daily: 'প্রতিদিন',
-  no_events: 'কোনো ঘটনা নেই'
+  no_events: 'কোনো ঘটনা নেই',
+  all_day: 'সারাদিন'
 }

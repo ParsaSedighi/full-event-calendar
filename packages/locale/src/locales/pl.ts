@@ -5,5 +5,6 @@ export const pl = {
   list: 'Lista',
   no_title: 'Brak tytułu',
   daily: 'Codziennie',
-  no_events: 'Brak wydarzeń'
+  no_events: 'Brak wydarzeń',
+  all_day: 'Cały dzień'
 }

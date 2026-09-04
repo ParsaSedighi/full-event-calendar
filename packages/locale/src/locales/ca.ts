@@ -5,5 +5,6 @@ export const ca = {
   list: 'Llista',
   no_title: 'Sense títol',
   daily: 'Diariament',
-  no_events: 'Cap esdeveniment'
+  no_events: 'Cap esdeveniment',
+  all_day: 'Tot el dia'
 }

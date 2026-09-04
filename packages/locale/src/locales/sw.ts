@@ -5,5 +5,6 @@ export const sw = {
   list: 'Orodha',
   no_title: 'Hakuna kichwa',
   daily: 'Kila siku',
-  no_events: 'Hakuna matukio'
+  no_events: 'Hakuna matukio',
+  all_day: 'Siku nzima'
 }

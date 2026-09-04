@@ -5,5 +5,6 @@ export const yi = {
   list: 'ליסט',
   no_title: 'קיין טיטל',
   daily: 'טעגלעך',
-  no_events: 'קיין אויף ארעיע'
+  no_events: 'קיין אויף ארעיע',
+  all_day: 'גאנץ טאג'
 }

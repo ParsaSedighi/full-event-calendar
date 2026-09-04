@@ -5,5 +5,6 @@ export const lt = {
   list: 'Sąrašas',
   no_title: 'Nėra pavadinimo',
   daily: 'Kasdien',
-  no_events: 'Nėra renginių'
+  no_events: 'Nėra renginių',
+  all_day: 'Visą dieną'
 }

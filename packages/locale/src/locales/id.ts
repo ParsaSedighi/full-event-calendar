@@ -5,5 +5,6 @@ export const id = {
   list: 'Daftar',
   no_title: 'Tanpa judul',
   daily: 'Setiap hari',
-  no_events: 'Tidak ada acara'
+  no_events: 'Tidak ada acara',
+  all_day: 'Seharian'
 }

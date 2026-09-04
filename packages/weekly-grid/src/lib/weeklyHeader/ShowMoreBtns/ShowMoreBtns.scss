@@ -1,31 +1,38 @@
 .fec-weekly-morecontainer {
-    position: absolute;
-    display: flex;
-    width: 100%;
-    z-index: 13;
+  position: absolute;
+  display: flex;
+  width: 100%;
+  z-index: 13;
+  background-color: var(--bg-color);
+  height: 35px;
+  bottom: 0;
+  padding-right: 10px;
+  gap: 5px;
+  align-items: center;
+  transition: all 0.5s;
+  .fec-rtl & {
+    padding-right: 0;
+    padding-left: 10px;
+  }
+  > div {
+    flex: 1;
     background-color: var(--bg-color);
-    height: 35px;
-    bottom: 0;
-    padding-right: 10px;
-    gap: 5px;
+    width: 99%;
+    height: 72%;
+    display: flex;
+    transition: all 0.3s;
+    cursor: pointer;
     align-items: center;
-    transition: all 0.5s;
-    > div {
-      flex: 1;
-      background-color: var(--bg-color);
-      width: 99%;
-      height: 72%;
-      display: flex;
-      transition: all 0.3s;
-      cursor: pointer;
-      align-items: center;
-      padding-left: 8px;
-      padding-top: 3px;
-      border-radius: 8px;
-      color: var(--on-surface-variant);
-      &:hover {
-        background-color: var(--bg-hover);
-  
-      }
+    padding-left: 8px;
+    padding-top: 3px;
+    border-radius: 8px;
+    color: var(--on-surface-variant);
+    .fec-rtl & {
+      padding-left: 0;
+      padding-right: 8px;
+    }
+    &:hover {
+      background-color: var(--bg-hover);
     }
   }
+}

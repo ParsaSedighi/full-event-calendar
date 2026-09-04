@@ -5,5 +5,6 @@ export const ru = {
   list: 'Список',
   no_title: 'Нет заголовка',
   daily: 'Ежедневно',
-  no_events: 'Нет событий'
+  no_events: 'Нет событий',
+  all_day: 'Весь день'
 }

@@ -5,5 +5,6 @@ export const nn = {
   list: 'Liste',
   no_title: 'Ingen tittel',
   daily: 'Dagleg',
-  no_events: 'Ingen hendingar'
+  no_events: 'Ingen hendingar',
+  all_day: 'Heile dagen'
 }

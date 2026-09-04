@@ -1,20 +1,24 @@
 import { EventClass } from '@full-event-calendar/shared-ts'
-import { ceilDate, floorDate } from '@full-event-calendar/utils'
+import { ceilDate, floorDate, getDayColumn } from '@full-event-calendar/utils'
 import { createMemo } from 'solid-js'
 
-export function getLeftPosition(event: EventClass, weekStartDate: Date) {
+/**
+ * resolves the left position (column index) of an event in a week row.
+ * `firstDay` is the first day of the week of the locale (fa-IR weeks start on Saturday)
+ */
+export function getLeftPosition(event: EventClass, weekStartDate: Date, firstDay: number = 0) {
   const floorWeekStart = floorDate(weekStartDate)
   if (event.start >= floorWeekStart) {
-    return event.start.getDay()
+    return getDayColumn(event.start, firstDay)
   }
   return 0
 }
 
-export function getEndPosition(event: EventClass, weekendDate: Date, start: number) {
-  if(event.isAllDay && !event.isAllDay()) return 1
+export function getEndPosition(event: EventClass, weekendDate: Date, start: number, firstDay: number = 0) {
+  if (event.isAllDay && !event.isAllDay()) return 1
   const floorDate = ceilDate(weekendDate)
   if (event.end <= floorDate) {
-    return event.end.getDay() - start + 1
+    return getDayColumn(event.end, firstDay) - start + 1
   }
   return 6 - start + 1
 }
@@ -41,7 +45,13 @@ interface eventRows {
   [key: string]: EventClass[]
 }
 
-export function getExtraRowsCount(eventRows: eventRows, weekStartDate: Date, weekendDate: Date, rowLimit: number) {
+export function getExtraRowsCount(
+  eventRows: eventRows,
+  weekStartDate: Date,
+  weekendDate: Date,
+  rowLimit: number,
+  firstDay: number = 0
+) {
   let rowExtrasCount = [0, 0, 0, 0, 0, 0, 0]
   const arr = Object.keys(eventRows).filter((_, i) => {
     return i + 1 > rowLimit
@@ -52,8 +62,8 @@ export function getExtraRowsCount(eventRows: eventRows, weekStartDate: Date, wee
     // console.log(events)
     for (let j = 0; j < events.length; j++) {
       const event = events[j]
-      const leftP = createMemo(() => getLeftPosition(event, weekStartDate))
-      const width = getEndPosition(event, weekendDate, leftP())
+      const leftP = createMemo(() => getLeftPosition(event, weekStartDate, firstDay))
+      const width = getEndPosition(event, weekendDate, leftP(), firstDay)
       for (let k = leftP(); k < width + leftP(); k++) {
         rowExtrasCount[k] = rowExtrasCount[k] + 1
       }

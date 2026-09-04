@@ -5,5 +5,6 @@ export const uz = {
   list: "Ro'yxat",
   no_title: "Sarlavha yo'q",
   daily: 'Har kuni',
-  no_events: "Hech qanday tadbir yo'q"
+  no_events: "Hech qanday tadbir yo'q",
+  all_day: 'Бутун кун'
 }

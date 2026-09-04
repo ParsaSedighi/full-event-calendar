@@ -5,5 +5,6 @@ export const ja = {
   list: 'リスト',
   no_title: 'タイトルなし',
   daily: '毎日',
-  no_events: 'イベントはありません'
+  no_events: 'イベントはありません',
+  all_day: '終日'
 }

@@ -5,5 +5,6 @@ export const ta = {
   list: 'பட்டியல்',
   no_title: 'தலைப்பு இல்லை',
   daily: 'தினசரி',
-  no_events: 'நிகழ்வுகள் இல்லை'
+  no_events: 'நிகழ்வுகள் இல்லை',
+  all_day: 'நாள் முழுவதும்'
 }

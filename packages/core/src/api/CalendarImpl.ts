@@ -34,7 +34,10 @@ export interface CalendarSourceOptions {
   theme?: string
   avalibalSots?: AppSlots[]
   stopAddEvent?: boolean
+  direction?: CalendarDirection
 }
+
+export type CalendarDirection = 'rtl' | 'ltr' | 'auto'
 
 export interface Plugins {
   type: 'grid'
@@ -70,7 +73,8 @@ export class CalendarImpl implements CalendarApi {
       theme: 'light', //
       avalibalSots: [], //
       stopAddEvent: false,
-      containerHeight: 900 //
+      containerHeight: 900, //
+      direction: 'auto' //
     }
 
     const { store, dispatch } = useRedux(defaultState)
@@ -145,6 +149,9 @@ export class CalendarImpl implements CalendarApi {
   public changeContainerHeight(val: number) {
     this.storeDispatch({ type: 'CHANGE_CONTAINER_HEIGHT', val })
   }
+  public changeDirection(val: CalendarDirection) {
+    this.storeDispatch({ type: 'CHANGE_DIRECTION', val })
+  }
 
   public resetOptions<T extends CalendarSourceOptions>(options: T, catchErrors?: boolean) {
     if (options?.plugins?.length > 0) {
@@ -185,6 +192,9 @@ export class CalendarImpl implements CalendarApi {
     }
     if (options.theme) {
       this.changeTheme(options.theme)
+    }
+    if (options.direction) {
+      this.changeDirection(options.direction)
     }
     if ('stopAddEvent' in options) {
       this.setStopAddEvent(Boolean(options.stopAddEvent))

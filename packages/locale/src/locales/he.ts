@@ -5,5 +5,6 @@ export const he = {
   list: 'רשימה',
   no_title: 'אין כותרת',
   daily: 'יומי',
-  no_events: 'אין אירועים'
+  no_events: 'אין אירועים',
+  all_day: 'כל היום'
 }

@@ -2,25 +2,29 @@
   border-left: 1px solid var(--hairline);
   border-top: 1px solid var(--hairline);
   border-bottom: 1px solid var(--hairline);
+  .fec-rtl & {
+    border-left: none;
+    border-right: 1px solid var(--hairline);
+  }
   flex: 1;
   position: relative;
-  .fec-scroll-wrapper-list{
+  .fec-scroll-wrapper-list {
     position: absolute;
     height: 100%;
     width: 100%;
     overflow-y: auto;
-    .fec-no-events-text{
-      color: #B9BFCC;
+    .fec-no-events-text {
+      color: #b9bfcc;
       position: absolute;
       top: 50%;
       left: 50%;
-      transform: translate(-50%,-50%);
+      transform: translate(-50%, -50%);
       font-size: 25px;
     }
   }
-  .fec-scroll-wrapper-list:first-child{
-    .fec-event-list-item:has(:last-child){
-      border-bottom: none
+  .fec-scroll-wrapper-list:first-child {
+    .fec-event-list-item:has(:last-child) {
+      border-bottom: none;
     }
   }
   .fec-event-list-item {
@@ -37,7 +41,7 @@
       gap: 5px;
       .fec-schedule-dates {
         font-size: 13px;
-        color:  var(--on-surface-variant);
+        color: var(--on-surface-variant);
 
         font-weight: 500;
       }
@@ -45,7 +49,7 @@
         &:hover {
           background-color: var(--bg-hover);
         }
-        color:  var(--on-surface-variant);
+        color: var(--on-surface-variant);
 
         height: 36px;
         transition: all 0.3s;
@@ -71,7 +75,7 @@
         align-items: center;
         padding: 0 10px;
         border-radius: 20px;
-        color:  var(--on-surface-variant);
+        color: var(--on-surface-variant);
         cursor: pointer;
         &:hover {
           background-color: var(--bg-hover);
@@ -80,7 +84,7 @@
           display: flex;
           gap: 10px;
           font-size: 14px;
-          color:  var(--on-surface-variant);
+          color: var(--on-surface-variant);
           min-width: 250px;
           align-items: center;
           .fec-event-dot {
@@ -93,6 +97,4 @@
       }
     }
   }
- 
-
 }

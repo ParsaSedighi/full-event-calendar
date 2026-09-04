@@ -18,5 +18,9 @@
   }
   > div:not(:first-child) {
     border-left: 1px solid var(--hairline);
+    .fec-rtl & {
+      border-left: none;
+      border-right: 1px solid var(--hairline);
+    }
   }
 }

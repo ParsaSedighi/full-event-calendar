@@ -61,18 +61,20 @@ export function extractMonthDates(date: Date, calendar: string) {
   return monthDays
 }
 
-export function getCalendarMonthDays(date: Date, calendar: string = 'gregory') {
+export function getCalendarMonthDays(date: Date, calendar: string = 'gregory', firstDay: number = 0) {
   const monthDays = extractMonthDates(date, calendar)
-  const WeekDay = monthDays[0].date.getDay()
+  // number of days from the previous month needed to complete the first week
+  // of the month grid , the week starts on `firstDay` (fa-IR weeks start on Saturday)
+  const weekStartOffset = (monthDays[0].date.getDay() - firstDay + 7) % 7
   const selectedDataCopy = new Date(monthDays[0].date)
 
-  for (let i = WeekDay; i > 0; i--) {
+  for (let i = weekStartOffset; i > 0; i--) {
     selectedDataCopy.setDate(selectedDataCopy.getDate() - 1)
     const convertedDate = getDaysOfMonth(selectedDataCopy, calendar)
     monthDays.unshift({ ...convertedDate, isDateInsideMonth: true })
   }
   const dataCopy2 = new Date(monthDays[monthDays.length - 1].date)
-  const weekend = dataCopy2.getDay()
+  const weekend = (dataCopy2.getDay() - firstDay + 7) % 7
   for (let i = 0; i < 6 - weekend; i++) {
     dataCopy2.setDate(dataCopy2.getDate() + 1)
 

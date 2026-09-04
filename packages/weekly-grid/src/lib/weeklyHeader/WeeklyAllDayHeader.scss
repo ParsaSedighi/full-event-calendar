@@ -8,6 +8,10 @@
   max-height: 112px;
   padding-bottom: 7px;
   border-right: 1px solid var(--hairline);
+  .fec-rtl & {
+    border-right: none;
+    border-left: 1px solid var(--hairline);
+  }
   transition: all 0.5s;
 
   .fec-week-all-day-wrapper {
@@ -15,20 +19,20 @@
     width: calc(100% / 7);
     height: 10px;
     z-index: 14;
-    .fec-month-item{
+    .fec-month-item {
       opacity: 0.7;
     }
   }
 }
-.fec-month-is-dragging{
-  .fec-month-item{
+.fec-month-is-dragging {
+  .fec-month-item {
     pointer-events: none;
   }
 }
 #fec-group-grid-container > div {
   flex: 1;
 }
- 
+
 .fec-weekly-allDay-open {
   .fec-weekly-morecontainer {
     opacity: 0;

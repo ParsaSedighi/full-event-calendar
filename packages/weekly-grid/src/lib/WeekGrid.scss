@@ -1,21 +1,29 @@
-.fec-header-dates  {
+.fec-header-dates {
   display: flex;
   padding-left: 50px;
+  .fec-rtl & {
+    padding-left: 0;
+    padding-right: 50px;
+  }
   > div {
     flex: 1;
   }
-  .fec-daily-header{
+  .fec-daily-header {
     margin: 0;
   }
 }
 
 .fec-week-wrapper {
   min-width: 900px;
-  .fec-daily-time-ranges  {
+  .fec-daily-time-ranges {
     width: 50px !important;
     border: none !important;
   }
-  .fec-daily-grid{
+  .fec-daily-grid {
     border-left: 1px solid var(--hairline);
+    .fec-rtl & {
+      border-left: none;
+      border-right: 1px solid var(--hairline);
+    }
   }
 }

@@ -11,7 +11,7 @@ import { WeeklyAllDayHeader } from './WeeklyHeader/WeeklyAllDayHeader'
 // Styles
 import './WeekGrid.scss'
 import { useWeekCols } from './WeekCols'
-import { useCalenderContainerState } from '@full-event-calendar/utils'
+import { getFirstDayOfWeek, getWeekDates, useCalenderContainerState } from '@full-event-calendar/utils'
 
 export interface WeeklyGridProps {
   events?: EventClass[]
@@ -74,13 +74,8 @@ export const WeeklyGrid: FComponent<WeeklyGridProps> = (props) => {
   }
 
   const headerDates = () => {
-    let iniDay = mergedProps.initialDate
-    iniDay.setDate(iniDay.getDate() - iniDay.getDay())
-    return [0, 1, 2, 3, 4, 5, 6].map((i) => {
-      const y = new Date(iniDay)
-      y.setDate(y.getDate() + i)
-      return y
-    })
+    // week starts on the locale first day of week (fa-IR weeks start on Saturday)
+    return getWeekDates(mergedProps.initialDate, getFirstDayOfWeek(mergedProps.locale))
   }
 
   function addEventProxy(event: EventClass, groupId?: number) {

@@ -5,5 +5,6 @@ export const az = {
   list: 'Siyahı',
   no_title: 'Başlıq yoxdur',
   daily: 'Hər gün',
-  no_events: 'Heç bir hadisə yoxdur'
+  no_events: 'Heç bir hadisə yoxdur',
+  all_day: 'Bütün gün'
 }

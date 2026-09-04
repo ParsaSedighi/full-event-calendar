@@ -5,5 +5,6 @@ export const ko = {
   list: '목록',
   no_title: '제목 없음',
   daily: '매일',
-  no_events: '이벤트 없음'
+  no_events: '이벤트 없음',
+  all_day: '종일'
 }

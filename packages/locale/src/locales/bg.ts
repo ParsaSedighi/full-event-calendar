@@ -5,5 +5,6 @@ export const bg = {
   list: 'Списък',
   no_title: 'Няма заглавие',
   daily: 'Ежедневно',
-  no_events: 'Няма събития'
+  no_events: 'Няма събития',
+  all_day: 'Цял ден'
 }

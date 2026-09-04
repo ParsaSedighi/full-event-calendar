@@ -1,0 +1,19 @@
+// Vazirmatn - Persian font (https://github.com/rastikerdar/vazirmatn)
+// loaded from a cdn so the package size stays small , the calendar falls back
+// to system fonts when the font can not be loaded
+@font-face {
+  font-family: 'Vazirmatn';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/fonts/webfonts/Vazirmatn[wght].woff2')
+      format('woff2 supports variations'),
+    url('https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/fonts/webfonts/Vazirmatn[wght].woff2')
+      format('woff2-variations');
+}
+
+// applied on the calendar root when the locale language is farsi
+.fec-locale-fa,
+.fec-locale-fa * {
+  font-family: 'Vazirmatn', 'Vazirmatn UI FD', 'Segoe UI', Tahoma, ui-sans-serif, system-ui, sans-serif;
+}

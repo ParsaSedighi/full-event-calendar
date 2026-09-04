@@ -5,5 +5,6 @@ export const ro = {
   list: 'Listă',
   no_title: 'Fără titlu',
   daily: 'Zilnic',
-  no_events: 'Fără evenimente'
+  no_events: 'Fără evenimente',
+  all_day: 'Toată ziua'
 }

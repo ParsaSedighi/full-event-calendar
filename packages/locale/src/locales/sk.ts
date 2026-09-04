@@ -5,5 +5,6 @@ export const sk = {
   list: 'Zoznam',
   no_title: 'Žiadny názov',
   daily: 'Dennodenne',
-  no_events: 'Žiadne udalosti'
+  no_events: 'Žiadne udalosti',
+  all_day: 'Celý deň'
 }

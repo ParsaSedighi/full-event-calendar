@@ -1,26 +1,30 @@
 .fec-month-more-wrapper {
-    display: flex;
-    width: 100%;
-    bottom: 7px;
-    position: absolute;
-    gap: 12px;
-    .fec-month-more-item {
-      flex: 1;
+  display: flex;
+  width: 100%;
+  bottom: 7px;
+  position: absolute;
+  gap: 12px;
+  .fec-month-more-item {
+    flex: 1;
 
-      .fec-month-more-btn {
-        background-color: var(--bg-color);
-        color: var(--on-surface-variant);
-        transition: all 0.3s;
-        align-items: center;
-        padding-left: 8px;
-        padding-top: 3px;
-        border-radius: 8px;
-
-        &:hover {
-          background: var(--bg-hover);
-        }
-        border-radius: 5px;
-        cursor: pointer;
+    .fec-month-more-btn {
+      background-color: var(--bg-color);
+      color: var(--on-surface-variant);
+      transition: all 0.3s;
+      align-items: center;
+      padding-left: 8px;
+      padding-top: 3px;
+      border-radius: 8px;
+      .fec-rtl & {
+        padding-left: 0;
+        padding-right: 8px;
       }
+
+      &:hover {
+        background: var(--bg-hover);
+      }
+      border-radius: 5px;
+      cursor: pointer;
     }
   }
+}

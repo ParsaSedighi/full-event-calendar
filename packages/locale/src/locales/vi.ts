@@ -5,5 +5,6 @@ export const vi = {
   list: 'Danh sách',
   no_title: 'Không có tiêu đề',
   daily: 'Hàng ngày',
-  no_events: 'Không có sự kiện'
+  no_events: 'Không có sự kiện',
+  all_day: 'Cả ngày'
 }

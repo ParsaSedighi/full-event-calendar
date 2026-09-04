@@ -5,5 +5,6 @@ export const am = {
   list: 'ዝርዝር',
   no_title: 'ምንም አርእስቶች የሉም',
   daily: 'ቀንን በተመለከተ',
-  no_events: 'ምንም ክስተቶች የሉም'
+  no_events: 'ምንም ክስተቶች የሉም',
+  all_day: 'ሙሉ ቀን'
 }

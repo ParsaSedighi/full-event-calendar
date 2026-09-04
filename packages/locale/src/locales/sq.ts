@@ -5,5 +5,6 @@ export const sq = {
   list: 'Listë',
   no_title: 'Asnjë titull',
   daily: 'Çdo ditë',
-  no_events: 'Asnjë ngjarje'
+  no_events: 'Asnjë ngjarje',
+  all_day: 'Gjithë ditën'
 }

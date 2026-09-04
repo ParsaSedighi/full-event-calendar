@@ -31,6 +31,15 @@
   animation-name: smoothFade;
   animation-duration: 0.25s;
 }
+
+// rtl : the time line flows right to left so the animations are mirrored
+.fec-rtl .fec-grid-animate-forward {
+  animation-name: forwardAnimationRtl;
+}
+.fec-rtl .fec-grid-animate-backward {
+  animation-name: backwardAnimationRtl;
+}
+
 @keyframes smoothFade {
   0% {
     opacity: 0;
@@ -55,6 +64,30 @@
 @keyframes backwardAnimation {
   0% {
     left: -40px;
+    opacity: 0;
+  }
+
+  100% {
+    left: 0px;
+    opacity: 1;
+  }
+}
+
+@keyframes forwardAnimationRtl {
+  0% {
+    left: -40px;
+    opacity: 0;
+  }
+
+  100% {
+    left: 0px;
+    opacity: 1;
+  }
+}
+
+@keyframes backwardAnimationRtl {
+  0% {
+    left: 40px;
     opacity: 0;
   }
 

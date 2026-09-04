@@ -13,8 +13,11 @@ import {
   EventImpl,
   detectLeftButton,
   getCalendarMonthDays,
+  getDayColumn,
   getEventSourceFromTz,
   getEventsInDate,
+  getFirstDayOfWeek,
+  isRTL,
   useCalenderContainerState,
   useSlotModal
 } from '@full-event-calendar/utils'
@@ -97,10 +100,13 @@ export const MonthGrid: FComponent<MonthGridProps> = (props) => {
     const modalDataCopy = { ...modalData() }
 
     modalDataCopy.left = targetRect.left + 'px'
-    if (data.date.getDay() === 6) {
-      modalDataCopy.left = '83%'
-    } else if (data.date.getDay() === 0) {
-      modalDataCopy.left = '1%'
+    // position the modal based on the week column of the clicked date so it does
+    // not overflow the calendar. in rtl the columns are mirrored
+    const column = getDayColumn(data.date, getFirstDayOfWeek(mergedProps.locale))
+    if (column === 6) {
+      modalDataCopy.left = isRTL(mergedProps.locale) ? '1%' : '83%'
+    } else if (column === 0) {
+      modalDataCopy.left = isRTL(mergedProps.locale) ? '83%' : '1%'
     }
     modalDataCopy.bottom = targetRect.top - containerRect.top + 'px'
     modalDataCopy.show = true
@@ -146,7 +152,10 @@ export const MonthGrid: FComponent<MonthGridProps> = (props) => {
   // ... 30 more
   // ]
   // return array of the monty dates is the format above
-  const monthCalendarDates = createMemo(() => getCalendarMonthDays(mergedProps.initialDate, mergedProps.calendar))
+  // the month grid weeks start on the locale first day of week (fa-IR weeks start on Saturday)
+  const monthCalendarDates = createMemo(() =>
+    getCalendarMonthDays(mergedProps.initialDate, mergedProps.calendar, getFirstDayOfWeek(mergedProps.locale))
+  )
 
   //split monthCalendarDates to 7 arrays for month grid
   //row 1 --- monthCalendarDates[]

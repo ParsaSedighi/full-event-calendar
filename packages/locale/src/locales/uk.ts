@@ -5,5 +5,6 @@ export const uk = {
   list: 'Список',
   no_title: 'Немає заголовка',
   daily: 'Щоденно',
-  no_events: 'Подій немає'
+  no_events: 'Подій немає',
+  all_day: 'Весь день'
 }

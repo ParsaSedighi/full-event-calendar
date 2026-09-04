@@ -36,3 +36,13 @@
 .fec-month-right-arrow {
   clip-path: polygon(0 0, calc(100% - 10px) 0%, 100% 50%, calc(100% - 10px) 100%, 0 100%);
 }
+
+// rtl : continuation arrows are mirrored
+.fec-rtl {
+  .fec-month-left-arrow {
+    clip-path: polygon(0 0, calc(100% - 10px) 0%, 100% 50%, calc(100% - 10px) 100%, 0 100%);
+  }
+  .fec-month-right-arrow {
+    clip-path: polygon(100% 0, 10px 0, 0px 50%, 10px 100%, 100% 100%);
+  }
+}

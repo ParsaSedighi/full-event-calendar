@@ -5,5 +5,6 @@ export const th = {
   list: 'รายการ',
   no_title: 'ไม่มีชื่อเรื่อง',
   daily: 'ทุกวัน',
-  no_events: 'ไม่มีเหตุการณ์'
+  no_events: 'ไม่มีเหตุการณ์',
+  all_day: 'ตลอดวัน'
 }

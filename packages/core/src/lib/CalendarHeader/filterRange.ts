@@ -1,6 +1,6 @@
 import { EventClass } from '@full-event-calendar/shared-ts'
 import { CalendarState } from '../../store/store'
-import { getCalendarMonthDays, getWeekDates } from '@full-event-calendar/utils'
+import { getCalendarMonthDays, getFirstDayOfWeek, getWeekDates } from '@full-event-calendar/utils'
 
 interface Formater {
   proccess: (calendarState: CalendarState) => string
@@ -29,7 +29,7 @@ class WeeklyFormat implements Formater {
       calendar: calendarState.calendar,
       timeZone: calendarState.timeZone
     }
-    const weekends = getWeekDates(new Date(calendarState.initialDate))
+    const weekends = getWeekDates(new Date(calendarState.initialDate), getFirstDayOfWeek(calendarState.locale))
     //@ts-ignore
     return new Intl.DateTimeFormat(calendarState.locale, listWeekOptions).formatRange(
       weekends[0],

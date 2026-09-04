@@ -6,7 +6,7 @@ import { GridModes } from '../../api/CalendarImpl'
 import { Transition } from 'solid-transition-group'
 import { HeaderFormat } from './filterRange'
 import { calendarLocale } from '@full-event-calendar/locale'
-import { useSlot } from '@full-event-calendar/utils'
+import { getTextDirection, useSlot } from '@full-event-calendar/utils'
 interface CalendarHeader {
   onDateChange: (d: Date) => void
   changeGrid: (grid: GridModes) => void
@@ -27,6 +27,12 @@ export const CalendarHeader: FComponent<CalendarHeader> = (props) => {
   const headerDate = createMemo(() => {
     return new HeaderFormat(data.store).format()
   })
+
+  // header date is rendered with the writing direction of the locale
+  // so dates of rtl locales (fa-IR , ar-EG , he-IL ...) render correctly
+  const headerDir = createMemo(() =>
+    data.store.direction === 'auto' ? getTextDirection(data.store.locale) : data.store.direction
+  )
 
   function changeGrid(grid: GridModes) {
     props.changeGrid(grid)
@@ -177,7 +183,7 @@ export const CalendarHeader: FComponent<CalendarHeader> = (props) => {
         </Show>
       </div>
 
-      <div class="fec-header-date" dir="rtl" ref={headerSlot.el}>
+      <div class="fec-header-date" dir={headerDir()} ref={headerSlot.el}>
         <Show when={!isHeaderDateSlotAvalibale}>{headerDate()}</Show>
       </div>
 

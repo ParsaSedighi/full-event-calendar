@@ -5,5 +5,6 @@ export const is = {
   list: 'Listi',
   no_title: 'Enginn titill',
   daily: 'Daglega',
-  no_events: 'Engin viðburði'
+  no_events: 'Engin viðburði',
+  all_day: 'Allan daginn'
 }

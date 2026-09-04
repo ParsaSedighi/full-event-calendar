@@ -40,6 +40,17 @@
   .both-arrow {
     clip-path: polygon(10px 0, calc(100% - 10px) 0%, 100% 50%, calc(100% - 10px) 100%, 10px 100%, 0 50%);
   }
+
+  // rtl : arrows are mirrored
+  .fec-rtl & {
+    .right-arrow {
+      clip-path: polygon(100% 0, 10px 0, 0px 50%, 10px 100%, 100% 100%);
+    }
+
+    .left-arrow {
+      clip-path: polygon(0 0, calc(100% - 10px) 0%, 100% 50%, calc(100% - 10px) 100%, 0 100%);
+    }
+  }
 }
 
 .more-btn {
@@ -66,7 +77,7 @@
     padding-left: 8px;
     padding-top: 3px;
     border-radius: 8px;
-    color:var(--textfield-surface);
+    color: var(--textfield-surface);
     &:hover {
       background: var(--bg-hover);
     }
@@ -78,6 +89,20 @@
   white-space: nowrap;
   color: var(--on-surface);
   font-weight: 700;
+}
+
+// rtl : the more button is mirrored
+.fec-rtl {
+  .more-btn {
+    left: auto;
+    right: 0;
+    padding-left: 0;
+    padding-right: 10px;
+    .more-wrapper {
+      padding-left: 0;
+      padding-right: 8px;
+    }
+  }
 }
 
 .alld-open {
@@ -96,12 +121,10 @@
   position: relative;
   //  border-left: 1px solid var(--hairline);
 }
-.all-d-wrapeer-header:first-child{
+.all-d-wrapeer-header:first-child {
   // border-right: 1px solid var(--hairline);
-
 }
 .more-btn-container {
- 
   position: relative;
   display: flex;
   flex-direction: column;
@@ -109,6 +132,10 @@
   justify-content: end;
   padding-bottom: 5px;
   border-right: 1px solid var(--hairline);
+  .fec-rtl & {
+    border-right: none;
+    border-left: 1px solid var(--hairline);
+  }
   .fec-all-collapser {
     height: 30px;
     rotate: 180deg;
@@ -119,8 +146,8 @@
     align-items: center;
     justify-content: center;
     transition: all 0.3s;
-    path{
-      stroke: var( --on-surface-variant);
+    path {
+      stroke: var(--on-surface-variant);
     }
     svg {
       scale: 1.1;

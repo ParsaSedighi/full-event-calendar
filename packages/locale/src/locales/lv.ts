@@ -5,5 +5,6 @@ export const lv = {
   list: 'Saraksts',
   no_title: 'Nav virsraksta',
   daily: 'Katru dienu',
-  no_events: 'Nav notikumu'
+  no_events: 'Nav notikumu',
+  all_day: 'Visu dienu'
 }

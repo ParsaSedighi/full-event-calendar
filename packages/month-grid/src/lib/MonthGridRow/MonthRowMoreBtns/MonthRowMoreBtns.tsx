@@ -1,5 +1,5 @@
 import { FComponent } from '@full-event-calendar/shared-ts'
-import {formatNumber } from '@full-event-calendar/utils'
+import { formatNumber, getFirstDayOfWeek } from '@full-event-calendar/utils'
 import { MonthDateObject } from '../../MonthGrid'
 import { For, Show } from 'solid-js'
 import { getExtraRowsCount } from '../../..'
@@ -16,13 +16,14 @@ export const MonthRowMoreBtns: FComponent<MonthGridRowProps> = (props) => {
   return (
     <>
       <div class="fec-month-more-wrapper">
-          {/* get rowse count byand the row limit */}
+        {/* get rowse count byand the row limit */}
         <For
           each={getExtraRowsCount(
             props.monthRowData,
             props.monthRowDates[0].date,
             props.monthRowDates[6].date,
-            props.rowLimit
+            props.rowLimit,
+            getFirstDayOfWeek(props.locale)
           )}
         >
           {(extraCount, j) => (

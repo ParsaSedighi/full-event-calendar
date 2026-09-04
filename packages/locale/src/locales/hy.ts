@@ -5,5 +5,6 @@ export const hy = {
   list: 'Ցուցակ',
   no_title: 'Ոչ մի վերնագիր',
   daily: 'Օրական',
-  no_events: 'Ոչ մի իրադարձություն'
+  no_events: 'Ոչ մի իրադարձություն',
+  all_day: 'Ամբողջ օրը'
 }

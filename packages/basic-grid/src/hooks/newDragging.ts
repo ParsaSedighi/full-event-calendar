@@ -90,6 +90,11 @@ class EventResize extends DraggerHandeler implements Dragger {
   prevX = 0
   FirstBottomY = 0
   rect = null as any
+  locale: string
+  constructor(container: HTMLElement, locale?: string) {
+    super(container)
+    this.locale = locale || 'en-US'
+  }
   dragStart(e: MouseEvent, event: EventClass) {
     this.createDraggingObject(e, event)
     this.prevX = e.y
@@ -115,7 +120,7 @@ class EventResize extends DraggerHandeler implements Dragger {
       endTimeNode.innerHTML = getDateTimeRange(
         this.draggingController?.dragedStartDate!,
         this.draggingController?.dragedEndDate!,
-        'en-US'
+        this.locale
       )
   }
   dragEnd(e: MouseEvent) {
@@ -132,8 +137,13 @@ class AddEventWithResize extends DraggerHandeler implements Dragger {
   hasScrolled = false
   resizer: EventResize | null = null
   private event: EventClass | null = null
+  locale: string
+  constructor(container: HTMLElement, locale?: string) {
+    super(container)
+    this.locale = locale || 'en-US'
+  }
   dragStart(e: MouseEvent, event: EventClass) {
-    this.resizer = new EventResize(this.container)
+    this.resizer = new EventResize(this.container, this.locale)
     this.event = event
   }
   mouseMove(e: MouseEvent) {
@@ -156,16 +166,16 @@ class AddEventWithResize extends DraggerHandeler implements Dragger {
 export type drageModes = 'DailyDragDrop' | 'eventResizer' | 'addEventWithResize'
 export class CalendarDragger {
   dragger: Dragger
-  constructor(mode: drageModes, container: HTMLElement) {
+  constructor(mode: drageModes, container: HTMLElement, locale?: string) {
     switch (mode) {
       case 'DailyDragDrop':
         this.dragger = new DailyGridDragger(container)
         break
       case 'eventResizer':
-        this.dragger = new EventResize(container)
+        this.dragger = new EventResize(container, locale)
         break
       case 'addEventWithResize':
-        this.dragger = new AddEventWithResize(container)
+        this.dragger = new AddEventWithResize(container, locale)
         break
       default:
         this.dragger = new DailyGridDragger(container)

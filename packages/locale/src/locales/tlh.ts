@@ -5,5 +5,6 @@ export const tlh = {
   list: 'mIch',
   no_title: 'pagh jaj',
   daily: 'Duj',
-  no_events: 'pagh jaj'
+  no_events: 'pagh jaj',
+  all_day: 'Hoch jaj'
 }

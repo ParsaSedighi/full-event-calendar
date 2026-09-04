@@ -5,5 +5,6 @@ export const sr = {
   list: 'Листа',
   no_title: 'Нема наслова',
   daily: 'Свакодневно',
-  no_events: 'Нема догађаја'
+  no_events: 'Нема догађаја',
+  all_day: 'Ceo dan'
 }

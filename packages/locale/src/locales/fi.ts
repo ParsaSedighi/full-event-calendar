@@ -5,5 +5,6 @@ export const fi = {
   list: 'Luettelo',
   no_title: 'Ei otsikkoa',
   daily: 'Päivittäin',
-  no_events: 'Ei tapahtumia'
+  no_events: 'Ei tapahtumia',
+  all_day: 'Koko päivä'
 }

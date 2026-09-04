@@ -2,44 +2,50 @@ import { EventClass, FComponent } from '@full-event-calendar/shared-ts'
 import { createMemo, createSignal } from 'solid-js'
 import './MonthEvent.scss'
 import { getLeftPosition, getEndPosition } from '../../../../utils/EventPosition'
-import { formatToShortTime, rightOrLeftInDateInRange, useCalenderContainerState } from '@full-event-calendar/utils'
+import {
+  formatToShortTime,
+  getFirstDayOfWeek,
+  rightOrLeftInDateInRange,
+  useCalenderContainerState
+} from '@full-event-calendar/utils'
 import { detectLeftButton } from '@full-event-calendar/utils'
 interface EventProps {
   item: EventClass
   endDate: Date
   startDate: Date
-  ondragstart: (event: EventClass,e:MouseEvent) => void
+  ondragstart: (event: EventClass, e: MouseEvent) => void
   onDragEnd: () => void
   isFirstRow: boolean
   locale: string
-  onClick?: (event:EventClass,e:MouseEvent)=>void
+  onClick?: (event: EventClass, e: MouseEvent) => void
 }
 
 export const MonthEvent: FComponent<EventProps> = (props: EventProps) => {
-  const leftP = createMemo(() => getLeftPosition(props.item, props.startDate))
+  // first day of the week of the locale (fa-IR weeks start on Saturday)
+  const firstDay = getFirstDayOfWeek(props.locale)
+  const leftP = createMemo(() => getLeftPosition(props.item, props.startDate, firstDay))
 
-  const eventWidth = getEndPosition(props.item, props.endDate, leftP())
+  const eventWidth = getEndPosition(props.item, props.endDate, leftP(), firstDay)
 
   const [eventIsDragging, setEventIsDragging] = createSignal(false)
   const container = useCalenderContainerState()
 
-  function onEventMouseDown(data: boolean,event:MouseEvent) {
-
-    if(!detectLeftButton(event)) return
+  function onEventMouseDown(data: boolean, event: MouseEvent) {
+    if (!detectLeftButton(event)) return
     event.stopPropagation()
     event.preventDefault()
-    let hasBenMoved= false
+    let hasBenMoved = false
     document.addEventListener('mouseup', handelMouseUp)
     //maybe remove this line it is not needed ?
     document.addEventListener('mousemove', mouseMove)
-    function mouseMove(e:MouseEvent) {
-      if(!hasBenMoved){
+    function mouseMove(e: MouseEvent) {
+      if (!hasBenMoved) {
         setEventIsDragging(data)
         container?.querySelector('#fec-month-wrapper-id')?.classList.add('fec-month-is-dragging')
-      }else{
+      } else {
         hasBenMoved = true
       }
-      props.ondragstart(props.item,e)
+      props.ondragstart(props.item, e)
     }
     function handelMouseUp() {
       setEventIsDragging(false)
@@ -50,25 +56,27 @@ export const MonthEvent: FComponent<EventProps> = (props: EventProps) => {
     }
   }
 
-
   function eventStyles() {
+    // `inset-inline-start` resolves to `left` in ltr and to `right` in rtl
     return `--ca-color:${props.item.color};${
       eventIsDragging() ? ';opacity:.7;' : ''
-    };left:calc(${leftP()}00% + 7px);width:calc(${eventWidth}00% - 14px);background-color:${props.item.color}`
+    };inset-inline-start:calc(${leftP()}00% + 7px);width:calc(${eventWidth}00% - 14px);background-color:${
+      props.item.color
+    }`
   }
   function isNotAllDay() {
     if (props?.item?.isAllDay) {
       return !props?.item?.isAllDay() ? 'fec-month-item-no-all-day' : ''
       //@ts-ignore
-    }else if(props?.item.source){
+    } else if (props?.item.source) {
       //@ts-ignore
       return !props?.item?.source.isAllDay() ? 'fec-month-item-no-all-day' : ''
     }
     return ''
   }
-  function onClickHandel(e:MouseEvent){
-    if(props.onClick){
-      props.onClick(props.item,e)
+  function onClickHandel(e: MouseEvent) {
+    if (props.onClick) {
+      props.onClick(props.item, e)
     }
   }
 
@@ -81,7 +89,9 @@ export const MonthEvent: FComponent<EventProps> = (props: EventProps) => {
       style={eventStyles()}
       data-test-id-month-item={props.item.id}
     >
-      <div class="fec-event-time-month">{`${isNotAllDay() ? formatToShortTime(props.item.start, props.locale) : ''} `}</div>
+      <div class="fec-event-time-month">{`${
+        isNotAllDay() ? formatToShortTime(props.item.start, props.locale) : ''
+      } `}</div>
       <div class="fec-event-name-month">{isNotAllDay() ? `(${props.item.name})` : props.item.name}</div>
     </div>
   )

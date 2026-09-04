@@ -1,6 +1,6 @@
 import { Reducer } from 'redux'
 import { EventImpl } from '@full-event-calendar/utils'
-import { AppSlots, CalendarSourceOptions, GridModes, Plugins } from '../api/CalendarImpl'
+import { AppSlots, CalendarDirection, CalendarSourceOptions, GridModes, Plugins } from '../api/CalendarImpl'
 import { EventClass, Group, SourceEvent } from '@full-event-calendar/shared-ts'
 interface SetAllChatsAction {
   type: 'SET_ALL_EVENTS'
@@ -88,6 +88,10 @@ interface ChangeContainerHeight {
   type: 'CHANGE_CONTAINER_HEIGHT'
   val: number
 }
+interface ChangeDirection {
+  type: 'CHANGE_DIRECTION'
+  val: CalendarDirection
+}
 
 // To Do: use better names for set and update
 
@@ -113,6 +117,7 @@ export type StoreActions =
   | SetAvalibleSlots
   | SetStopAddEvent
   | ChangeContainerHeight
+  | ChangeDirection
 
 export type EventCalendarOptions = { [K in keyof CalendarSourceOptions]-?: CalendarSourceOptions[K] }
 export interface CalendarState extends EventCalendarOptions {
@@ -124,6 +129,8 @@ export const createReducer = (ds: CalendarState) => {
     switch (action.type) {
       case 'CHANGE_CONTAINER_HEIGHT':
         return { ...state, containerHeight: action.val }
+      case 'CHANGE_DIRECTION':
+        return { ...state, direction: action.val }
       case 'DELETE_EVENT':
         const events12 = [...state.events].filter((ev) => ev.id != action.id)
         return { ...state, events: events12 }

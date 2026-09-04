@@ -5,5 +5,6 @@ export const ms = {
   list: 'Senarai',
   no_title: 'Tiada tajuk',
   daily: 'Setiap hari',
-  no_events: 'Tiada acara'
+  no_events: 'Tiada acara',
+  all_day: 'Sepanjang hari'
 }

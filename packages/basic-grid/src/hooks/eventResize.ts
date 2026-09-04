@@ -7,7 +7,8 @@ export function useResize(
   drageMode: drageModes,
   resizeEndCalllBack: (p: SourceEvent) => void,
   editable: () => boolean,
-  onMouseMove?: () => void
+  onMouseMove?: () => void,
+  locale?: string
 ) {
   const [draggedData, setDraggedData] = createSignal<any>()
   const container = useCalenderContainerState()
@@ -15,7 +16,7 @@ export function useResize(
   function onmousedownH(item: EventClass, e: MouseEvent) {
     if (!editable()) return
 
-    const calendarDragger = new CalendarDragger(drageMode, container!)
+    const calendarDragger = new CalendarDragger(drageMode, container!, locale)
 
     e.stopPropagation()
     calendarDragger.dragger.dragStart(e, item)

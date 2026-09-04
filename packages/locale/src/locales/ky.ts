@@ -5,5 +5,6 @@ export const ky = {
   list: 'Тизме',
   no_title: 'Тақырыпсыз',
   daily: 'Күн бою',
-  no_events: 'Берилгендер жок'
+  no_events: 'Берилгендер жок',
+  all_day: 'Күн бою'
 }

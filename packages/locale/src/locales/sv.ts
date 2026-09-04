@@ -5,5 +5,6 @@ export const sv = {
   list: 'Lista',
   no_title: 'Ingen titel',
   daily: 'Dagligen',
-  no_events: 'Inga händelser'
+  no_events: 'Inga händelser',
+  all_day: 'Hela dagen'
 }

@@ -5,5 +5,6 @@ export const hi = {
   list: 'सूची',
   no_title: 'कोई शीर्षक नहीं',
   daily: 'दैनिक',
-  no_events: 'कोई घटना नहीं'
+  no_events: 'कोई घटना नहीं',
+  all_day: 'पूरे दिन'
 }

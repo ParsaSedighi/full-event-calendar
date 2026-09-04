@@ -6,6 +6,7 @@ import { CalendarState } from './store/store.js'
 import { FComponent } from '@full-event-calendar/shared-ts'
 
 import './themes/clickDown.scss'
+import './themes/fonts/vazirmatn.scss'
 import { SlotProvider } from '@full-event-calendar/utils'
 
 const CalendarRoot: FComponent<{ store: CalendarState; instance: Calendar; container: HTMLElement }> = (props) => {

@@ -5,5 +5,6 @@ export const fa = {
   list: 'لیست',
   no_title: 'هیچ عنوانی نیست',
   daily: 'روزانه',
-  no_events: 'هیچ رویدادی نیست'
+  no_events: 'هیچ رویدادی نیست',
+  all_day: 'تمام روز'
 }

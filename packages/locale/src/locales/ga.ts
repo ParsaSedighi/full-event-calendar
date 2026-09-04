@@ -5,5 +5,6 @@ export const ga = {
   list: 'Liosta',
   no_title: 'Gan teideal',
   daily: 'Gach lá',
-  no_events: 'Gan imeachtaí'
+  no_events: 'Gan imeachtaí',
+  all_day: 'An lá ar fad'
 }

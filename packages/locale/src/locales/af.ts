@@ -5,5 +5,6 @@ export const af = {
   list: 'Lys',
   no_title: 'Geen titel',
   daily: 'Daagliks',
-  no_events: 'Geen gebeure'
+  no_events: 'Geen gebeure',
+  all_day: 'Heeldag'
 }

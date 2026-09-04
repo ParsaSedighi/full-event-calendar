@@ -5,5 +5,6 @@ export const kn = {
   list: 'ಪಟ್ಟಿ',
   no_title: 'ಯಾವುದೇ ಶೀರ್ಷಿಕೆಯಿಲ್ಲ',
   daily: 'ದಿನಕ್ಕೆ',
-  no_events: 'ಯಾವುದೇ ಘಟನೆಗಳಿಲ್ಲ'
+  no_events: 'ಯಾವುದೇ ಘಟನೆಗಳಿಲ್ಲ',
+  all_day: 'ದಿನವಿಡೀ'
 }

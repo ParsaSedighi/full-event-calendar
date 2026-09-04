@@ -5,5 +5,6 @@ export const hu = {
   list: 'Lista',
   no_title: 'Nincs cím',
   daily: 'Napi',
-  no_events: 'Nincsenek események'
+  no_events: 'Nincsenek események',
+  all_day: 'Egész nap'
 }

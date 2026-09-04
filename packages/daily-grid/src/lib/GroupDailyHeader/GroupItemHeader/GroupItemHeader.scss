@@ -6,6 +6,10 @@
   align-items: end;
   gap: 10px;
   padding-right: 10px;
+  .fec-rtl & {
+    padding-right: 0;
+    padding-left: 10px;
+  }
   .fec-group-name {
     font-size: 14px;
     font-weight: 400;
@@ -19,6 +23,10 @@
   bottom: 0px;
   width: 5px;
   right: -1px;
+  .fec-rtl & {
+    right: auto;
+    left: -1px;
+  }
 }
 .fec-some-borderw {
   position: absolute;
@@ -27,18 +35,30 @@
   bottom: 0px;
   width: 0.5px;
   left: 1px;
+  .fec-rtl & {
+    left: auto;
+    right: 1px;
+  }
 }
 .fec-group-item-header {
   > :not(:last-child) {
     .fec-some-border {
       border-right: 1px solid var(--hairline);
       // right: -0.5px;
+      .fec-rtl & {
+        border-right: none;
+        border-left: 1px solid var(--hairline);
+      }
     }
   }
   > :first-child {
     .fec-some-borderw {
       // right: -0.5px;
       border-right: 1px solid var(--hairline);
+      .fec-rtl & {
+        border-right: none;
+        border-left: 1px solid var(--hairline);
+      }
     }
   }
 }

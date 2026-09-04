@@ -3,6 +3,10 @@
 }
 .fec-month-container:not(:last-child) {
   border-right: 1px solid var(--hairline);
+  .fec-rtl & {
+    border-right: none;
+    border-left: 1px solid var(--hairline);
+  }
 }
 .fec-month-day-out {
   > div {
@@ -10,6 +14,10 @@
     flex-direction: row-reverse;
     align-items: center;
     color: var(--on-surface-variant-agm) !important;
+    // rtl : row-reverse would flip twice , a normal row is already mirrored
+    .fec-rtl & {
+      flex-direction: row;
+    }
   }
   .fec-month-name {
     display: inline;
@@ -35,11 +43,9 @@
   flex: 1;
   min-width: 900px;
   // border-right: 1px solid var(--hairline);
-  // doasisi asdi asdoasid asod  asdiisiisd asdasdoioi 
+  // doasisi asdi asdoasid asod  asdiisiisd asdasdoioi
   // border-bottom: 1px solid var(--hairline);
   outline: 1px solid var(--hairline);
-
-
 }
 .slide-fade-enter-active,
 .slide-fade-exit-active {

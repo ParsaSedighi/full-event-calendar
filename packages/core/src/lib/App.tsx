@@ -6,7 +6,7 @@ import { GridModes } from '../api/CalendarImpl.js'
 import { Dynamic } from 'solid-js/web'
 import './App.scss'
 import { SliderWrapper } from './SliderWrapper/SliderWrapper.jsx'
-import { EventImpl } from '@full-event-calendar/utils'
+import { EventImpl, getLocaleLanguage, getTextDirection } from '@full-event-calendar/utils'
 export function App() {
   const data = useGlobalState()
 
@@ -65,11 +65,22 @@ export function App() {
 
   // We need to unwrapp and cache events for better sorting and performace
   const unwrappedEvents = createMemo(() => [...data.store.events])
+
+  // resolved writing direction of the calendar.
+  // `auto` resolves the direction from the locale (fa-IR , ar-EG , he-IL ... are rtl)
+  const direction = createMemo(() =>
+    data.store.direction === 'auto' ? getTextDirection(data.store.locale) : data.store.direction
+  )
+  const isRtl = createMemo(() => direction() === 'rtl')
+
   return (
     <>
       <div
-        class={`full-event-calendar-core calendar-theme-${data.store.theme}`}
+        class={`full-event-calendar-core calendar-theme-${data.store.theme} ${isRtl() ? 'fec-rtl' : 'fec-ltr'} ${
+          getLocaleLanguage(data.store.locale) === 'fa' ? 'fec-locale-fa' : ''
+        }`}
         id="full-event-calendar-core"
+        dir={direction()}
         style={`height:${data.store.containerHeight}px`}
       >
         <CalendarHeader onDateChange={onDateChange} changeGrid={onGridChange} />

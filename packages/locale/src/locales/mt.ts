@@ -5,5 +5,6 @@ export const mt = {
   list: 'Lista',
   no_title: 'Ebda titlu',
   daily: 'Kull jum',
-  no_events: 'Ebda avvenimenti'
+  no_events: 'Ebda avvenimenti',
+  all_day: 'Jum sħiħ'
 }

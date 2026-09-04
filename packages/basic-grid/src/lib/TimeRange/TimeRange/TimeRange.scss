@@ -1,62 +1,72 @@
 .fec-time-range {
-    // background-color: green;
-    border-top: 1px solid var(--hairline);
-    // margin-left: 39px;
-    // outline: 1px solid #ecececb6;
-    flex: 1;
-    display: flex;
+  // background-color: green;
+  border-top: 1px solid var(--hairline);
+  // margin-left: 39px;
+  // outline: 1px solid #ecececb6;
+  flex: 1;
+  display: flex;
+  width: 100%;
+  position: relative;
+  //  z-index: 3;
+  .fec-add-event-preview {
+    position: absolute;
     width: 100%;
-    position: relative;
-    //  z-index: 3;
-    .fec-add-event-preview{
-        position: absolute;
-        width: 100%;
-        padding-left: 12px;
-        height: 100%;
-        .fec-event{ 
-            box-shadow: var(--shawdow);
-            border: 0px solid red;
-            padding-top: 5px;
-        }
-        .fec-one-line-event {
-        
-          justify-content: start !important;
-        }
-      
+    padding-left: 12px;
+    height: 100%;
+    .fec-rtl & {
+      padding-left: 0;
+      padding-right: 12px;
     }
-    .fec-time-range-time {
-      // z-index: -1;
-      // background-color: red;
-      color: var(--on-surface-variant);
-      position: absolute;
-      font-size: 12px;
-      font-style: normal;
-      font-weight: 500;
-      line-height: normal;
-      top: 0;
-      transform: translate(-120%, -50%);
+    .fec-event {
+      box-shadow: var(--shawdow);
+      border: 0px solid red;
+      padding-top: 5px;
     }
-    .fec-some-container {
-      display: flex;
-      flex-direction: column;
-      flex: 1;
-    }
-    .fec-time-rage-up-container {
-      flex: 1;
-      margin-left: 12px;
-      display: flex;
-      flex-direction: column;
-      >div{
-        flex: 1;
-      }
-    }
-    .fec-time-rage-down-container {
-      flex: 1;
-      margin-left: 12px;
-      display: flex;
-      flex-direction: column;
-      >div{
-        flex: 1;
-      }
+    .fec-one-line-event {
+      justify-content: start !important;
     }
   }
+  .fec-time-range-time {
+    // z-index: -1;
+    // background-color: red;
+    color: var(--on-surface-variant);
+    position: absolute;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    top: 0;
+    transform: translate(-120%, -50%);
+  }
+  .fec-some-container {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+  .fec-time-rage-up-container {
+    flex: 1;
+    margin-left: 12px;
+    display: flex;
+    flex-direction: column;
+    > div {
+      flex: 1;
+    }
+  }
+  .fec-time-rage-down-container {
+    flex: 1;
+    margin-left: 12px;
+    display: flex;
+    flex-direction: column;
+    > div {
+      flex: 1;
+    }
+  }
+  // rtl : the gap is mirrored to the other side of the grid
+  .fec-rtl & {
+    .fec-time-rage-up-container,
+    .fec-time-rage-down-container {
+      margin-left: 0;
+      margin-right: 12px;
+    }
+  }
+}

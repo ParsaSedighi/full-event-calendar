@@ -5,5 +5,6 @@ export const ar = {
   list: 'قائمة',
   no_title: 'لا يوجد عنوان',
   daily: 'يوميا',
-  no_events: 'لا توجد أحداث'
+  no_events: 'لا توجد أحداث',
+  all_day: 'طوال اليوم'
 }

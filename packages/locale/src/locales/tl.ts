@@ -5,5 +5,6 @@ export const tl = {
   list: 'Listahan',
   no_title: 'Walang pamagat',
   daily: 'Araw-araw',
-  no_events: 'Walang mga kaganapan'
+  no_events: 'Walang mga kaganapan',
+  all_day: 'Buong araw'
 }
