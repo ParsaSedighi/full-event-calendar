@@ -1,6 +1,411 @@
-.eventClick{
-  width: 100px;
-  height: 200px;
-  background-color: hotpink;
-  border-radius: 20px;
+/* Demo shell styles (calendar itself is styled by @full-event-calendar/core) */
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  background: #f2f4f7;
+  color: #1f2328;
+}
+
+.demo {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.demo--dark body,
+body:has(.demo--dark) {
+  background: #1b2430;
+}
+
+/* topbar ------------------------------------------------------------------ */
+
+.demo-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 20px;
+  background: #ffffff;
+  border-bottom: 1px solid #e3e6ea;
+}
+
+.demo--dark .demo-topbar {
+  background: #243443;
+  border-bottom: 1px solid #3a536b;
+}
+
+.demo-topbar h1 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.demo-topbar h1 span {
+  font-weight: 400;
+  opacity: 0.55;
+  margin-left: 6px;
+}
+
+/* layout ------------------------------------------------------------------ */
+
+.demo-body {
+  flex: 1;
+  display: flex;
+  gap: 14px;
+  padding: 14px;
+  align-items: flex-start;
+}
+
+.demo-controls {
+  width: 250px;
+  flex-shrink: 0;
+  background: #ffffff;
+  border: 1px solid #e3e6ea;
+  border-radius: 12px;
+  padding: 14px;
+  position: sticky;
+  top: 14px;
+  max-height: calc(100vh - 28px);
+  overflow: auto;
+}
+
+.demo--dark .demo-controls {
+  background: #243443;
+  border-color: #3a536b;
+}
+
+.demo-calendar {
+  flex: 1;
+  min-width: 0;
+}
+
+.demo-log {
+  width: 260px;
+  flex-shrink: 0;
+  background: #ffffff;
+  border: 1px solid #e3e6ea;
+  border-radius: 12px;
+  padding: 14px;
+  position: sticky;
+  top: 14px;
+  max-height: calc(100vh - 28px);
+  overflow: auto;
+}
+
+.demo--dark .demo-log {
+  background: #243443;
+  border-color: #3a536b;
+}
+
+/* controls ---------------------------------------------------------------- */
+
+.demo-controls section {
+  margin-bottom: 16px;
+}
+
+.demo-controls h2,
+.demo-log h2 {
+  margin: 0 0 8px;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #6b7280;
+}
+
+.demo--dark .demo-controls h2,
+.demo--dark .demo-log h2 {
+  color: #9fb3c8;
+}
+
+.demo-btn-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 8px;
+}
+
+.demo-controls button,
+.demo-log button {
+  border: 1px solid #d0d7de;
+  background: #ffffff;
+  color: inherit;
+  border-radius: 8px;
+  padding: 5px 10px;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.demo-controls button.is-active {
+  border-color: #31b5f7;
+  color: #1a8cd8;
+  background: rgba(49, 181, 247, 0.12);
+  font-weight: 600;
+}
+
+.demo-controls select {
+  width: 100%;
+  padding: 6px 8px;
+  border-radius: 8px;
+  border: 1px solid #d0d7de;
+  background: #ffffff;
+  color: inherit;
+  font-size: 13px;
+}
+
+.demo-check {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  padding: 3px 0;
+  cursor: pointer;
+}
+
+.demo-slider {
+  display: block;
+  font-size: 13px;
+  margin-bottom: 10px;
+}
+
+.demo-slider span {
+  float: right;
+  opacity: 0.6;
+}
+
+.demo-slider input {
+  width: 100%;
+}
+
+.demo-hint {
+  font-size: 12px;
+  opacity: 0.6;
+}
+
+/* log --------------------------------------------------------------------- */
+
+.demo-log ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: 12px;
+}
+
+.demo-log li {
+  padding: 6px 4px;
+  border-bottom: 1px solid #eef1f4;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.demo--dark .demo-log li {
+  border-color: #31435a;
+}
+
+.demo-log__time {
+  color: #9ca3af;
+  font-variant-numeric: tabular-nums;
+}
+
+.demo-log__type {
+  font-weight: 600;
+  color: #1a8cd8;
+}
+
+.demo-log__empty {
+  opacity: 0.55;
+}
+
+/* shared slot button ------------------------------------------------------- */
+
+.demo-slot-btn {
+  border: 1px solid #d0d7de;
+  background: #ffffff;
+  color: inherit;
+  border-radius: 8px;
+  padding: 4px 10px;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.demo-slot-btn--primary {
+  border-color: #31b5f7;
+  background: #31b5f7;
+  color: #ffffff;
+}
+
+.demo-slot-btn--danger {
+  border-color: #f73131;
+  color: #f73131;
+  background: transparent;
+}
+
+/* header date slot ---------------------------------------------------------- */
+
+.demo-header-date {
+  font-weight: 700;
+  font-size: 15px;
+  white-space: nowrap;
+}
+
+/* grid dropdown slot -------------------------------------------------------- */
+
+.demo-grid-picker {
+  display: flex;
+  gap: 4px;
+}
+
+.demo-grid-picker__item {
+  border: 1px solid #d0d7de;
+  background: transparent;
+  color: inherit;
+  border-radius: 999px;
+  padding: 3px 12px;
+  font-size: 12px;
+  cursor: pointer;
+  text-transform: capitalize;
+}
+
+.demo-grid-picker__item.is-active {
+  border-color: #31b5f7;
+  background: #31b5f7;
+  color: #ffffff;
+}
+
+/* daily header slot --------------------------------------------------------- */
+
+.demo-daily-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 4px 0;
+  cursor: pointer;
+}
+
+.demo-daily-header__weekday {
+  font-size: 11px;
+  text-transform: uppercase;
+  color: #6b7280;
+}
+
+.demo-daily-header__day {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.demo-daily-header.is-today .demo-daily-header__day {
+  color: #ea4335;
+}
+
+/* time range slot ------------------------------------------------------------ */
+
+.demo-time-range {
+  font-size: 11px;
+  color: #6b7280;
+  padding-right: 6px;
+  text-align: right;
+  min-width: 42px;
+}
+
+/* group container slot --------------------------------------------------------- */
+
+.demo-group-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 10px;
+  font-weight: 600;
+  font-size: 13px;
+}
+
+.demo-group-header__avatar {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: #31b5f7;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  flex-shrink: 0;
+}
+
+/* modal slots (eventClick / addModal) ------------------------------------------ */
+
+.demo-modal {
+  background: #ffffff;
+  color: #1f2328;
+  border-radius: 12px;
+  box-shadow: 0 10px 34px rgba(0, 0, 0, 0.22);
+  padding: 14px;
+  width: 240px;
+  font-size: 13px;
+  border: 1px solid #e3e6ea;
+}
+
+.demo-modal__title {
+  font-weight: 700;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.demo-modal__row {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 3px 0;
+}
+
+.demo-modal__row span:first-child {
+  opacity: 0.55;
+  text-transform: capitalize;
+}
+
+.demo-modal__row input {
+  flex: 1;
+  min-width: 0;
+  border: 1px solid #d0d7de;
+  border-radius: 6px;
+  padding: 3px 6px;
+  font-size: 13px;
+}
+
+.demo-modal__actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 6px;
+  margin-top: 12px;
+}
+
+/* responsive -------------------------------------------------------------------- */
+
+@media (max-width: 1250px) {
+  .demo-log {
+    display: none;
+  }
+}
+
+@media (max-width: 900px) {
+  .demo-body {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .demo-controls,
+  .demo-log {
+    width: 100%;
+    position: static;
+    max-height: none;
+  }
 }
