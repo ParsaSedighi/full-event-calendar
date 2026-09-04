@@ -39,6 +39,13 @@
       display: flex;
       align-items: center;
       gap: 5px;
+      // rtl : farsi weekday and month names are wider than the 100px minimum so
+      // the column gets a fixed width to keep the rows of every date aligned
+      .fec-rtl & {
+        width: 160px;
+        min-width: 160px;
+        flex-shrink: 0;
+      }
       .fec-schedule-dates {
         font-size: 13px;
         color: var(--on-surface-variant);
