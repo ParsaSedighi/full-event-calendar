@@ -51,12 +51,12 @@ export const BasicGrid: FComponent<BasicGridProps> = (props) => {
   let gridContainer: any = { curret: '' }
   const mergedProps = mergeProps(defaultProps, props)
 
-  const { onmousedownH } = useResize('eventResizer', resizeCb, mergedProps.editable)
+  const { onmousedownH } = useResize('eventResizer', resizeCb, () => mergedProps.editable)
   const { draggedData, isDragging, itemDragstart } = userDragger(
     gridRef,
     dragEnd,
     gridContainer,
-    mergedProps.editable,
+    () => mergedProps.editable,
     onEventCLick
   )
   //@ts-ignore

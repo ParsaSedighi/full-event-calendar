@@ -5,14 +5,14 @@ import { DraggerTypes, RowDragger } from './RowDragger'
 
 export function useMonthEventDragging(
   dragEndCb: (event: EventClass, draggerMode: DraggerTypes) => void,
-  editable = true,
+  editable: () => boolean = () => true,
   draggerType: DraggerTypes = 'editEventRow'
 ) {
   const [draggingEventData, setDraggingEventData] = createSignal<null | NewDraggingController>(null)
   // console.log('row dragger 1 ',useCalenderContainerState())
   let eventdrager = new RowDragger(draggerType, useCalenderContainerState()!)
   function onDragStart(event: EventClass, mouseEvent: MouseEvent, startDate?: Date) {
-    if (!editable) return
+    if (!editable()) return
     eventdrager.dragger.onDragStart(event, mouseEvent, startDate)
     if (!draggingEventData()) {
       setDraggingEventData(eventdrager.dragger.draggingController)
@@ -20,7 +20,7 @@ export function useMonthEventDragging(
   }
 
   function onMouseEnter(date: Date) {
-    if (!editable) return
+    if (!editable()) return
     if (!draggingEventData()) return
     eventdrager.dragger.onMouseEnter(date, () => {
       setDraggingEventData(null)
@@ -45,7 +45,7 @@ export function useMonthEventDragging(
         dragEndCb(sourceE, eventdrager.draggerMode)
       }
     }
- 
+
     if (clearDate) {
       setDraggingEventData(null)
     }

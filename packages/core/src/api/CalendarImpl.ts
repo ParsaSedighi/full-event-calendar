@@ -174,8 +174,8 @@ export class CalendarImpl implements CalendarApi {
     if (options.gridHeight) {
       this.setGridHeight(options.gridHeight)
     }
-    if (options.autoUpdateEventOnChange === false) {
-      this.changeEventAutoUpdate(options.autoUpdateEventOnChange)
+    if ('autoUpdateEventOnChange' in options) {
+      this.changeEventAutoUpdate(options.autoUpdateEventOnChange !== false)
     }
     if (options.listMode) {
       this.updateListMode(options.listMode)
@@ -186,8 +186,8 @@ export class CalendarImpl implements CalendarApi {
     if (options.theme) {
       this.changeTheme(options.theme)
     }
-    if (options.stopAddEvent) {
-      this.setStopAddEvent(options.stopAddEvent)
+    if ('stopAddEvent' in options) {
+      this.setStopAddEvent(Boolean(options.stopAddEvent))
     }
     if (options.events) {
       this.setEventList(options.events)

@@ -24,7 +24,7 @@ interface DateColProps {
 
 export const DateCol: FComponent<DateColProps> = (props) => {
   const { onDragEnd, onDragStart, setDraggingEventData, onMouseEnter, draggingEventData, changeDraggerType } =
-    useMonthEventDragging(dragEnd, props.editable)
+    useMonthEventDragging(dragEnd, () => props.editable)
 
   const { modalElementNode, setSlotModalData, openSlotModalOnElement, isSlotModalOpen } = useSlotModal(
     'addModal',
