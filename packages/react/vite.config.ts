@@ -2,8 +2,9 @@ import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import path from 'path'
 // https://vitejs.dev/config/
-export default defineConfig({
+export default defineConfig(({ command }) => ({
   plugins: [react()],
+  base: command === 'build' ? '/full-event-calendar/' : '/',
   resolve: {
     alias: {
       '@full-event-calendar/basic-grid': path.join(
@@ -42,5 +43,5 @@ export default defineConfig({
         '/node_modules/@full-event-calendar/month-grid/dist/index.js'
       )
     }
-  },
-})
+  }
+}))

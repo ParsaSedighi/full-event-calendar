@@ -160,7 +160,6 @@ export const CalendarHeader: FComponent<CalendarHeader> = (props) => {
           </div>
         </Show>
       </div>
-      {/* <div id="test-vue-id" ref={headerSlot.el}></div> */}
       <div ref={goForwardDateBtnSlot.el} onclick={goForward}>
         <Show when={!isGoForwardDateSlotAvalibale}>
           <div class="fec-go-forward-icon">

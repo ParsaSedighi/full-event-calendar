@@ -1,14 +1,27 @@
-dist
-.DS_Store
+# Dependencies
 node_modules
+
+# Build outputs
+dist
+dist-ssr
+docs/.vitepress/dist
+docs/.vitepress/cache
+
+# Demo build artifacts (copied by scripts/build-demo.js)
+docs/public/assets
+docs/public/ex.html
+
+# Tooling temp files
+.turbo
+*.tsbuildinfo
+vite.config.ts.timestamp-*.mjs
+tsup.config.bundled_*.mjs
+
+# Test artifacts
 coverage
-temp
-explorations
-TODOs.md
-*.log
-.idea
-.eslintcache
-*.tgz
+test-results.xml
+
+# Logs
 logs
 *.log
 npm-debug.log*
@@ -16,19 +29,21 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
-docs/.vitepress/dist
-docs/.vitepress/cache
-node_modules
-dist
-dist-ssr
-*.local
-.turbo
+
+# Editors / OS
+.DS_Store
+.idea
 .vscode/*
 !.vscode/extensions.json
-.idea
-.DS_Store
 *.suo
 *.ntvs*
 *.njsproj
 *.sln
 *.sw?
+
+# Misc
+temp
+explorations
+TODOs.md
+*.local
+*.tgz

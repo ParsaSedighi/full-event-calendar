@@ -12,7 +12,7 @@ Check out Live demo at [**_https://persianpack.github.io/full-event-calendar/ex.
 
 ## Features
 - ✔️ Built with typescript and [**_solid.js_**](https://www.solidjs.com/).
-- ✔️ Support for Vue.js(3x) and React.js.
+- ✔️ Support for React.js.
 - ✔️ Mulitple Calendar type support like `chinese` , `gregory` , `persian` and ...
 - ✔️ Timezone converstion suppourt.
 - ✔️ Customization support for every component slots , CSS and SASS.

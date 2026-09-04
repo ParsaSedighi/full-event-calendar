@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuites name="Mocha Tests" time="15.765" tests="1" failures="0">
-  <testsuite name="Root Suite" timestamp="2023-11-23T22:26:38" tests="0" file="packages\month-grid\__tests__\GridMonth.cy.js" time="0.000" failures="0">
-  </testsuite>
-  <testsuite name="example to-do app" timestamp="2023-11-23T22:26:38" tests="1" time="15.748" failures="0">
-    <testcase name="example to-do app monthly check" time="9.079" classname="monthly check">
-    </testcase>
-  </testsuite>
-</testsuites>

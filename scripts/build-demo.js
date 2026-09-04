@@ -2,7 +2,7 @@ import fs from 'fs-extra'
 import path from 'path'
 import process from 'process'
 // Paths
-const sourceFolder = path.join(process.cwd(), 'packages', 'vue3', 'dist') // replace with your source folder path
+const sourceFolder = path.join(process.cwd(), 'packages', 'react', 'dist') // replace with your source folder path
 const destinationFolder = path.join(process.cwd(), 'docs', '.vitepress', 'dist') // replace with your destination folder path
 const destinationFolderDev = path.join(process.cwd(), 'docs', 'public') // replace with your destination folder path
 

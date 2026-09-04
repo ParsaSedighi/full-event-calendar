@@ -24,8 +24,7 @@ export default defineConfig({
         text: 'Usage',
         items: [
           { text: 'Vanilla', link: '/usage/vanilla' },
-          { text: 'React', link: '/usage/react' },
-          { text: 'Vue', link: '/usage/vue' }
+          { text: 'React', link: '/usage/react' }
         ]
       }
     ],

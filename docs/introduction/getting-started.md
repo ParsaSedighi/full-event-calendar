@@ -23,11 +23,9 @@ available grid plugins:
 
 A simple vanill example would be like this :
 
-Check out [****Options****](#props) for properites
+Check out [\***\*Options\*\***](#props) for properites
 
-[****Vue usage****](#https://github.com/persianpack/full-event-calendar/tree/main/packages/vue3#basic-usage)
-
-[****React usage****](#https://github.com/persianpack/full-event-calendar/tree/main/packages/react#basic-usage)
+[\***\*React usage\*\***](#https://github.com/persianpack/full-event-calendar/tree/main/packages/react#basic-usage)
 
 ::: code-group
 
@@ -148,56 +146,6 @@ function App() {
 
 }
 
-```
-
-```html [Vue]
-<script setup>
-  import { ref } from 'vue'
-  import { FullEventCalendar } from '@full-event-calendar/vue'
-  import { DailyGridPlugin } from '@full-event-calendar/daily-grid'
-  import '@full-event-calendar/core/dist/main.css' // this must be imported
-  // import { MonthGridPlugin } from '@full-event-calendar/month-grid'
-  // import { WeeklyGridPlugin } from '@full-event-calendar/weekly-grid'
-  // import { ListPlugin } from '@full-event-calendar/list'
-
-  const eventsList = ref([
-    {
-      name: 'some name',
-      start: new Date(' Aug 10 2023 08:00:0'),
-      end: new Date(' Aug 10 2023 10:00:00'),
-      id: 16123,
-      color: '#BF51F9'
-      // groups: [2]
-    },
-    {
-      name: 'some name',
-      start: new Date(' Aug 10 2023 10:00:0'),
-      color: '#31B5F7',
-      end: new Date(' Aug 10 2023 11:00:00'),
-      id: 18123
-      // groups: [1]
-    }
-  ])
-
-  function eventUpdate({ prev, next, id }) {
-    console.log('updated event : ', prev)
-    console.log('to event : ', next)
-    console.log('with id : ', id)
-    // eventsList.value.push(data.next.sourceEvent)
-  }
-
-  const initialDate = ref(new Date('Thu Aug 10 2023 15:00:0'))
-</script>
-
-<template>
-  <FullEventCalendar
-    v-model:events="eventsList"
-    v-model:initial-date="initialDate"
-    :plugins="[ DailyGridPlugin ]"
-    @eventUpdate="eventUpdate"
-  >
-  </FullEventCalendar>
-</template>
 ```
 
 ```html

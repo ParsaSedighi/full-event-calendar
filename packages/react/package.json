@@ -31,6 +31,7 @@
   },
   "scripts": {
     "build": "tsup src/index.ts --dts",
+    "build-demo": "vite build",
     "dev": "vite",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"

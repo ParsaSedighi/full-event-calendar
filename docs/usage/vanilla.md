@@ -342,7 +342,7 @@ EventCalendar.on('eventAdd', ({ event }) => {
 
 - Type : boolean
 - Default : false
-  If stopAddEvent is set to true, adding an event will be frozen on the grid to display a modal or perform another action, and it will be handled in event listeners. It's better to use it with Vue or React."
+  If stopAddEvent is set to true, adding an event will be frozen on the grid to display a modal or perform another action, and it will be handled in event listeners. It's better to use it with React."
 
 ```js
 // ...

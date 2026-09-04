@@ -10,7 +10,7 @@ Inspired by the functionality of renowned tools like FullCalendar and ClickUp, F
 
 # Key Features
 
-- Flexible Integration: Compatible with popular frameworks such as React and Vue.js (v3).
+- Flexible Integration: Compatible with popular frameworks such as React.
 - Multiple Calendar Types: Supports 18 different calendar types including Chinese, Gregory, Persian, and more.
 - Timezone Conversion: Seamlessly handle events across different timezones.
 - Customization: Tailor every aspect of the calendar with customizable component slots, CSS, and SASS.
@@ -20,7 +20,7 @@ Inspired by the functionality of renowned tools like FullCalendar and ClickUp, F
 - Vanilla JS Compatibility: Suitable for projects without framework dependencies.
 - Dark and Light Mode: Offers support for both dark and light UI themes.
 - Responsive Design: Ensures optimal viewing experience across devices.
-- For live demos and comprehensive documentation, visit the Full Event Calendar website. Connectors for React and Vue.js (v3) are available in separate repositories for easy integration.
+- For live demos and comprehensive documentation, visit the Full Event Calendar website. A connector for React is available for easy integration.
 
 <img style="border-radius:15px" src="/image3.png" alt="full-event-calendar">
 

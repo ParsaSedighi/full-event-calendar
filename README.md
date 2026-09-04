@@ -13,11 +13,10 @@ Check out Live demo at [**_https://persianpack.github.io/full-event-calendar/ex.
 Connectors:
 
 - [React](https://github.com/persianpack/full-event-calendar/tree/main/packages/react)
-- [Vue 3](https://github.com/persianpack/full-event-calendar/tree/main/packages/vue3)
 
 ## Features
 - ✔️ Built with typescript and [**_solid.js_**](https://www.solidjs.com/)(fastest ui library).
-- ✔️ Support for Vue.js(3x) and React.js.
+- ✔️ Support for React.js.
 - ✔️ Mulitple Calendar type support like `chinese` , `gregory` , `persian` and ...
 - ✔️ Timezone converstion suppourt.
 - ✔️ Customization support for every component slots , CSS and SASS.
@@ -64,8 +63,6 @@ available grid plugins:
 A simple vanill example would be like this :
 
 Check out [**__Options__**](#props) for properites
-
-[**__Vue usage__**](#https://github.com/persianpack/full-event-calendar/tree/main/packages/vue3#basic-usage)
 
 [**__React usage__**](#https://github.com/persianpack/full-event-calendar/tree/main/packages/react#basic-usage)
 
@@ -359,7 +356,7 @@ The `Calendar` class represents a calendar component that can be rendered in a s
 ### `stopAddEvent`
   - Type : boolean
   - Default : false
-  If stopAddEvent is set to true, adding an event will be frozen on the grid to display a modal or perform another action, and it will be handled in event listeners. It's better to use it with Vue or React."
+  If stopAddEvent is set to true, adding an event will be frozen on the grid to display a modal or perform another action, and it will be handled in event listeners. It's better to use it with React."
   ```js
      // ...
      stopAddEvent: true,
