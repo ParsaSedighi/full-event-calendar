@@ -7,7 +7,9 @@ interface Formater {
 }
 
 class DailyFormat implements Formater {
+  constructor(private withWeekDay = false) {}
   proccess(calendarState: CalendarState) {
+    const date = new Date(calendarState.initialDate)
     const options: any = {
       month: 'long',
       year: 'numeric',
@@ -15,8 +17,17 @@ class DailyFormat implements Formater {
       calendar: calendarState.calendar,
       timeZone: calendarState.timeZone
     }
-    // return getEventsInDate(eventList, initDate)
-    return new Intl.DateTimeFormat(calendarState.locale, options).format(new Date(calendarState.initialDate))
+    const formattedDate = new Intl.DateTimeFormat(calendarState.locale, options).format(date)
+    if (!this.withWeekDay) {
+      return formattedDate
+    }
+    const weekDayOptions: any = {
+      weekday: 'long',
+      calendar: calendarState.calendar,
+      timeZone: calendarState.timeZone
+    }
+    const weekDay = new Intl.DateTimeFormat(calendarState.locale, weekDayOptions).format(date)
+    return `${weekDay} ${formattedDate}`
   }
 }
 
@@ -70,7 +81,7 @@ export class HeaderFormat {
     this.calendarSate = calendarState
     switch (calendarState.grid) {
       case 'daily':
-        this.handle = new DailyFormat()
+        this.handle = new DailyFormat(true)
         break
       case 'weekly':
         this.handle = new WeeklyFormat()

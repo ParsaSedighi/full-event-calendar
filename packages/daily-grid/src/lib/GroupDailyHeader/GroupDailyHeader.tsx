@@ -1,11 +1,9 @@
 import { EventClass, FComponent, SourceEvent } from '@full-event-calendar/shared-ts'
 import { DailyAllDay } from './DailyAllDay/DailyAllDay'
-import { For, Show, createSignal, mergeProps } from 'solid-js'
+import { For, createSignal, mergeProps } from 'solid-js'
 import { columData } from '../GroupDaily'
 
 import './GroupDailyHeader.scss'
-import { DailyHeader } from '../..'
-import { GroupItemHeader } from './GroupItemHeader/GroupItemHeader'
 export interface GroupDailyHeaderProps {
   columData: columData[]
   initialDate?: Date
@@ -44,42 +42,19 @@ export const GroupDailyHeader: FComponent<GroupDailyHeaderProps> = (props) => {
   const [isAllDOpen, setIsAllDOpen] = createSignal(false)
 
   return (
-    <>
-      <div style="display:flex;position:relative">
-        <DailyHeader
-          headerDate={mergedProps.initialDate}
-          slotRenderStore={mergedProps.slotRenderStore}
-          timeZone={mergedProps.timeZone}
-          calendar={mergedProps.calendar}
-          onDateChange={mergedProps.onDateChange}
-          locale={mergedProps.locale}
-        />
-
-        <div class="fec-group-item-header">
-          <For each={mergedProps.columData}>
-            {(item) => (
-              <Show when={item.props.group}>
-                <GroupItemHeader group={item.props.group} />
-              </Show>
-            )}
-          </For>
-        </div>
-      </div>
-
-      <div class="fec-alld-main-container">
-        <For each={mergedProps.columData}>
-          {(item) => (
-            <DailyAllDay
-              isAllDOpen={isAllDOpen()}
-              setIsAllDOpen={setIsAllDOpen}
-              onEventClick={mergedProps.onEventClick}
-              locale={mergedProps.locale}
-              events={item.props.events}
-              initialDate={mergedProps.initialDate}
-            ></DailyAllDay>
-          )}
-        </For>
-      </div>
-    </>
+    <div class="fec-alld-main-container">
+      <For each={mergedProps.columData}>
+        {(item) => (
+          <DailyAllDay
+            isAllDOpen={isAllDOpen()}
+            setIsAllDOpen={setIsAllDOpen}
+            onEventClick={mergedProps.onEventClick}
+            locale={mergedProps.locale}
+            events={item.props.events}
+            initialDate={mergedProps.initialDate}
+          ></DailyAllDay>
+        )}
+      </For>
+    </div>
   )
 }
