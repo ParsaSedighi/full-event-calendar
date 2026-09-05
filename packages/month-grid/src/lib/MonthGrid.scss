@@ -9,7 +9,9 @@
   }
 }
 .fec-month-day-out {
-  > div {
+  // day number and month name must stay on a single row , including when a
+  // slot ( react/vue bridge ) renders extra wrapper divs inside the cell
+  div {
     display: flex;
     flex-direction: row-reverse;
     align-items: center;

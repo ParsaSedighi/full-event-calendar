@@ -1,30 +1,30 @@
-.fec-month-day-wrapper:not(.fec-month-day-out):not(.fec-month-day-out-no-name){
-    span{
-      color: var(--on-surface-variant);
-    }
+.fec-month-day-wrapper:not(.fec-month-day-out):not(.fec-month-day-out-no-name) {
+  span {
+    color: var(--on-surface-variant);
   }
-  .fec-month-day-wrapper {
+}
+.fec-month-day-wrapper {
+  display: flex;
+  justify-content: start;
+  > div {
+    margin: 5px;
+  }
+  span {
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    width: 40px;
+    height: 40px;
     display: flex;
-    justify-content: end;
-    > div {
-      margin: 5px;
-    }
-    span {
-      font-size: 20px;
-      font-style: normal;
-      font-weight: 500;
-      width: 40px;
-      height: 40px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      border-radius: 50%;
-      cursor: pointer;
-      // color: var(--on-surface-variant);
-      transition: all 0.3s;
-      &:hover {
-        background-color:var(--primary) ;
-        color: white !important;
-      }
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    cursor: pointer;
+    // color: var(--on-surface-variant);
+    transition: all 0.3s;
+    &:hover {
+      background-color: var(--primary);
+      color: white !important;
     }
   }
+}

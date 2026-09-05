@@ -252,16 +252,7 @@ body:has(.demo--dark) {
 
 /* customized slots ( wrappers around the calendar's default components ) ------- */
 
-/* header date : wraps the default HeaderDate with a gradient text */
 .demo-header-date {
-  background: linear-gradient(90deg, #31b5f7, #8e31f7);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  font-weight: 700;
-}
-
-.demo-header-date .fec-header-date {
   font-weight: 700;
 }
 
@@ -294,11 +285,12 @@ body:has(.demo--dark) {
   line-height: 1;
 }
 
-/* month day : today ring around the default day number */
+/* month day : today ring around the default day number ( 40px number ,
+   34px ring -> 3px inset centers it ) */
 .demo-month-day-today {
   position: absolute;
-  inset-inline-start: 12px;
-  top: 12px;
+  inset-inline-start: 3px;
+  top: 3px;
   width: 34px;
   height: 34px;
   border: 2px solid #ea4335;

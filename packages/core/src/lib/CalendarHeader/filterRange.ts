@@ -57,9 +57,34 @@ class MonthFormat implements Formater {
       calendar: calendarState.calendar,
       timeZone: calendarState.timeZone
     }
-    // return getEventsInDate(eventList, initDate)
-    return new Intl.DateTimeFormat(calendarState.locale, options).format(new Date(calendarState.initialDate))
+    const parts = new Intl.DateTimeFormat(calendarState.locale, options).formatToParts(
+      new Date(calendarState.initialDate)
+    )
+    // cldr writes the year before the month for some locale + calendar pairs
+    // ( fa + persian ) even though the locale itself puts the month first :
+    // swap the parts so the order always follows the locale's own convention
+    const yearIndex = parts.findIndex((p) => p.type === 'year')
+    const monthIndex = parts.findIndex((p) => p.type === 'month')
+    if (yearIndex !== -1 && monthIndex !== -1 && yearIndex < monthIndex && writesMonthFirst(calendarState.locale)) {
+      const yearPart = parts[yearIndex]
+      parts[yearIndex] = parts[monthIndex]
+      parts[monthIndex] = yearPart
+    }
+    return parts.map((p) => p.value).join('')
   }
+}
+
+// the gregorian patterns are the best localized reference of how a locale
+// orders a month - year pair
+function writesMonthFirst(locale: string): boolean {
+  const parts = new Intl.DateTimeFormat(locale, {
+    month: 'long',
+    year: 'numeric',
+    calendar: 'gregory'
+  }).formatToParts()
+  const year = parts.findIndex((p) => p.type === 'year')
+  const month = parts.findIndex((p) => p.type === 'month')
+  return month !== -1 && year !== -1 && month < year
 }
 
 class ListFormat implements Formater {
