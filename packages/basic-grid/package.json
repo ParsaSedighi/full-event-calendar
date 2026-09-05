@@ -31,7 +31,6 @@
   },
   "devDependencies": {
     "@full-event-calendar/shared-ts": "workspace:*",
-    "@full-event-calendar/test-events": "workspace:*",
     "framer-motion": "^10.16.1",
     "esbuild-sass-plugin": "^2.16.0"
   },
@@ -48,8 +47,6 @@
     "dev": "pnpm build:fast -- --watch",
     "clean": "rimraf dist .turbo",
     "typecheck": "tsc --noEmit",
-    "typedocs": "tsx ../../../scripts/generate-type-docs.ts",
-    "test": "vitest",
-    "test:client": "vitest -c ../../vitest.config.ts"
+    "typedocs": "tsx ../../../scripts/generate-type-docs.ts"
   }
 }

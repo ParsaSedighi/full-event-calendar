@@ -31,7 +31,6 @@
   },
   "devDependencies": {
     "@full-event-calendar/shared-ts": "workspace:*",
-    "@full-event-calendar/test-events": "workspace:*",
     "clean-package": "2.2.0",
     "framer-motion": "^10.16.1"
   },
@@ -41,8 +40,7 @@
     "dev": "pnpm build:fast -- --watch",
     "clean": "rimraf dist .turbo",
     "typecheck": "tsc --noEmit",
-    "typedocs": "tsx ../../../scripts/generate-type-docs.ts",
-    "test": "vitest"
+    "typedocs": "tsx ../../../scripts/generate-type-docs.ts"
   },
   "dependencies": {
     "@full-event-calendar/utils": "workspace:^",

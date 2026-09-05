@@ -34,8 +34,6 @@
     "framer-motion": "^10.16.1"
   },
   "scripts": {
-    "test": "vitest",
-    "test:client": "vitest -c ../../vitest.config.ts",
     "build": "tsup src/index.ts ",
     "build:fast": "tsup src/index.ts",
     "dev": "tsup src/index.ts ",

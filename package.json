@@ -11,9 +11,6 @@
     "calendarview"
   ],
   "scripts": {
-    "test": "turbo run test",
-    "test-root": "vitest ",
-    "test-root-ui": "vitest --ui",
     "dev": "turbo run dev",
     "format": "prettier --write",
     "build": "pnpm -r build && node ./scripts/build.js",
@@ -25,16 +22,13 @@
   "author": "Amirkian adl",
   "license": "MIT",
   "devDependencies": {
-    "@vitest/ui": "^0.34.6",
     "husky": "^8.0.3",
     "lint-staged": "^13.1.0",
     "prettier": "^2.8.0",
-    "pretty-quick": "^3.1.3",
-    "vitest": "^0.34.6"
+    "pretty-quick": "^3.1.3"
   },
   "dependencies": {
     "@rollup/plugin-typescript": "^11.1.6",
-    "jsdom": "^22.1.0",
     "picocolors": "^1.0.0",
     "tsup": "^7.3.0",
     "tsup-preset-solid": "^2.1.0",

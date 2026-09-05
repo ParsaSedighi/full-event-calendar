@@ -44,7 +44,6 @@
     "@full-event-calendar/daily-grid": "workspace:*",
     "@full-event-calendar/list": "workspace:*",
     "@full-event-calendar/month-grid": "workspace:*",
-    "@full-event-calendar/test-events": "workspace:*",
     "@full-event-calendar/weekly-grid": "workspace:*",
     "@types/react": "^18.2.55",
     "@types/react-dom": "^18.2.19",

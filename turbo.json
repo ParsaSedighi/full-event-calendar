@@ -11,9 +11,6 @@
       "cache": false,
       "dependsOn": ["^dev"]
     },
-    "test": {
-      "cache": false
-    },
     "typecheck": {
       "cache": false,
       "dependsOn": ["^typecheck"]
