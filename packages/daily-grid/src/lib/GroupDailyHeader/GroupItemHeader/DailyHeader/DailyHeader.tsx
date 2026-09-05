@@ -24,9 +24,22 @@ export const DailyHeader: FComponent<DailyHeaderProps> = (props) => {
     props.onDateChange(props.headerDate)
   }
   const dd = () => {
-    return { date: props.headerDate, ondataChange: props.onDateChange }
+    return {
+      date: props.headerDate,
+      ondataChange: props.onDateChange,
+      onDateChange: props.onDateChange,
+      locale: props.locale,
+      calendar: props.calendar,
+      timeZone: props.timeZone,
+      isToday: isDateToday(props.headerDate)
+    }
   }
-  const { isSlotAvalibale } = useSlot(headerSlot, dd, 'dailyHeader', () => props.headerDate)
+  const { isSlotAvalibale } = useSlot(headerSlot, dd, 'dailyHeader', () => [
+    props.headerDate,
+    props.locale,
+    props.calendar,
+    props.timeZone
+  ])
 
   return (
     <>

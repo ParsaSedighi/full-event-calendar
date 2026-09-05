@@ -1,12 +1,13 @@
 import { EventClass, FComponent } from '@full-event-calendar/shared-ts'
-import { createMemo, createSignal } from 'solid-js'
+import { createMemo, createSignal, Show } from 'solid-js'
 import './MonthEvent.scss'
 import { getLeftPosition, getEndPosition } from '../../../../utils/EventPosition'
 import {
   formatToShortTime,
   getFirstDayOfWeek,
   rightOrLeftInDateInRange,
-  useCalenderContainerState
+  useCalenderContainerState,
+  useSlot
 } from '@full-event-calendar/utils'
 import { detectLeftButton } from '@full-event-calendar/utils'
 interface EventProps {
@@ -68,7 +69,7 @@ export const MonthEvent: FComponent<EventProps> = (props: EventProps) => {
     if (props?.item?.isAllDay) {
       return !props?.item?.isAllDay() ? 'fec-month-item-no-all-day' : ''
       //@ts-ignore
-    } else if (props?.item.source) {
+    } else if (props?.item?.source) {
       //@ts-ignore
       return !props?.item?.source.isAllDay() ? 'fec-month-item-no-all-day' : ''
     }
@@ -80,6 +81,22 @@ export const MonthEvent: FComponent<EventProps> = (props: EventProps) => {
     }
   }
 
+  // `monthEvent` slot : the content of a month / all-day event card can be
+  // fully customized from React while the card keeps its position, color,
+  // click and drag behaviour
+  let contentSlot: any = {
+    el: null
+  }
+  const slotData = () => {
+    return {
+      event: props.item,
+      locale: props.locale,
+      timeText: isNotAllDay() ? formatToShortTime(props.item.start, props.locale) : '',
+      isAllDay: !isNotAllDay()
+    }
+  }
+  const { isSlotAvalibale } = useSlot(contentSlot, slotData, 'monthEvent', () => props.item)
+
   return (
     <div
       onmousedown={[onEventMouseDown, true]}
@@ -89,10 +106,14 @@ export const MonthEvent: FComponent<EventProps> = (props: EventProps) => {
       style={eventStyles()}
       data-test-id-month-item={props.item.id}
     >
-      <div class="fec-event-time-month">{`${
-        isNotAllDay() ? formatToShortTime(props.item.start, props.locale) : ''
-      } `}</div>
-      <div class="fec-event-name-month">{isNotAllDay() ? `(${props.item.name})` : props.item.name}</div>
+      <div ref={contentSlot.el}>
+        <Show when={!isSlotAvalibale}>
+          <div class="fec-event-time-month">{`${
+            isNotAllDay() ? formatToShortTime(props.item.start, props.locale) : ''
+          } `}</div>
+          <div class="fec-event-name-month">{isNotAllDay() ? `(${props.item.name})` : props.item.name}</div>
+        </Show>
+      </div>
     </div>
   )
 }

@@ -25,6 +25,7 @@ const CalendarRoot: FComponent<{ store: CalendarState; instance: Calendar; conta
 
 export class Calendar extends CalendarImpl {
   private targetElement: HTMLElement
+  private disposeRoot?: () => void
   // private EventListenrsStorage: EventCollection
 
   constructor(targetElement: HTMLElement, eventCalendarOptions: CalendarSourceOptions) {
@@ -37,7 +38,7 @@ export class Calendar extends CalendarImpl {
   }
 
   render() {
-    render(
+    this.disposeRoot = render(
       () => <CalendarRoot container={this.targetElement} store={this.storeManager} instance={this} />,
       this.targetElement
     )
@@ -49,6 +50,16 @@ export class Calendar extends CalendarImpl {
       () => <CalendarRoot container={this.targetElement} store={this.storeManager} instance={this} />,
       this.targetElement
     )
+  }
+
+  // cleans up the solid root. called by the react connector on unmount
+  destroy() {
+    try {
+      this.disposeRoot?.()
+    } catch {
+      // root already disposed
+    }
+    this.disposeRoot = undefined
   }
 }
 

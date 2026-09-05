@@ -44,7 +44,12 @@
     "vite-dts": "^1.0.4",
     "vite-plugin-dts": "3.0.0",
     "vite-plugin-solid": "^2.7.0",
-    "@full-event-calendar/shared-ts": "workspace:*"
+    "@full-event-calendar/shared-ts": "workspace:*",
+    "@full-event-calendar/basic-grid": "workspace:*",
+    "@full-event-calendar/daily-grid": "workspace:*",
+    "@full-event-calendar/weekly-grid": "workspace:*",
+    "@full-event-calendar/month-grid": "workspace:*",
+    "@full-event-calendar/list": "workspace:*"
   },
   "dependencies": {
     "@full-event-calendar/utils": "workspace:^",

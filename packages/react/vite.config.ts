@@ -32,8 +32,14 @@ function workspaceDistReload(): Plugin {
 export default defineConfig(({ command }) => ({
   plugins: [react(), workspaceDistReload()],
   base: command === 'build' ? '/full-event-calendar/' : '/',
+  // demo output must not clobber the library's dist/ folder
+  build: {
+    outDir: 'demo-dist'
+  },
   resolve: {
     alias: {
+      // the demo consumes the react connector source directly ( hmr friendly )
+      '@full-event-calendar/react': path.join(__dirname, '/src/index.ts'),
       '@full-event-calendar/basic-grid': path.join(
         __dirname,
         '/node_modules/@full-event-calendar/daily-grid/node_modules/@full-event-calendar/basic-grid/dist/index.js'
@@ -61,6 +67,7 @@ export default defineConfig(({ command }) => ({
       '@full-event-css-month': path.join(__dirname, '/node_modules/@full-event-calendar/month-grid/dist/index.css'),
       '@full-event-css-week': path.join(__dirname, '/node_modules/@full-event-calendar/weekly-grid/dist/index.css'),
       // '@full-event-calendar/core': path.join(__dirname, '/node_modules/@full-event-calendar/core/dist/index.js'),
+      '@full-event-calendar/locale': path.join(__dirname, '/node_modules/@full-event-calendar/locale/dist/index.js'),
       '@full-event-calendar/weekly-grid': path.join(
         __dirname,
         '/node_modules/@full-event-calendar/weekly-grid/dist/index.js'

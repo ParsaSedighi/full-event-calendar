@@ -28,6 +28,7 @@ const workspaces = [
   'daily-grid',
   'group-grid',
   'list',
+  'locale',
   'month-grid',
   'react',
   'utils',

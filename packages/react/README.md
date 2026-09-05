@@ -31,7 +31,12 @@ Check out Live demo at [**_https://persianpack.github.io/full-event-calendar/ex.
 - [**_Api_**](#Api)
   - [**_Props_**](#props)
   - [**_Events_**](#events)
-  - [**_Slots_**](#slots)
+  - [**_Customization ( components )_**](#customization)
+    - [**_Components map_**](#components-map)
+    - [**_Default components_**](#default-components)
+    - [**_Slot props_**](#slot-props)
+    - [**_Direct slot props_**](#direct-slot-props)
+  - [**_Imperative api_**](#imperative-api)
 - [**_Styling_**](#styling)
   - [**_Sass varibales_**](#sass-varibles)
   - [**_Css_**](#css-class)
@@ -41,13 +46,13 @@ Check out Live demo at [**_https://persianpack.github.io/full-event-calendar/ex.
 ## Installation
 
 ```
-npm i @full-event-calendar/react @full-event-calendar/daily-grid
+npm i @full-event-calendar/react
 ```
 or
 ```
-yarn add @full-event-calendar/react @full-event-calendar/daily-grid
+yarn add @full-event-calendar/react
 ```
-NOTE : <ins> atleast 1 plugin must be provided </ins> available grid plugins:
+NOTE : <ins> atleast 1 plugin must be provided </ins> available grid plugins ( all re-exported from `@full-event-calendar/react` , or importable from their own packages ) :
   - `@full-event-calendar/daily-grid` - daily view
   - `@full-event-calendar/weekly-grid` - weekly view
   - `@full-event-calendar/month-grid` - month view
@@ -58,12 +63,13 @@ react js :
 ```jsx
  
 import { useEffect, useState } from 'react'
-import { FullEventCalendar } from '@full-event-calendar/react'
-import { DailyGridPlugin } from '@full-event-calendar/daily-grid'
-import '@full-event-calendar/core/dist/main.css' // this must be imported
+import { FullEventCalendar, DailyGridPlugin } from '@full-event-calendar/react'
+// plugins can also be imported from their own packages :
+// import { DailyGridPlugin } from '@full-event-calendar/daily-grid'
 // import { MonthGridPlugin } from '@full-event-calendar/month-grid'
 // import { WeeklyGridPlugin } from '@full-event-calendar/weekly-grid'
 // import { ListPlugin } from '@full-event-calendar/list'
+import '@full-event-calendar/core/dist/main.css' // this must be imported
 
 const eventsList = [
   {
@@ -103,15 +109,12 @@ function App() {
          initialDate={initialDate}
          eventUpdate={onEventUpdate}
 
-         {/* eventClick={<EventClickSlot someProp={asaveEv}/>}
-         addModal={<EventaddModalSlot someProp={asaveEv}/>}
-         dailyHeader={<AddModalSlot />}
-         headerDateSlot={<AddModalSlot />}
-         gridDropDown={<TestSlot/>}
-         goForwardDate={<TestSlot/>}
-         goBackDate={<TestSlot/>}
-         todayBtn={<TestSlot/>} */}
-
+         {/* customize any section ( see the Customization section ) */}
+         components={{
+           todayBtn: TodayButton,
+           eventItem: (props) => <MyEventCard {...props} />,
+           eventClick: (props) => <EventClickModal {...props} onDelete={deleteEvent} />
+         }}
         ></FullEventCalendar>
   )
   
@@ -491,73 +494,167 @@ interface SourceEvent {
 | `update:initial-date(date)`        | fired when initial-date changes                                                                     |
 | `update:grid(string)`              | fired when grid type changes                                                                        |
 
-## Slots
+## Customization
 
-```jsx
- // modal to show on event when the event is clicked -->
- function eventClick({ data }){
-   return <div className='eventClick'> react moda {props?.eventData?.start.toString()} </div>
- }
- 
-// modal to show on event when an event is added with draging -->
- function addModal({ data }){
+**Every section of the calendar can be customized with React components.**
+Pass either a React element or a component type - for every section the calendar
+hands over its data as typed props ( `event` , `date` , `timeText` , action
+callbacks like `goToday` / `changeGrid` ... ).
 
-  function saveBtnClik(){
-    props.saveModal() // call this to close the modal
-  }
+### Components map
 
-  return (
-    <div className='eventClick' style={{background:'red'}} > react moda 
-         {props?.eventData?.start.toString()}
-         <button className='' onClick={saveBtnClik}>SAVE</button>
-     </div>
-   )
- }
+The recommended way is the `components` prop :
 
- // header date slot-->
- function headerDateSlot({ data }){
-  return <div>daily header slot {{ data.date.toString() }}</div>
- }
+```tsx
+import {
+  FullEventCalendar, DailyGridPlugin, WeeklyGridPlugin, MonthGridPlugin, ListPlugin,
+  TodayButton, EventItemCard, HeaderDate
+} from '@full-event-calendar/react'
 
-// menu header item-->
- function headerDateSlot({ header }){
-  return <div>daily header slot {{ header.date.toString() }}</div>
- }
-
-// today btn in header-->
- function todayBtn(){
-  return <button>go to today</button>
- }
-
-//  move date back buttun in header-->
- function goBackDate(){
-  return <button>go back</button>
- }
-
-//  move date forward buttun in header-->
- function goForwardDate(){
-  return <button>go forward</button>
- }
-
-// group container header , for when a group item is added -->
-
- function groupContainer(){
-  return <div>{{props.group.name}}</div>
- }
-
-//  grid drop down  -->
- function gridDropDown(props){
-  return <div>{{props.grid}}</div>
- }
- 
+<FullEventCalendar
+  plugins={[DailyGridPlugin, WeeklyGridPlugin, MonthGridPlugin, ListPlugin]}
+  events={events}
+  components={{
+    // a component type
+    todayBtn: TodayButton,
+    // or a react element
+    goBackDate: <button>‹</button>,
+    // or a render function
+    headerDateSlot: (props) => <b>{props.date}</b>,
+    // wrap a default component and extend it
+    eventItem: (props) => (
+      <div style={{ opacity: 0.9 }}>
+        <EventItemCard {...props} />
+      </div>
+    )
+  }}
+/>
 ```
-NOTE : use slots like this :
+
+Sections that are not customized fall back to the built-in ui. Customizing a
+section only replaces its **content** - positioning, colors, drag & drop,
+resize and click behaviour of the native calendar stay intact.
+
+| Section            | Where                                                        |
+|--------------------|:-------------------------------------------------------------|
+| `todayBtn`         | header - the "today" button                                  |
+| `goBackDate`       | header - the back arrow                                      |
+| `goForwardDate`    | header - the forward arrow                                   |
+| `headerDateSlot`   | header - the big date text                                   |
+| `gridDropDown`     | header - the grid picker                                     |
+| `dailyHeader`      | daily / weekly grids - a day column header                   |
+| `timeRange`        | daily / weekly grids - an hour label of the time column      |
+| `groupContainer`   | daily grid - a group ( resource ) header                     |
+| `eventItem`        | daily / weekly grids - content of a timed event card         |
+| `monthEvent`       | month grid & weekly all-day row - content of an event card   |
+| `allDayEvent`      | daily grid - content of an all-day event chip                |
+| `monthDay`         | month grid - a day cell content                              |
+| `monthWeekDay`     | month grid - a week day label of the header                  |
+| `listDateHeader`   | list grid - a date group header                              |
+| `listEvent`        | list grid - an event row content                             |
+| `eventClick`       | modal shown when an event is clicked                         |
+| `addModal`         | modal shown when an event is drag created ( `stopAddEvent` ) |
+
+### Default components
+
+The calendar's default ui is also available as React components - import them,
+wrap them, restyle them :
+
+```tsx
+import {
+  TodayButton, GoBackButton, GoForwardButton, HeaderDate, GridDropdown,
+  DailyHeader, TimeRangeLabel, GroupContainer, EventItemCard, MonthEventCard,
+  AllDayEventCard, MonthDayLabel, MonthWeekDayLabel, ListDateHeader, ListEventRow,
+  EventClickModal, AddEventModal
+} from '@full-event-calendar/react'
+
+// they render with the calendar's own css classes so they look
+// exactly like the built-in ui and react to the active theme
+components={{
+  todayBtn: TodayButton,
+  // extend one
+  eventItem: (props) => <EventItemCard {...props} />,
+  // wire the modals with your own actions
+  eventClick: (props) => <EventClickModal {...props} onDelete={deleteEvent} />,
+  addModal: (props) => <AddEventModal {...props} onAdd={addEvent} />
+}}
+```
+
+### Slot props
+
+Every section receives its data as typed props ( all fully typed in
+`@full-event-calendar/react` ) :
+
+```ts
+interface EventItemSlotProps {
+  event?: CalendarEvent     // id , name , start , end , color , isAllDay() ...
+  timeText?: string         // pre-formatted time range
+  isAllDay?: boolean
+  locale?: string
+}
+
+interface TodayButtonSlotProps {
+  goToday?: () => void      // wired to the calendar
+  locale?: string
+}
+
+interface GridDropdownSlotProps {
+  grid?: GridMode
+  grids?: GridMode[]        // available grids of installed plugins
+  changeGrid?: (g: GridMode) => void
+  locale?: string
+}
+
+interface MonthDaySlotProps {
+  date?: Date; day?: string; monthName?: string
+  isToday?: boolean; isInsideMonth?: boolean
+  locale?: string; calendar?: string
+}
+// ...and so on for every section
+```
+
+### Direct slot props
+
+Each section can also be customized directly as a prop ( the slot name is the
+prop name ). Both work the same - the `components` map is just the tidy way to
+group them :
+
 ```jsx
-  <FullEventCalendar
-    dailyHeader={<AddModalSlot />}
-    eventClick={<EventClickSlot someProp={asaveEv}/>}
-    addModal={<EventaddModalSlot someProp={asaveEv}/>}
-   ></FullEventCalendar>
+<FullEventCalendar
+  todayBtn={<button>today</button>}
+  eventItem={(props) => <MyCard {...props} />}
+  eventClick={<MyEventModal />}
+></FullEventCalendar>
+```
+
+## Imperative api
+
+The calendar's imperative api is available through `ref` or `onReady` :
+
+```tsx
+const apiRef = useRef<CalendarApi | null>(null)
+
+<FullEventCalendar
+  ref={apiRef}
+  onReady={(api) => console.log('calendar ready', api.getEvents())}
+  plugins={PLUGINS}
+  events={events}
+/>
+
+// apiRef.current.*
+api.prev()                    // one step back ( day/week/month by grid )
+api.next()                    // one step forward
+api.goToday()                 // jump to today
+api.getDate()                 // currently visible date
+api.getGrid()                 // 'daily' | 'weekly' | 'month' | 'list'
+api.getEvents()               // all events ( raw source events )
+api.getEventById(id)
+api.addEvent(event)           // add from outside the calendar
+api.updateEvent(id, event)
+api.deleteEvent(id)
+api.changeGrid('month')       // + changeTheme / changeLocale / changeCalendar /
+api.changeTimeZone('UTC')     //   changeDirection / updateListMode / updateGroups /
+api.refresh()                 //   updateEditable / setGridHeight / changeContainerHeight
 ```
 
 ## Styling

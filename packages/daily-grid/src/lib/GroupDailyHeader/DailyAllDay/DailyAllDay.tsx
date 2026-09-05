@@ -2,7 +2,7 @@ import { EventClass, FComponent } from '@full-event-calendar/shared-ts'
 import { For, Show, createEffect, createMemo, on, onMount } from 'solid-js'
 import './DailyAllDay.scss'
 
-import { formatNumber, rightOrLeftInDate, sortEventByStart, useSlotModal } from '@full-event-calendar/utils'
+import { formatNumber, rightOrLeftInDate, sortEventByStart, useSlot, useSlotModal } from '@full-event-calendar/utils'
 
 interface DailyAllDayProps {
   events: EventClass[]
@@ -11,6 +11,39 @@ interface DailyAllDayProps {
   isAllDOpen: boolean
   setIsAllDOpen: any
   onEventClick: any
+}
+
+// one all day event chip. the `allDayEvent` slot lets React customize the
+// content of every all day chip while the chip keeps its color and click
+// behaviour
+const AllDayEventChip: FComponent<{
+  item: EventClass
+  locale: string
+  initialDate: Date
+  onClick: (event: EventClass, e: MouseEvent) => void
+}> = (props) => {
+  let chipSlot: any = {
+    el: null
+  }
+  const slotData = () => {
+    return {
+      event: props.item,
+      locale: props.locale
+    }
+  }
+  const { isSlotAvalibale } = useSlot(chipSlot, slotData, 'allDayEvent', () => props.item)
+
+  return (
+    <div
+      onClick={[props.onClick, props.item]}
+      data-testid={props.item.id}
+      style={`background-color:${props.item.color}`}
+      class={`all-day-wrapper ${rightOrLeftInDate(props.item, props.initialDate)}`}
+      ref={chipSlot.el}
+    >
+      <Show when={!isSlotAvalibale}>{`${props.item.name} `}</Show>
+    </div>
+  )
 }
 
 export const DailyAllDay: FComponent<DailyAllDayProps> = (props) => {
@@ -114,14 +147,12 @@ export const DailyAllDay: FComponent<DailyAllDayProps> = (props) => {
             <For each={filteredEvents()}>
               {(item) => {
                 return (
-                  <div
-                    onClick={[headerClick, item]}
-                    data-testid={item.id}
-                    style={`background-color:${item.color}`}
-                    class={`all-day-wrapper ${rightOrLeftInDate(item, props.initialDate)}`}
-                  >
-                    {`${item.name} `}
-                  </div>
+                  <AllDayEventChip
+                    item={item}
+                    locale={props.locale}
+                    initialDate={props.initialDate}
+                    onClick={headerClick}
+                  />
                 )
               }}
             </For>

@@ -1,7 +1,7 @@
 import { FComponent } from '@full-event-calendar/shared-ts'
-import { For } from 'solid-js'
+import { For, Show } from 'solid-js'
 import { MonthDateObject } from '../../MonthGrid'
-import { formatNumber, getMonthName } from '@full-event-calendar/utils'
+import { formatNumber, getMonthName, isDateToday, useSlot } from '@full-event-calendar/utils'
 import './MonthDateContainer.scss'
 
 interface MonthDateContainerProps {
@@ -14,12 +14,50 @@ interface MonthDateContainerProps {
   onMouseEnter: any //
 }
 
-export const MonthDateContainer: FComponent<MonthDateContainerProps> = (props) => {
+// one day cell of the month grid. the `monthDay` slot lets React fully
+// customize what is rendered inside the day cell (date number , month name...)
+// while the cell itself keeps its click ( go to daily grid ) and drag-to-create
+// behaviour
+const MonthDay: FComponent<{
+  date: MonthDateObject
+  locale: string
+  calendar: string
+  dragClick: any
+  isDateInsideMonth: boolean
+  monthName: string
+}> = (props) => {
   function stopDefault(e: MouseEvent) {
     e.stopPropagation()
     e.preventDefault()
   }
 
+  let daySlot: any = {
+    el: null
+  }
+  const slotData = () => {
+    return {
+      date: props.date.date,
+      day: props.date.day,
+      monthName: props.monthName,
+      isToday: isDateToday(props.date.date),
+      isInsideMonth: props.isDateInsideMonth,
+      locale: props.locale,
+      calendar: props.calendar
+    }
+  }
+  const { isSlotAvalibale } = useSlot(daySlot, slotData, 'monthDay', () => props.date.date)
+
+  return (
+    <div onmousedown={stopDefault} onclick={(e) => props.dragClick(e, props.date.date)} ref={daySlot.el}>
+      <Show when={!isSlotAvalibale}>
+        <span>{formatNumber(props.locale, props.date.day as any)}</span>
+        <div class="fec-month-name">{props.monthName}</div>
+      </Show>
+    </div>
+  )
+}
+
+export const MonthDateContainer: FComponent<MonthDateContainerProps> = (props) => {
   function mouseDownSome(date: Date, e: MouseEvent) {
     let hasMouseMoved = false
     function handelMouseMove() {
@@ -46,11 +84,17 @@ export const MonthDateContainer: FComponent<MonthDateContainerProps> = (props) =
             class="fec-month-container"
             onmousemove={() => props.onMouseEnter(date.date)}
           >
-            <div class={`fec-month-day-wrapper ${isDateInsideMonth(date, i(), props.monthRowIndex, props.monthRowDates)}`}>
-              <div onmousedown={stopDefault} onclick={(e) => props.dragClick(e, date.date)}>
-                <span>{formatNumber(props.locale, date.day as any)}</span>
-                <div class="fec-month-name">{getMonthName(props.calendar, date.date, props.locale)}</div>
-              </div>
+            <div
+              class={`fec-month-day-wrapper ${isDateInsideMonth(date, i(), props.monthRowIndex, props.monthRowDates)}`}
+            >
+              <MonthDay
+                date={date}
+                locale={props.locale}
+                calendar={props.calendar}
+                dragClick={props.dragClick}
+                isDateInsideMonth={date.isDateInsideMonth}
+                monthName={getMonthName(props.calendar, date.date, props.locale)}
+              />
             </div>
           </div>
         )}

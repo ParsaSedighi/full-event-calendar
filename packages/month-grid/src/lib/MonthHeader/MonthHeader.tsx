@@ -1,6 +1,7 @@
 import { FComponent } from '@full-event-calendar/shared-ts'
+import { For, Show } from 'solid-js'
 import { MonthDateObject } from '../MonthGrid'
-import { formatWeekDays } from '@full-event-calendar/utils'
+import { formatWeekDays, useSlot } from '@full-event-calendar/utils'
 import './MonthHeader.scss'
 
 interface ModalHeaderProps {
@@ -10,20 +11,42 @@ interface ModalHeaderProps {
   locale: string
 }
 
+// one week day column of the month header. the `monthWeekDay` slot lets React
+// customize every week day label of the month grid
+const MonthWeekDay: FComponent<{ date: Date; label: string; locale: string }> = (props) => {
+  let daySlot: any = {
+    el: null
+  }
+  const slotData = () => {
+    return {
+      date: props.date,
+      label: props.label,
+      locale: props.locale
+    }
+  }
+  const { isSlotAvalibale } = useSlot(daySlot, slotData, 'monthWeekDay', () => props.label)
+
+  return (
+    <div ref={daySlot.el}>
+      <Show when={!isSlotAvalibale}>{props.label}</Show>
+    </div>
+  )
+}
+
 export const MonthHeader: FComponent<ModalHeaderProps> = (props) => {
   function formateWeekDate(date: Date) {
     return formatWeekDays(date, props.calendar, props.timeZone, props.locale)
   }
 
+  // the first 7 dates of the month grid cover every week day ( the grid
+  // itself is built starting on the locale first day of week )
+  const weekDays = props.headerData.slice(0, 7)
+
   return (
     <div class="fec-month-header">
-      <div>{formateWeekDate(props.headerData[0].date)}</div>
-      <div>{formateWeekDate(props.headerData[1].date)}</div>
-      <div>{formateWeekDate(props.headerData[2].date)}</div>
-      <div>{formateWeekDate(props.headerData[3].date)}</div>
-      <div>{formateWeekDate(props.headerData[4].date)}</div>
-      <div>{formateWeekDate(props.headerData[5].date)}</div>
-      <div>{formateWeekDate(props.headerData[6].date)}</div>
+      <For each={weekDays}>
+        {(date) => <MonthWeekDay date={date.date} label={formateWeekDate(date.date)} locale={props.locale} />}
+      </For>
     </div>
   )
 }

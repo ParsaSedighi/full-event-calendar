@@ -1,26 +1,35 @@
-import { useCallback, useMemo, useState } from 'react'
+import { useCallback, useMemo, useRef, useState } from 'react'
 import './App.css'
-import { FullEventCalendar } from './components/FullEventCalendar'
-
-import { DailyGridPlugin } from '@full-event-calendar/daily-grid'
-import { MonthGridPlugin } from '@full-event-calendar/month-grid'
-import { WeeklyGridPlugin } from '@full-event-calendar/weekly-grid'
-import { ListPlugin } from '@full-event-calendar/list/dist/index.js'
+import {
+  FullEventCalendar,
+  DailyGridPlugin,
+  WeeklyGridPlugin,
+  MonthGridPlugin,
+  ListPlugin,
+  TodayButton,
+  GoBackButton,
+  GoForwardButton,
+  GridDropdown,
+  TimeRangeLabel,
+  GroupContainer,
+  AllDayEventCard,
+  MonthWeekDayLabel,
+  ListDateHeader
+} from '@full-event-calendar/react'
+import type { CalendarComponents } from '@full-event-calendar/react'
 import '@full-event-calendar/core/dist/main.css'
 
 import { demoGroups, makeEvents, makeRandomEvent, startOfToday } from './demo/data'
 import type { DemoEvent } from './demo/data'
 import {
-  AddModalSlot,
-  DailyHeaderSlot,
-  EventClickSlot,
-  GoBackDateSlot,
-  GoForwardDateSlot,
-  GridDropDownSlot,
-  GroupContainerSlot,
-  HeaderDateSlot,
-  TimeRangeSlot,
-  TodayBtnSlot
+  DemoAddEventModal,
+  DemoDailyHeader,
+  DemoEventClickModal,
+  DemoEventItem,
+  DemoHeaderDate,
+  DemoListEvent,
+  DemoMonthDay,
+  DemoMonthEvent
 } from './demo/Slots'
 
 const PLUGINS = [DailyGridPlugin, WeeklyGridPlugin, MonthGridPlugin, ListPlugin]
@@ -96,8 +105,12 @@ function App() {
   const [gridHeight, setGridHeight] = useState(60 * 24)
   const [containerHeight, setContainerHeight] = useState(900)
   const [useGroups, setUseGroups] = useState(false)
+  const [customize, setCustomize] = useState(true)
 
   const [log, setLog] = useState<LogEntry[]>([])
+
+  // imperative api of the calendar ( next / prev / addEvent / changeGrid ... )
+  const apiRef = useRef<FullEventCalendar | null>(null)
 
   const pushLog = useCallback((type: string, detail: string) => {
     setLog((prev) =>
@@ -114,7 +127,7 @@ function App() {
   }, [])
 
   // -------------------------------------------------------------------------
-  // calendar event listeners (all 6 emitted events)
+  // calendar event listeners ( all 6 emitted events )
   // -------------------------------------------------------------------------
 
   const handleEventUpdate = useCallback(
@@ -173,7 +186,7 @@ function App() {
   )
 
   // -------------------------------------------------------------------------
-  // actions used by slots & control panel
+  // actions used by the customized components & control panel
   // -------------------------------------------------------------------------
 
   const deleteEvent = useCallback(
@@ -196,7 +209,7 @@ function App() {
     const ev = makeRandomEvent()
     setEvents((prev) => [...prev, ev])
     pushLog('eventAdd', `"${ev.name}" added from outside the calendar`)
-  }, [initialDate, pushLog])
+  }, [pushLog])
 
   const resetDemo = useCallback(() => {
     setEvents(makeEvents())
@@ -222,23 +235,39 @@ function App() {
   )
 
   // -------------------------------------------------------------------------
-  // slots. memoized so they only change when their inputs change
+  // the components map : every section of the calendar customized from react.
+  // sections left out fall back to the built in ui
   // -------------------------------------------------------------------------
 
-  const slots = useMemo(
-    () => ({
-      todayBtn: <TodayBtnSlot />,
-      goBackDate: <GoBackDateSlot />,
-      goForwardDate: <GoForwardDateSlot />,
-      headerDateSlot: <HeaderDateSlot />,
-      gridDropDown: <GridDropDownSlot onSelectGrid={setGrid} />,
-      dailyHeader: <DailyHeaderSlot locale={locale} calendar={calendarType} timeZone={timeZone} />,
-      timeRange: <TimeRangeSlot locale={locale} />,
-      groupContainer: <GroupContainerSlot />,
-      eventClick: <EventClickSlot onDelete={deleteEvent} />,
-      addModal: <AddModalSlot onConfirm={confirmAdd} />
-    }),
-    [locale, calendarType, timeZone, deleteEvent, confirmAdd]
+  const components = useMemo<CalendarComponents>(
+    () =>
+      customize
+        ? {
+            // plain defaults - identical to the built in ui
+            todayBtn: TodayButton,
+            goBackDate: GoBackButton,
+            goForwardDate: GoForwardButton,
+            gridDropDown: GridDropdown,
+            timeRange: TimeRangeLabel,
+            groupContainer: GroupContainer,
+            allDayEvent: AllDayEventCard,
+            monthWeekDay: MonthWeekDayLabel,
+            listDateHeader: ListDateHeader,
+
+            // defaults extended by tiny demo wrappers
+            headerDateSlot: DemoHeaderDate,
+            dailyHeader: DemoDailyHeader,
+            eventItem: DemoEventItem,
+            monthEvent: DemoMonthEvent,
+            monthDay: DemoMonthDay,
+            listEvent: DemoListEvent,
+
+            // modals wired with the demo's actions
+            eventClick: (props) => <DemoEventClickModal {...props} onDelete={deleteEvent} />,
+            addModal: (props) => <DemoAddEventModal {...props} onAdd={confirmAdd} />
+          }
+        : {},
+    [customize, deleteEvent, confirmAdd]
   )
 
   return (
@@ -247,6 +276,10 @@ function App() {
         <h1>
           Full Event Calendar <span>react demo</span>
         </h1>
+        <label className="demo-check demo-check--topbar">
+          <input type="checkbox" checked={customize} onChange={(e) => setCustomize(e.target.checked)} />
+          customize sections
+        </label>
         <button
           className="demo-slot-btn demo-slot-btn--primary"
           onClick={() => setTheme((t) => (t === 'light' ? 'dark' : 'light'))}
@@ -283,6 +316,23 @@ function App() {
               <button onClick={() => stepDate(-1)}>‹ back</button>
               <button onClick={() => setInitialDate(startOfToday())}>today</button>
               <button onClick={() => stepDate(1)}>forward ›</button>
+            </div>
+          </section>
+
+          <section>
+            <h2>Imperative api</h2>
+            <div className="demo-btn-row">
+              <button onClick={() => apiRef.current?.prev()}>api.prev()</button>
+              <button onClick={() => apiRef.current?.next()}>api.next()</button>
+              <button onClick={() => apiRef.current?.goToday()}>api.goToday()</button>
+            </div>
+            <div className="demo-btn-row">
+              <button onClick={() => apiRef.current?.changeGrid('weekly')}>api.changeGrid()</button>
+              <button
+                onClick={() => pushLog('api', `${apiRef.current?.getEvents().length} events via api.getEvents()`)}
+              >
+                api.getEvents()
+              </button>
             </div>
           </section>
 
@@ -371,6 +421,7 @@ function App() {
 
         <main className="demo-calendar">
           <FullEventCalendar
+            ref={apiRef}
             plugins={PLUGINS}
             events={events}
             initialDate={initialDate}
@@ -386,22 +437,13 @@ function App() {
             gridHeight={gridHeight}
             containerHeight={containerHeight}
             groups={useGroups ? demoGroups : []}
+            components={components}
             eventUpdate={handleEventUpdate}
             eventAdd={handleEventAdd}
             addEventStoped={handleAddEventStoped}
             dateUpdate={handleDateUpdate}
             gridUpdate={handleGridUpdate}
             eventClicked={handleEventClicked}
-            todayBtn={slots.todayBtn}
-            goBackDate={slots.goBackDate}
-            goForwardDate={slots.goForwardDate}
-            headerDateSlot={slots.headerDateSlot}
-            gridDropDown={slots.gridDropDown}
-            dailyHeader={slots.dailyHeader}
-            timeRange={slots.timeRange}
-            groupContainer={slots.groupContainer}
-            eventClick={slots.eventClick}
-            addModal={slots.addModal}
           />
         </main>
 
