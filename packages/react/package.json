@@ -16,6 +16,9 @@
     "drag-and-drop"
   ],
   "author": "Amirkian Adl <amircc1200@gmail.com>",
+  "contributors": [
+    "Parsa Sedighi"
+  ],
   "license": "MIT",
   "type": "module",
   "files": [
