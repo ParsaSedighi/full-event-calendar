@@ -37,11 +37,7 @@ export function DemoHeaderDate(props: HeaderDateSlotProps) {
 
 /** the calendar's own day header - wrapped with a "today" pill highlight */
 export function DemoDailyHeader(props: DailyHeaderSlotProps) {
-  return (
-    <div className={`demo-daily-header ${props.isToday ? 'is-today' : ''}`}>
-      <DailyHeader {...props} />
-    </div>
-  )
+  return <DailyHeader {...props} />
 }
 
 /** the calendar's own event card - extended with a status emoji */
