@@ -211,7 +211,8 @@ export class FullEventCalendar extends Component<FullEventCalendarProps, Calenda
       groups: this.props.groups,
       editable: this.props.editable,
       theme: this.props.theme,
-      containerHeight: this.props.containerHeight
+      containerHeight: this.props.containerHeight,
+      className: this.props.className
     })
     let lastRequestTimestamp: number | undefined
 

@@ -1,11 +1,14 @@
 import type { ListDateHeaderSlotProps } from '../../types'
+import { cx } from '../../utils/classNames'
 
-/** default date group header of the list grid */
-export function ListDateHeader({ day, weekdayText }: ListDateHeaderSlotProps) {
+/** default date group header of the list grid.
+ *  `className` is appended to both the day number and the week day text so
+ *  tailwind utilities work */
+export function ListDateHeader({ day, weekdayText, className }: ListDateHeaderSlotProps) {
   return (
     <>
-      <div className="fec-schedule-date">{day}</div>
-      <div className="fec-schedule-dates">{weekdayText}</div>
+      <div className={cx('fec-schedule-date', className)}>{day}</div>
+      <div className={cx('fec-schedule-dates', className)}>{weekdayText}</div>
     </>
   )
 }

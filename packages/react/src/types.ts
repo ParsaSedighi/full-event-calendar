@@ -69,31 +69,36 @@ export interface EventClickedPayload {
 // the overriding react component through these props
 // ---------------------------------------------------------------------------
 
+/** class names appended to a slot component's root element ( tailwind utilities... ) */
+export interface SlotClassNameProp {
+  className?: string
+}
+
 /** header - the "today" button */
-export interface TodayButtonSlotProps {
+export interface TodayButtonSlotProps extends SlotClassNameProp {
   /** navigates the calendar to today */
   goToday?: () => void
   locale?: string
 }
 /** header - the go back arrow */
-export interface GoBackButtonSlotProps {
+export interface GoBackButtonSlotProps extends SlotClassNameProp {
   /** navigates one step back (day / week / month based on the active grid) */
   goBack?: () => void
   locale?: string
 }
 /** header - the go forward arrow */
-export interface GoForwardButtonSlotProps {
+export interface GoForwardButtonSlotProps extends SlotClassNameProp {
   /** navigates one step forward (day / week / month based on the active grid) */
   goForward?: () => void
   locale?: string
 }
 /** header - the big formatted date text */
-export interface HeaderDateSlotProps {
+export interface HeaderDateSlotProps extends SlotClassNameProp {
   /** date text formatted with the active locale / calendar / time zone */
   date?: string
 }
 /** header - the grid picker dropdown */
-export interface GridDropdownSlotProps {
+export interface GridDropdownSlotProps extends SlotClassNameProp {
   grid?: GridMode
   /** grid names of every installed plugin */
   grids?: GridMode[]
@@ -102,7 +107,7 @@ export interface GridDropdownSlotProps {
   locale?: string
 }
 /** daily & weekly grids - one day column header */
-export interface DailyHeaderSlotProps {
+export interface DailyHeaderSlotProps extends SlotClassNameProp {
   date?: Date
   /** click handler navigating the calendar to this date */
   onDateChange?: (d: Date) => void
@@ -114,17 +119,17 @@ export interface DailyHeaderSlotProps {
   isToday?: boolean
 }
 /** daily & weekly grids - one hour label of the time column */
-export interface TimeRangeSlotProps {
+export interface TimeRangeSlotProps extends SlotClassNameProp {
   /** a Date whose hour matters ('' for the top row) */
   time?: Date | string
   locale?: string
 }
 /** daily grid - one group (resource) header */
-export interface GroupContainerSlotProps {
+export interface GroupContainerSlotProps extends SlotClassNameProp {
   group?: CalendarGroup
 }
 /** daily & weekly grids - one timed event card content */
-export interface EventItemSlotProps {
+export interface EventItemSlotProps extends SlotClassNameProp {
   event?: CalendarEvent
   /** pre formatted time range text of the event */
   timeText?: string
@@ -132,7 +137,7 @@ export interface EventItemSlotProps {
   locale?: string
 }
 /** month grid & weekly all day row - one event card content */
-export interface MonthEventSlotProps {
+export interface MonthEventSlotProps extends SlotClassNameProp {
   event?: CalendarEvent
   /** pre formatted short start time ( empty for all day events ) */
   timeText?: string
@@ -140,12 +145,12 @@ export interface MonthEventSlotProps {
   locale?: string
 }
 /** daily grid - one all day event chip content */
-export interface AllDayEventSlotProps {
+export interface AllDayEventSlotProps extends SlotClassNameProp {
   event?: CalendarEvent
   locale?: string
 }
 /** month grid - one day cell content ( date number area ) */
-export interface MonthDaySlotProps {
+export interface MonthDaySlotProps extends SlotClassNameProp {
   date?: Date
   /** day number formatted for the active locale / calendar */
   day?: string
@@ -157,14 +162,14 @@ export interface MonthDaySlotProps {
   calendar?: string
 }
 /** month grid - one week day label of the month header */
-export interface MonthWeekDaySlotProps {
+export interface MonthWeekDaySlotProps extends SlotClassNameProp {
   date?: Date
   /** week day label formatted for the active locale / calendar */
   label?: string
   locale?: string
 }
 /** list grid - one date group header */
-export interface ListDateHeaderSlotProps {
+export interface ListDateHeaderSlotProps extends SlotClassNameProp {
   date?: Date
   /** day number text */
   day?: string
@@ -175,7 +180,7 @@ export interface ListDateHeaderSlotProps {
   calendar?: string
 }
 /** list grid - one event row content */
-export interface ListEventSlotProps {
+export interface ListEventSlotProps extends SlotClassNameProp {
   event?: CalendarEvent
   /** pre formatted time range text ( or the all day label ) */
   timeText?: string
@@ -183,7 +188,7 @@ export interface ListEventSlotProps {
   calendar?: string
 }
 /** modal shown when an event is clicked */
-export interface EventClickModalSlotProps {
+export interface EventClickModalSlotProps extends SlotClassNameProp {
   eventData?: CalendarEvent
   /** alias of eventData */
   event?: CalendarEvent
@@ -194,7 +199,7 @@ export interface EventClickModalSlotProps {
   locale?: string
 }
 /** modal shown when an event is drag created while `stopAddEvent` is enabled */
-export interface AddEventModalSlotProps {
+export interface AddEventModalSlotProps extends SlotClassNameProp {
   eventData?: CalendarEvent
   /** alias of eventData */
   event?: CalendarEvent
@@ -295,6 +300,9 @@ export interface CalendarApi {
 // ---------------------------------------------------------------------------
 
 export interface FullEventCalendarProps extends Omit<CalendarSourceOptions, 'avalibalSots'> {
+  /** class names appended to the calendar root element ( e.g. tailwind utilities ) */
+  className?: string
+
   /** customize any section of the calendar with react components */
   components?: CalendarComponents
 

@@ -50,14 +50,16 @@ const secondaryBtn: CSSProperties = {
 
 /** default modal shown when an event is clicked.
  *  extend it with your own actions ( pass `onDelete` , `onUpdate`... when
- *  using it as the `eventClick` component ) */
+ *  using it as the `eventClick` component ). `className` is appended to the
+ *  modal so tailwind utilities work ( use `!` important utilities to beat
+ *  the inline styles ) */
 export function EventClickModal(props: EventClickModalSlotProps & { onDelete?: (id: any) => void }) {
-  const { eventData, event, saveModal, close, locale, onDelete } = props
+  const { eventData, event, saveModal, close, locale, onDelete, className } = props
   const ev = event || eventData
   const closeFn = saveModal || close
 
   return (
-    <div style={modalStyle}>
+    <div style={modalStyle} className={className}>
       <div style={{ fontWeight: 600, fontSize: '15px', display: 'flex', alignItems: 'center', gap: '8px' }}>
         <span
           style={{ width: '10px', height: '10px', borderRadius: '50%', background: ev?.color || 'var(--primary)' }}

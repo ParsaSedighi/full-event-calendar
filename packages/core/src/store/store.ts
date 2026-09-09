@@ -92,6 +92,10 @@ interface ChangeDirection {
   type: 'CHANGE_DIRECTION'
   val: CalendarDirection
 }
+interface SetClassName {
+  type: 'SET_CLASS_NAME'
+  val: string
+}
 
 // To Do: use better names for set and update
 
@@ -118,6 +122,7 @@ export type StoreActions =
   | SetStopAddEvent
   | ChangeContainerHeight
   | ChangeDirection
+  | SetClassName
 
 export type EventCalendarOptions = { [K in keyof CalendarSourceOptions]-?: CalendarSourceOptions[K] }
 export interface CalendarState extends EventCalendarOptions {
@@ -131,6 +136,8 @@ export const createReducer = (ds: CalendarState) => {
         return { ...state, containerHeight: action.val }
       case 'CHANGE_DIRECTION':
         return { ...state, direction: action.val }
+      case 'SET_CLASS_NAME':
+        return { ...state, className: action.val }
       case 'DELETE_EVENT':
         const events12 = [...state.events].filter((ev) => ev.id != action.id)
         return { ...state, events: events12 }

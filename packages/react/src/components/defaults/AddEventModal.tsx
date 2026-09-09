@@ -61,9 +61,11 @@ const inputStyle: CSSProperties = {
 
 /** default modal shown when an event is drag created while `stopAddEvent`
  *  is enabled. wire it up by passing `onAdd` when using it as the `addModal`
- *  component : `components={{ addModal: (p) => <AddEventModal {...p} onAdd={addEvent} /> }}` */
+ *  component : `components={{ addModal: (p) => <AddEventModal {...p} onAdd={addEvent} /> }}`.
+ *  `className` is appended to the modal so tailwind utilities work ( use `!`
+ *  important utilities to beat the inline styles ) */
 export function AddEventModal(props: AddEventModalSlotProps & { onAdd?: (event: any) => void }) {
-  const { eventData, event, saveModal, close, locale, onAdd } = props
+  const { eventData, event, saveModal, close, locale, onAdd, className } = props
   const ev = event || eventData
   const closeFn = saveModal || close
   const [name, setName] = useState('')
@@ -74,7 +76,7 @@ export function AddEventModal(props: AddEventModalSlotProps & { onAdd?: (event: 
   }
 
   return (
-    <div style={modalStyle}>
+    <div style={modalStyle} className={className}>
       <div style={{ fontWeight: 600, fontSize: '15px', marginBottom: '8px' }}>New event</div>
       <div style={rowStyle}>
         <span>name</span>

@@ -1,15 +1,17 @@
 import { useState } from 'react'
 import type { GridDropdownSlotProps } from '../../types'
 import { calendarLocale } from '@full-event-calendar/locale'
+import { cx } from '../../utils/classNames'
 
 /** default grid picker of the calendar header.
- *  styled like the built in dropdown and wired to `changeGrid` out of the box */
-export function GridDropdown({ grid, grids, changeGrid, locale }: GridDropdownSlotProps) {
+ *  styled like the built in dropdown and wired to `changeGrid` out of the box.
+ *  `className` is appended to the dropdown so tailwind utilities work */
+export function GridDropdown({ grid, grids, changeGrid, locale, className }: GridDropdownSlotProps) {
   const [open, setOpen] = useState(false)
   const options = grids?.length ? grids : (['daily', 'weekly', 'month', 'list'] as const)
 
   return (
-    <div className="fec-grid-drop" data-test-id-dropdown="1" onClick={() => setOpen(!open)}>
+    <div className={cx('fec-grid-drop', className)} data-test-id-dropdown="1" onClick={() => setOpen(!open)}>
       {calendarLocale(locale ?? 'en-US', grid || 'daily')}
       {open && (
         <div className="fec-dropdown-calendar">
