@@ -3,11 +3,11 @@ import { CounterProvider } from './context-injector/context.jsx'
 import { hydrate, render } from 'solid-js/web'
 import { App } from './lib/App.jsx'
 import { CalendarState } from './store/store.js'
-import { FComponent } from '@full-event-calendar/shared-ts'
+import { FComponent } from '@roozaneh/shared-ts'
 
 import './themes/clickDown.scss'
 import './themes/fonts/vazirmatn.scss'
-import { SlotProvider } from '@full-event-calendar/utils'
+import { SlotProvider } from '@roozaneh/utils'
 
 const CalendarRoot: FComponent<{ store: CalendarState; instance: Calendar; container: HTMLElement }> = (props) => {
   return (
@@ -30,7 +30,7 @@ export class Calendar extends CalendarImpl {
 
   constructor(targetElement: HTMLElement, eventCalendarOptions: CalendarSourceOptions) {
     if (!targetElement) {
-      throw Error('full-event-calendar --> a target element must be provided for the calendar to render.')
+      throw Error('roozaneh --> a target element must be provided for the calendar to render.')
     }
     super(eventCalendarOptions)
     this.targetElement = targetElement

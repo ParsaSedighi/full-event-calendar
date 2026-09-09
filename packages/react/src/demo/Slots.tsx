@@ -8,7 +8,7 @@ import {
   ListEventRow,
   MonthDayLabel,
   MonthEventCard
-} from '@full-event-calendar/react'
+} from 'roozaneh'
 import type {
   DailyHeaderSlotProps,
   EventClickModalSlotProps,
@@ -18,7 +18,7 @@ import type {
   ListEventSlotProps,
   MonthDaySlotProps,
   MonthEventSlotProps
-} from '@full-event-calendar/react'
+} from 'roozaneh'
 
 // ---------------------------------------------------------------------------
 // demo customizations. every component here EXTENDS one of the calendar's

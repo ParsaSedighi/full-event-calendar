@@ -1,7 +1,7 @@
 import { Reducer } from 'redux'
-import { EventImpl } from '@full-event-calendar/utils'
+import { EventImpl } from '@roozaneh/utils'
 import { AppSlots, CalendarDirection, CalendarSourceOptions, GridModes, Plugins } from '../api/CalendarImpl'
-import { EventClass, Group, SourceEvent } from '@full-event-calendar/shared-ts'
+import { EventClass, Group, SourceEvent } from '@roozaneh/shared-ts'
 interface SetAllChatsAction {
   type: 'SET_ALL_EVENTS'
   events: SourceEvent[]

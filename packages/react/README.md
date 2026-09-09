@@ -1,14 +1,9 @@
-# Full Event Calendar
-
-<img src="https://github.com/persianpack/full-event-calendar/blob/main/docs/public/image0.png" alt="full-event-calendar-v" width="400px"><img src="https://github.com/persianpack/full-event-calendar/blob/main/docs/public/video1.gif" alt="full-event-calendar" width="400px" style="border-radius: 14px;margin-left: 10px;">
+# Roozaneh
 
 ## About
-Full Event Calendar is a simple, lightweight, and fast event calendar that renders in any framework or library. It supports 18 calendars and 100 locales, powered by [Solid.js](https://solidjs.com/) and [Intl](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl).
+Roozaneh (Persian: روزانه) is a fork of [full-event-calendar](https://github.com/persianpack/full-event-calendar) by persianpack, continued as a simple, lightweight, and fast event calendar for React. It supports 18 calendars and 100 locales, powered by [Solid.js](https://solidjs.com/) and [Intl](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl).
 
 Inspired by [FullCalendar](https://fullcalendar.io/) and [ClickUp](https://clickup.com/).
-## Demo
-Check out Live demo at [**_https://persianpack.github.io/full-event-calendar/ex.html_**](https://persianpack.github.io/full-event-calendar/ex.html) and full Docs at [**_https://persianpack.github.io/full-event-calendar/__**](https://persianpack.github.io/full-event-calendar/)
-<!-- https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Locale/getCalendars#supported_calendar_types -->
 
 ## Features
 - ✔️ Built with typescript and [**_solid.js_**](https://www.solidjs.com/).
@@ -25,7 +20,6 @@ Check out Live demo at [**_https://persianpack.github.io/full-event-calendar/ex.
 
 # Table of Contents
 
-- [**_Demo_**](#demo)
 - [**_Installation_**](#installation)
 - [**_Basic Usage_**](#basic-usage)
 - [**_Api_**](#Api)
@@ -46,30 +40,30 @@ Check out Live demo at [**_https://persianpack.github.io/full-event-calendar/ex.
 ## Installation
 
 ```
-npm i @full-event-calendar/react
+npm i roozaneh
 ```
 or
 ```
-yarn add @full-event-calendar/react
+yarn add roozaneh
 ```
-NOTE : <ins> atleast 1 plugin must be provided </ins> available grid plugins ( all re-exported from `@full-event-calendar/react` , or importable from their own packages ) :
-  - `@full-event-calendar/daily-grid` - daily view
-  - `@full-event-calendar/weekly-grid` - weekly view
-  - `@full-event-calendar/month-grid` - month view
-  - `@full-event-calendar/list` - list view
+NOTE : <ins> atleast 1 plugin must be provided </ins> available grid plugins ( all re-exported from `roozaneh` , or importable from their own packages ) :
+  - `@roozaneh/daily-grid` - daily view
+  - `@roozaneh/weekly-grid` - weekly view
+  - `@roozaneh/month-grid` - month view
+  - `@roozaneh/list` - list view
  
 ## Basic Usage
 react js :
 ```jsx
  
 import { useEffect, useState } from 'react'
-import { FullEventCalendar, DailyGridPlugin } from '@full-event-calendar/react'
+import { FullEventCalendar, DailyGridPlugin } from 'roozaneh'
 // plugins can also be imported from their own packages :
-// import { DailyGridPlugin } from '@full-event-calendar/daily-grid'
-// import { MonthGridPlugin } from '@full-event-calendar/month-grid'
-// import { WeeklyGridPlugin } from '@full-event-calendar/weekly-grid'
-// import { ListPlugin } from '@full-event-calendar/list'
-import '@full-event-calendar/core/dist/main.css' // this must be imported
+// import { DailyGridPlugin } from '@roozaneh/daily-grid'
+// import { MonthGridPlugin } from '@roozaneh/month-grid'
+// import { WeeklyGridPlugin } from '@roozaneh/weekly-grid'
+// import { ListPlugin } from '@roozaneh/list'
+import '@roozaneh/core/dist/main.css' // this must be imported
 
 const eventsList = [
   {
@@ -146,16 +140,16 @@ function App() {
  - Type : Array
  - Required
   An array of grid plugins for the event calendar different grid views<ins> atleast 1 plugin must be provided </ins> available grid plugins:
-  - `@full-event-calendar/daily-grid` - daily view
-  - `@full-event-calendar/weekly-grid` - weekly view
-  - `@full-event-calendar/month-grid` - month view
-  - `@full-event-calendar/list` - list view
+  - `@roozaneh/daily-grid` - daily view
+  - `@roozaneh/weekly-grid` - weekly view
+  - `@roozaneh/month-grid` - month view
+  - `@roozaneh/list` - list view
 
   ```jsx
-  import { DailyGridPlugin } from '@full-event-calendar/daily-grid'
-  import { WeeklyGridPlugin } from '@full-event-calendar/weekly-grid'
-  import { MonthGridPlugin } from '@full-event-calendar/month-grid'
-  import { ListPlugin } from '@full-event-calendar/list'
+  import { DailyGridPlugin } from '@roozaneh/daily-grid'
+  import { WeeklyGridPlugin } from '@roozaneh/weekly-grid'
+  import { MonthGridPlugin } from '@roozaneh/month-grid'
+  import { ListPlugin } from '@roozaneh/list'
  
   function App() {
 
@@ -242,12 +236,12 @@ function App() {
   
     ```jsx
     import { useEffect, useState } from 'react'
-    import { FullEventCalendar } from '@full-event-calendar/react'
-    import { DailyGridPlugin } from '@full-event-calendar/daily-grid'
-    import '@full-event-calendar/core/dist/main.css' // this must be imported
-    // import { MonthGridPlugin } from '@full-event-calendar/month-grid'
-    // import { WeeklyGridPlugin } from '@full-event-calendar/weekly-grid'
-    // import { ListPlugin } from '@full-event-calendar/list'
+    import { FullEventCalendar } from 'roozaneh'
+    import { DailyGridPlugin } from '@roozaneh/daily-grid'
+    import '@roozaneh/core/dist/main.css' // this must be imported
+    // import { MonthGridPlugin } from '@roozaneh/month-grid'
+    // import { WeeklyGridPlugin } from '@roozaneh/weekly-grid'
+    // import { ListPlugin } from '@roozaneh/list'
 
     const events = [
           {
@@ -343,9 +337,9 @@ function App() {
   If set to false, all event dragging, editing, and additions will not be updated on the grid and instead will have to be handled with event listeners or modals.
     ```jsx
     import { useEffect, useState } from 'react'
-    import { FullEventCalendar } from '@full-event-calendar/react'
-    import { DailyGridPlugin } from '@full-event-calendar/daily-grid'
-    import '@full-event-calendar/core/dist/main.css' // this must be imported
+    import { FullEventCalendar } from 'roozaneh'
+    import { DailyGridPlugin } from '@roozaneh/daily-grid'
+    import '@roozaneh/core/dist/main.css' // this must be imported
 
 
     const events = [
@@ -509,7 +503,7 @@ The recommended way is the `components` prop :
 import {
   FullEventCalendar, DailyGridPlugin, WeeklyGridPlugin, MonthGridPlugin, ListPlugin,
   TodayButton, EventItemCard, HeaderDate
-} from '@full-event-calendar/react'
+} from 'roozaneh'
 
 <FullEventCalendar
   plugins={[DailyGridPlugin, WeeklyGridPlugin, MonthGridPlugin, ListPlugin]}
@@ -566,7 +560,7 @@ import {
   DailyHeader, TimeRangeLabel, GroupContainer, EventItemCard, MonthEventCard,
   AllDayEventCard, MonthDayLabel, MonthWeekDayLabel, ListDateHeader, ListEventRow,
   EventClickModal, AddEventModal
-} from '@full-event-calendar/react'
+} from 'roozaneh'
 
 // they render with the calendar's own css classes so they look
 // exactly like the built-in ui and react to the active theme
@@ -583,7 +577,7 @@ components={{
 ### Slot props
 
 Every section receives its data as typed props ( all fully typed in
-`@full-event-calendar/react` ) :
+`roozaneh` ) :
 
 ```ts
 interface EventItemSlotProps {
@@ -708,4 +702,4 @@ $ pnpm run dev
 
 ## License
 
-@full-event-calendar/react is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+roozaneh is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).

@@ -1,9 +1,9 @@
 //@ts-nocheck
-import { EventClass, FComponent, Group, SourceEvent } from '@full-event-calendar/shared-ts'
+import { EventClass, FComponent, Group, SourceEvent } from '@roozaneh/shared-ts'
 import { For, createEffect, createSignal, on, onCleanup, onMount } from 'solid-js'
 import { TimeRange } from './TimeRange/TimeRange'
 import './TimeRanges.scss'
-import { useSlot, useSlotModal } from '@full-event-calendar/utils'
+import { useSlot, useSlotModal } from '@roozaneh/utils'
 interface TimeRangeProps {
   onAddEvent: (event: EventClass) => void
   gridDate: Date

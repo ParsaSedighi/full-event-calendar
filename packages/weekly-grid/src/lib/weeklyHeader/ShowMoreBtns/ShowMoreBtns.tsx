@@ -1,8 +1,8 @@
-import { getExtraRowsCount } from '@full-event-calendar/month-grid'
-import { FComponent } from '@full-event-calendar/shared-ts'
+import { getExtraRowsCount } from '@roozaneh/month-grid'
+import { FComponent } from '@roozaneh/shared-ts'
 import { For, Show, createMemo } from 'solid-js'
 import { rowList } from '../WeeklyAllDayHeader'
-import { formatNumber, getFirstDayOfWeek } from '@full-event-calendar/utils'
+import { formatNumber, getFirstDayOfWeek } from '@roozaneh/utils'
 import './ShowMoreBtns.scss'
 
 interface ShowMoreBtnsProps {

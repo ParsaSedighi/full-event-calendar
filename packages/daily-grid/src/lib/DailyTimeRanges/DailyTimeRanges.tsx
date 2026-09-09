@@ -1,7 +1,7 @@
 import { For, Show } from 'solid-js'
 import './DailyTimeRanges.scss'
-import { formatToShortTime, useSlot } from '@full-event-calendar/utils'
-import { FComponent } from '@full-event-calendar/shared-ts'
+import { formatToShortTime, useSlot } from '@roozaneh/utils'
+import { FComponent } from '@roozaneh/shared-ts'
 const timess = [
   '',
   new Date(' Aug 07 2023 01:00:00'),

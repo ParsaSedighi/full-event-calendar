@@ -1,8 +1,8 @@
-import { EventClass, FComponent } from '@full-event-calendar/shared-ts'
+import { EventClass, FComponent } from '@roozaneh/shared-ts'
 import { Show } from 'solid-js'
 
 import { MonthEvent } from '../../..'
-import { NewDraggingController, isDateIncludedInaRange } from '@full-event-calendar/utils'
+import { NewDraggingController, isDateIncludedInaRange } from '@roozaneh/utils'
 interface MonthEventPreview {
   item: NewDraggingController
   endDate: Date

@@ -1,4 +1,4 @@
-import { EventClass, SourceEvent } from '@full-event-calendar/shared-ts'
+import { EventClass, SourceEvent } from '@roozaneh/shared-ts'
 import { convertTZ } from './TimeZone'
 import { ceilDate, floorDate } from '.'
 
@@ -12,8 +12,8 @@ export class EventImpl implements EventClass {
   duration: number // duration is in minutes
   sourceEvent: SourceEvent
   color: string
-  groups:number[]|string[]
-  calendarId:string
+  groups: number[] | string[]
+  calendarId: string
   constructor(eventData: SourceEvent) {
     this.start = eventData.start
     this.end = eventData.end
@@ -57,7 +57,7 @@ export class EventImpl implements EventClass {
   calculateHeight(calcFromZero: boolean = false) {
     return `;height:${this.calculateHeightPersentage(calcFromZero)}%;`
   }
-  calculateHeightPersentage(calcFromZero: boolean = false){
+  calculateHeightPersentage(calcFromZero: boolean = false) {
     let heightInPercentage
     if (calcFromZero) {
       heightInPercentage = ((this.end.getHours() * 60 + this.end.getMinutes()) / 60) * 100
@@ -83,42 +83,40 @@ export class EventImpl implements EventClass {
     return start1 < end2 && end1 > start2
   }
   updateEventDetails(event: SourceEvent): void {
-    if(event.start){
+    if (event.start) {
       this.start = event.start
       this.duration = Math.round((event.end.getTime() - event.start.getTime()) / 60000)
     }
-    if(event.end){
+    if (event.end) {
       this.end = event.end
       this.duration = Math.round((event.end.getTime() - event.start.getTime()) / 60000)
     }
-    if(event.name){
+    if (event.name) {
       this.name = event.name
     }
-    if(event.groups){
+    if (event.groups) {
       this.groups = event.groups
     }
-    if(event.color){
-      this.color = event.color 
+    if (event.color) {
+      this.color = event.color
     }
     // this.id = eventData.id
     // this.sourceEvent = eventData
-    
   }
   checkAllDayOverLap(event: EventImpl) {
     // this is for monthly .. to check if events overlap in full width of container
     let FloorStart1 = floorDate(event.start)
     let FloorStart2 = floorDate(this.start)
 
-
     let FloorEnd1 = ceilDate(event.end)
     let FloorEnd2 = ceilDate(this.end)
 
-    if(!this.isAllDay()&& !this.doesEventEndOn(this.start)){
+    if (!this.isAllDay() && !this.doesEventEndOn(this.start)) {
       FloorEnd2 = ceilDate(this.start)
-    } 
-    if(!event.isAllDay()&& !event.doesEventEndOn(event.start)){
-       FloorEnd1 = ceilDate(event.start)
-     } 
+    }
+    if (!event.isAllDay() && !event.doesEventEndOn(event.start)) {
+      FloorEnd1 = ceilDate(event.start)
+    }
 
     return FloorStart1 < FloorEnd2 && FloorEnd1 > FloorStart2
   }

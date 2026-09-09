@@ -48,17 +48,17 @@ importers:
 
   packages/basic-grid:
     dependencies:
-      '@full-event-calendar/locale':
+      '@roozaneh/locale':
         specifier: workspace:^
         version: link:../locale
-      '@full-event-calendar/utils':
+      '@roozaneh/utils':
         specifier: workspace:^
         version: link:../utils
       solid-js:
         specifier: '>=1.0.0'
         version: 1.9.15
     devDependencies:
-      '@full-event-calendar/shared-ts':
+      '@roozaneh/shared-ts':
         specifier: workspace:*
         version: link:../shared-types
       esbuild-sass-plugin:
@@ -70,10 +70,10 @@ importers:
 
   packages/core:
     dependencies:
-      '@full-event-calendar/locale':
+      '@roozaneh/locale':
         specifier: workspace:^
         version: link:../locale
-      '@full-event-calendar/utils':
+      '@roozaneh/utils':
         specifier: workspace:^
         version: link:../utils
       redux:
@@ -86,22 +86,22 @@ importers:
         specifier: ^0.2.3
         version: 0.2.3(solid-js@1.9.15)
     devDependencies:
-      '@full-event-calendar/basic-grid':
+      '@roozaneh/basic-grid':
         specifier: workspace:*
         version: link:../basic-grid
-      '@full-event-calendar/daily-grid':
+      '@roozaneh/daily-grid':
         specifier: workspace:*
         version: link:../daily-grid
-      '@full-event-calendar/list':
+      '@roozaneh/list':
         specifier: workspace:*
         version: link:../list
-      '@full-event-calendar/month-grid':
+      '@roozaneh/month-grid':
         specifier: workspace:*
         version: link:../month-grid
-      '@full-event-calendar/shared-ts':
+      '@roozaneh/shared-ts':
         specifier: workspace:*
         version: link:../shared-types
-      '@full-event-calendar/weekly-grid':
+      '@roozaneh/weekly-grid':
         specifier: workspace:*
         version: link:../weekly-grid
       esbuild-sass-plugin:
@@ -131,20 +131,20 @@ importers:
 
   packages/daily-grid:
     dependencies:
-      '@full-event-calendar/basic-grid':
+      '@roozaneh/basic-grid':
         specifier: workspace:^
         version: link:../basic-grid
-      '@full-event-calendar/group-grid':
+      '@roozaneh/group-grid':
         specifier: workspace:^
         version: link:../group-grid
-      '@full-event-calendar/utils':
+      '@roozaneh/utils':
         specifier: workspace:^
         version: link:../utils
       solid-js:
         specifier: '>=1.0.0'
         version: 1.9.15
     devDependencies:
-      '@full-event-calendar/shared-ts':
+      '@roozaneh/shared-ts':
         specifier: workspace:*
         version: link:../shared-types
       clean-package:
@@ -169,10 +169,10 @@ importers:
         specifier: '>=1.0.0'
         version: 1.9.15
     devDependencies:
-      '@full-event-calendar/shared-ts':
+      '@roozaneh/shared-ts':
         specifier: workspace:*
         version: link:../shared-types
-      '@full-event-calendar/utils':
+      '@roozaneh/utils':
         specifier: workspace:*
         version: link:../utils
       clean-package:
@@ -184,17 +184,17 @@ importers:
 
   packages/list:
     dependencies:
-      '@full-event-calendar/locale':
+      '@roozaneh/locale':
         specifier: workspace:^
         version: link:../locale
-      '@full-event-calendar/utils':
+      '@roozaneh/utils':
         specifier: workspace:^
         version: link:../utils
       solid-js:
         specifier: '>=1.0.0'
         version: 1.9.15
     devDependencies:
-      '@full-event-calendar/shared-ts':
+      '@roozaneh/shared-ts':
         specifier: workspace:*
         version: link:../shared-types
       esbuild-sass-plugin:
@@ -206,7 +206,7 @@ importers:
 
   packages/locale:
     devDependencies:
-      '@full-event-calendar/shared-ts':
+      '@roozaneh/shared-ts':
         specifier: workspace:*
         version: link:../shared-types
       esbuild-sass-plugin:
@@ -218,10 +218,10 @@ importers:
 
   packages/month-grid:
     dependencies:
-      '@full-event-calendar/locale':
+      '@roozaneh/locale':
         specifier: workspace:^
         version: link:../locale
-      '@full-event-calendar/utils':
+      '@roozaneh/utils':
         specifier: workspace:^
         version: link:../utils
       esbuild-sass-plugin:
@@ -234,7 +234,7 @@ importers:
         specifier: ^0.2.3
         version: 0.2.3(solid-js@1.9.15)
     devDependencies:
-      '@full-event-calendar/shared-ts':
+      '@roozaneh/shared-ts':
         specifier: workspace:*
         version: link:../shared-types
       clean-package:
@@ -246,22 +246,22 @@ importers:
 
   packages/react:
     dependencies:
-      '@full-event-calendar/core':
+      '@roozaneh/core':
         specifier: workspace:^
         version: link:../core
-      '@full-event-calendar/daily-grid':
+      '@roozaneh/daily-grid':
         specifier: workspace:^
         version: link:../daily-grid
-      '@full-event-calendar/list':
+      '@roozaneh/list':
         specifier: workspace:^
         version: link:../list
-      '@full-event-calendar/locale':
+      '@roozaneh/locale':
         specifier: workspace:^
         version: link:../locale
-      '@full-event-calendar/month-grid':
+      '@roozaneh/month-grid':
         specifier: workspace:^
         version: link:../month-grid
-      '@full-event-calendar/weekly-grid':
+      '@roozaneh/weekly-grid':
         specifier: workspace:^
         version: link:../weekly-grid
       fast-deep-equal:
@@ -321,7 +321,7 @@ importers:
         specifier: '>=1.0.0'
         version: 1.9.15
     devDependencies:
-      '@full-event-calendar/shared-ts':
+      '@roozaneh/shared-ts':
         specifier: workspace:*
         version: link:../shared-types
       framer-motion:
@@ -330,22 +330,22 @@ importers:
 
   packages/weekly-grid:
     dependencies:
-      '@full-event-calendar/basic-grid':
+      '@roozaneh/basic-grid':
         specifier: workspace:*
         version: link:../basic-grid
-      '@full-event-calendar/daily-grid':
+      '@roozaneh/daily-grid':
         specifier: workspace:*
         version: link:../daily-grid
-      '@full-event-calendar/group-grid':
+      '@roozaneh/group-grid':
         specifier: workspace:*
         version: link:../group-grid
-      '@full-event-calendar/locale':
+      '@roozaneh/locale':
         specifier: workspace:^
         version: link:../locale
-      '@full-event-calendar/month-grid':
+      '@roozaneh/month-grid':
         specifier: workspace:*
         version: link:../month-grid
-      '@full-event-calendar/utils':
+      '@roozaneh/utils':
         specifier: workspace:*
         version: link:../utils
       esbuild-sass-plugin:
@@ -355,7 +355,7 @@ importers:
         specifier: '>=1.0.0'
         version: 1.9.15
     devDependencies:
-      '@full-event-calendar/shared-ts':
+      '@roozaneh/shared-ts':
         specifier: workspace:*
         version: link:../shared-types
       framer-motion:

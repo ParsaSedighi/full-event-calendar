@@ -1,12 +1,12 @@
-import { MonthEvent, addEventsToRows, useMonthEventDragging } from '@full-event-calendar/month-grid'
-import { EventClass, FComponent, Group, SourceEvent } from '@full-event-calendar/shared-ts'
+import { MonthEvent, addEventsToRows, useMonthEventDragging } from '@roozaneh/month-grid'
+import { EventClass, FComponent, Group, SourceEvent } from '@roozaneh/shared-ts'
 import { For, createEffect, createMemo, createUniqueId } from 'solid-js'
 import { rowList } from '../WeeklyAllDayHeader'
-import { EventImpl, useCalenderContainerState, useSlotModal } from '@full-event-calendar/utils'
-import { DraggerTypes } from '@full-event-calendar/month-grid/src/utils/RowDragger'
+import { EventImpl, useCalenderContainerState, useSlotModal } from '@roozaneh/utils'
+import { DraggerTypes } from '@roozaneh/month-grid/src/utils/RowDragger'
 import './DateCol.scss'
-import { getEventSourceFromTz } from '@full-event-calendar/utils'
-import { calendarLocale } from '@full-event-calendar/locale'
+import { getEventSourceFromTz } from '@roozaneh/utils'
+import { calendarLocale } from '@roozaneh/locale'
 
 interface DateColProps {
   filteredEvents: EventClass[]

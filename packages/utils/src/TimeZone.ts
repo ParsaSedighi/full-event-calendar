@@ -1,5 +1,5 @@
-import { EventClass } from "@full-event-calendar/shared-ts"
-import { EventImpl } from "."
+import { EventClass } from '@roozaneh/shared-ts'
+import { EventImpl } from '.'
 
 export function convertTZ(date: Date, tzString: string) {
   // throw an error in Etc/Unknown

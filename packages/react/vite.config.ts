@@ -31,7 +31,7 @@ function workspaceDistReload(): Plugin {
 // https://vitejs.dev/config/
 export default defineConfig(({ command }) => ({
   plugins: [react(), workspaceDistReload()],
-  base: command === 'build' ? '/full-event-calendar/' : '/',
+  base: command === 'build' ? '/roozaneh/' : '/',
   // demo output must not clobber the library's dist/ folder
   build: {
     outDir: 'demo-dist'
@@ -39,43 +39,34 @@ export default defineConfig(({ command }) => ({
   resolve: {
     alias: {
       // the demo consumes the react connector source directly ( hmr friendly )
-      '@full-event-calendar/react': path.join(__dirname, '/src/index.ts'),
-      '@full-event-calendar/basic-grid': path.join(
+      roozaneh: path.join(__dirname, '/src/index.ts'),
+      '@roozaneh/basic-grid': path.join(
         __dirname,
-        '/node_modules/@full-event-calendar/daily-grid/node_modules/@full-event-calendar/basic-grid/dist/index.js'
+        '/node_modules/@roozaneh/daily-grid/node_modules/@roozaneh/basic-grid/dist/index.js'
       ),
-      '@full-event-calendar/daily-grid': path.join(
-        __dirname,
-        '/node_modules/@full-event-calendar/daily-grid/dist/index.js'
-      ),
+      '@roozaneh/daily-grid': path.join(__dirname, '/node_modules/@roozaneh/daily-grid/dist/index.js'),
 
-      '@full-event-calendar/group-grid': path.join(
+      '@roozaneh/group-grid': path.join(
         __dirname,
-        '/node_modules/@full-event-calendar/weekly-grid/node_modules/@full-event-calendar/group-grid/dist/index.js'
+        '/node_modules/@roozaneh/weekly-grid/node_modules/@roozaneh/group-grid/dist/index.js'
       ),
-      // '@full-event-calendar/utils': path.join(
+      // '@roozaneh/utils': path.join(
       //   __dirname,
-      //   '/node_modules/@full-event-calendar/core/node_modules/@full-event-calendar/utils/dist/index.js'
+      //   '/node_modules/@roozaneh/core/node_modules/@roozaneh/utils/dist/index.js'
       // ),
 
-      '@full-event-css-core': path.join(__dirname, '/node_modules/@full-event-calendar/core/dist/index.css'),
+      '@full-event-css-core': path.join(__dirname, '/node_modules/@roozaneh/core/dist/index.css'),
       '@full-event-css-basic': path.join(
         __dirname,
-        '/node_modules/@full-event-calendar/daily-grid/node_modules/@full-event-calendar/basic-grid/dist/index.css'
+        '/node_modules/@roozaneh/daily-grid/node_modules/@roozaneh/basic-grid/dist/index.css'
       ),
-      '@full-event-css-daily': path.join(__dirname, '/node_modules/@full-event-calendar/daily-grid/dist/index.css'),
-      '@full-event-css-month': path.join(__dirname, '/node_modules/@full-event-calendar/month-grid/dist/index.css'),
-      '@full-event-css-week': path.join(__dirname, '/node_modules/@full-event-calendar/weekly-grid/dist/index.css'),
-      // '@full-event-calendar/core': path.join(__dirname, '/node_modules/@full-event-calendar/core/dist/index.js'),
-      '@full-event-calendar/locale': path.join(__dirname, '/node_modules/@full-event-calendar/locale/dist/index.js'),
-      '@full-event-calendar/weekly-grid': path.join(
-        __dirname,
-        '/node_modules/@full-event-calendar/weekly-grid/dist/index.js'
-      ),
-      '@full-event-calendar/month-grid': path.join(
-        __dirname,
-        '/node_modules/@full-event-calendar/month-grid/dist/index.js'
-      )
+      '@full-event-css-daily': path.join(__dirname, '/node_modules/@roozaneh/daily-grid/dist/index.css'),
+      '@full-event-css-month': path.join(__dirname, '/node_modules/@roozaneh/month-grid/dist/index.css'),
+      '@full-event-css-week': path.join(__dirname, '/node_modules/@roozaneh/weekly-grid/dist/index.css'),
+      // '@roozaneh/core': path.join(__dirname, '/node_modules/@roozaneh/core/dist/index.js'),
+      '@roozaneh/locale': path.join(__dirname, '/node_modules/@roozaneh/locale/dist/index.js'),
+      '@roozaneh/weekly-grid': path.join(__dirname, '/node_modules/@roozaneh/weekly-grid/dist/index.js'),
+      '@roozaneh/month-grid': path.join(__dirname, '/node_modules/@roozaneh/month-grid/dist/index.js')
     }
   }
 }))

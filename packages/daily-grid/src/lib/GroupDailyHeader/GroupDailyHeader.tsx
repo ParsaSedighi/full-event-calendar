@@ -1,4 +1,4 @@
-import { EventClass, FComponent, SourceEvent } from '@full-event-calendar/shared-ts'
+import { EventClass, FComponent, SourceEvent } from '@roozaneh/shared-ts'
 import { DailyAllDay } from './DailyAllDay/DailyAllDay'
 import { For, createSignal, mergeProps } from 'solid-js'
 import { columData } from '../GroupDaily'

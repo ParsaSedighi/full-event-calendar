@@ -1,4 +1,4 @@
-import { getEventsInDate } from '@full-event-calendar/utils'
+import { getEventsInDate } from '@roozaneh/utils'
 import { createMutable } from 'solid-js/store'
 import { columData } from './GroupDaily'
 import { createEffect } from 'solid-js'

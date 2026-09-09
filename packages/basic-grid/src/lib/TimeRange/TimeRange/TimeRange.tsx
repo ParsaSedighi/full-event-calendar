@@ -1,10 +1,10 @@
-import { EventClass, FComponent, Group, SourceEvent } from '@full-event-calendar/shared-ts'
+import { EventClass, FComponent, Group, SourceEvent } from '@roozaneh/shared-ts'
 import { Show, createUniqueId } from 'solid-js'
 import { useResize } from '../../../hooks/eventResize'
-import { EventImpl, getEventSourceFromTz } from '@full-event-calendar/utils'
+import { EventImpl, getEventSourceFromTz } from '@roozaneh/utils'
 import { EventItem } from '../../EventItem/EventItem'
 import './TimeRange.scss'
-import { calendarLocale } from '@full-event-calendar/locale'
+import { calendarLocale } from '@roozaneh/locale'
 
 interface TimeRangeProps {
   onAddEvent: (event: EventClass) => void

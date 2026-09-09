@@ -1,12 +1,12 @@
 import { useGlobalState } from '../context-injector/context.jsx'
 import { CalendarHeader } from './CalendarHeader/CalendarHeader.jsx'
 import { createMemo } from 'solid-js'
-import { EventClass, SourceEvent } from '@full-event-calendar/shared-ts'
+import { EventClass, SourceEvent } from '@roozaneh/shared-ts'
 import { GridModes } from '../api/CalendarImpl.js'
 import { Dynamic } from 'solid-js/web'
 import './App.scss'
 import { SliderWrapper } from './SliderWrapper/SliderWrapper.jsx'
-import { EventImpl, getLocaleLanguage, getTextDirection } from '@full-event-calendar/utils'
+import { EventImpl, getLocaleLanguage, getTextDirection } from '@roozaneh/utils'
 export function App() {
   const data = useGlobalState()
 
@@ -76,10 +76,10 @@ export function App() {
   return (
     <>
       <div
-        class={`full-event-calendar-core calendar-theme-${data.store.theme} ${isRtl() ? 'fec-rtl' : 'fec-ltr'} ${
+        class={`roozaneh-core calendar-theme-${data.store.theme} ${isRtl() ? 'fec-rtl' : 'fec-ltr'} ${
           getLocaleLanguage(data.store.locale) === 'fa' ? 'fec-locale-fa' : ''
         } ${data.store.className ?? ''}`}
-        id="full-event-calendar-core"
+        id="roozaneh-core"
         dir={direction()}
         style={`height:${data.store.containerHeight}px`}
       >

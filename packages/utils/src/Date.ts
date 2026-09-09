@@ -1,4 +1,4 @@
-import { EventClass } from '@full-event-calendar/shared-ts'
+import { EventClass } from '@roozaneh/shared-ts'
 import { areDatesInTheSameDate, formatNumber } from '.'
 
 export function floorDate(date: Date) {
@@ -24,17 +24,19 @@ export function isDateToday(date: Date) {
   return areDatesInTheSameDate(date, new Date())
 }
 
-function addZeroPadd(locale:string,num: number) {
-  return num < 10 ? formatNumber(locale,'0') + `${formatNumber(locale,num)}` : formatNumber(locale,num)
+function addZeroPadd(locale: string, num: number) {
+  return num < 10 ? formatNumber(locale, '0') + `${formatNumber(locale, num)}` : formatNumber(locale, num)
 }
 
-export function getEventTimeRange(event: EventClass,locale:string) {
-  return `${addZeroPadd(locale,event.start.getHours())}:${addZeroPadd(locale,event.start.getMinutes())} - ${addZeroPadd(locale,
-    event.end.getHours()
-  )}:${addZeroPadd(locale,event.end.getMinutes())}`
+export function getEventTimeRange(event: EventClass, locale: string) {
+  return `${addZeroPadd(locale, event.start.getHours())}:${addZeroPadd(
+    locale,
+    event.start.getMinutes()
+  )} - ${addZeroPadd(locale, event.end.getHours())}:${addZeroPadd(locale, event.end.getMinutes())}`
 }
-export function getDateTimeRange(start: Date, end: Date,locale:string) {
-  return `${addZeroPadd(locale,start.getHours())}:${addZeroPadd(locale,start.getMinutes())} - ${addZeroPadd(locale,
+export function getDateTimeRange(start: Date, end: Date, locale: string) {
+  return `${addZeroPadd(locale, start.getHours())}:${addZeroPadd(locale, start.getMinutes())} - ${addZeroPadd(
+    locale,
     end.getHours()
-  )}:${addZeroPadd(locale,end.getMinutes())}`
+  )}:${addZeroPadd(locale, end.getMinutes())}`
 }

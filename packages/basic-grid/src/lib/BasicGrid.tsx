@@ -1,16 +1,16 @@
 import { For, Show, createMemo, mergeProps, onMount } from 'solid-js'
-import type { FComponent, SourceEvent, EventClass, DraggedData } from '@full-event-calendar/shared-ts'
+import type { FComponent, SourceEvent, EventClass, DraggedData } from '@roozaneh/shared-ts'
 import { createLinesOfColum } from '../utils/coleLine'
 import { userDragger } from '../hooks/eventDragging'
 import { useResize } from '../hooks/eventResize'
 import { TimeBar } from './TimeBar/TimeBar'
 import { lookForAvailableWith } from '../utils/coleLine'
 import './basicGrid.scss'
-import { getDateTimeRange, isDateToday, useSlotModal, useCalenderContainerState } from '@full-event-calendar/utils'
+import { getDateTimeRange, isDateToday, useSlotModal, useCalenderContainerState } from '@roozaneh/utils'
 import { EventItem } from './EventItem/EventItem'
 // import { TimeRange } from './TimeRange/TimeRange'
 import { TimeRanges } from './TimeRange/TimeRanges'
-import { Group } from '@full-event-calendar/shared-ts'
+import { Group } from '@roozaneh/shared-ts'
 export interface BasicGridProps {
   events?: EventClass[]
   onEventUpdate?: (event: SourceEvent, dragData?: DraggedData) => void

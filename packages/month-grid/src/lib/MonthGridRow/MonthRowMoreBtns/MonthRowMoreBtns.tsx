@@ -1,5 +1,5 @@
-import { FComponent } from '@full-event-calendar/shared-ts'
-import { formatNumber, getFirstDayOfWeek } from '@full-event-calendar/utils'
+import { FComponent } from '@roozaneh/shared-ts'
+import { formatNumber, getFirstDayOfWeek } from '@roozaneh/utils'
 import { MonthDateObject } from '../../MonthGrid'
 import { For, Show } from 'solid-js'
 import { getExtraRowsCount } from '../../..'

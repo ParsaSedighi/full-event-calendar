@@ -1,17 +1,17 @@
 //types
-import { EventClass, FComponent, Group, SourceEvent } from '@full-event-calendar/shared-ts'
+import { EventClass, FComponent, Group, SourceEvent } from '@roozaneh/shared-ts'
 //solid.js
 import { mergeProps } from 'solid-js'
 //components
-import { GroupGrid } from '@full-event-calendar/group-grid'
-import { DailyTimeRanges } from '@full-event-calendar/daily-grid'
-import { BasicGrid } from '@full-event-calendar/basic-grid'
+import { GroupGrid } from '@roozaneh/group-grid'
+import { DailyTimeRanges } from '@roozaneh/daily-grid'
+import { BasicGrid } from '@roozaneh/basic-grid'
 //utils
 import { WeeklyAllDayHeader } from './WeeklyHeader/WeeklyAllDayHeader'
 // Styles
 import './WeekGrid.scss'
 import { useWeekCols } from './WeekCols'
-import { getFirstDayOfWeek, getWeekDates, useCalenderContainerState } from '@full-event-calendar/utils'
+import { getFirstDayOfWeek, getWeekDates, useCalenderContainerState } from '@roozaneh/utils'
 
 export interface WeeklyGridProps {
   events?: EventClass[]

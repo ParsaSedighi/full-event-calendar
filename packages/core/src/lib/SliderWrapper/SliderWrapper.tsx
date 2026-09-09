@@ -1,6 +1,6 @@
 import { onMount } from 'solid-js'
 import { useGridSliderAnimation } from './hooks/GridSliderAnimation'
-import { FComponent } from '@full-event-calendar/shared-ts'
+import { FComponent } from '@roozaneh/shared-ts'
 import './SliderWrapper.scss'
 
 export const SliderWrapper: FComponent = (props) => {
@@ -15,7 +15,7 @@ export const SliderWrapper: FComponent = (props) => {
   })
   return (
     <div ref={calendarContainerRef} style="position:relative;flex: 1;" id="calendar-container">
-      <div ref={containerRef} class="fec-not-cloned fec-grid-wrapper" id="full-event-calendar-wrapper">
+      <div ref={containerRef} class="fec-not-cloned fec-grid-wrapper" id="roozaneh-wrapper">
         {props.children}
       </div>
     </div>

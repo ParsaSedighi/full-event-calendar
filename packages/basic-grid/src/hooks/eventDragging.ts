@@ -1,9 +1,9 @@
 import { createSignal, batch, onCleanup } from 'solid-js'
-import { EventClass } from '@full-event-calendar/shared-ts'
+import { EventClass } from '@roozaneh/shared-ts'
 
 import { CalendarDragger } from './newDragging'
-import { DomController, NewDraggingController, useCalenderContainerState } from '@full-event-calendar/utils'
-// import { DomController } from '@full-event-calendar/utils/src/Drag/DomController'
+import { DomController, NewDraggingController, useCalenderContainerState } from '@roozaneh/utils'
+// import { DomController } from '@roozaneh/utils/src/Drag/DomController'
 
 export function userDragger(
   gridRef: any,

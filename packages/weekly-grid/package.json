@@ -1,7 +1,7 @@
 {
-  "name": "@full-event-calendar/weekly-grid",
-  "version": "0.0.3",
-  "description": "A grid",
+  "name": "@roozaneh/weekly-grid",
+  "version": "0.1.0",
+  "description": "Weekly view plugin for roozaneh.",
   "main": "dist/index.cjs",
   "module": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -11,7 +11,6 @@
     "calendar drag n drop"
   ],
   "author": "Amirkian Adl <amircc1200@gmail.com>",
-  "homepage": "https://github.com/persianpack/full-event-calendar#readme",
   "license": "MIT",
   "type": "module",
   "files": [
@@ -21,16 +20,8 @@
   "publishConfig": {
     "access": "public"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/persianpack/full-event-calendar.git",
-    "directory": "packages/weekly-grid"
-  },
-  "bugs": {
-    "url": "https://github.com/persianpack/full-event-calendar/issues"
-  },
   "devDependencies": {
-    "@full-event-calendar/shared-ts": "workspace:*",
+    "@roozaneh/shared-ts": "workspace:*",
     "framer-motion": "^10.16.1"
   },
   "scripts": {
@@ -43,12 +34,12 @@
   },
   "dependencies": {
     "esbuild-sass-plugin": "^2.16.0",
-    "@full-event-calendar/group-grid": "workspace:*",
-    "@full-event-calendar/utils": "workspace:*",
-    "@full-event-calendar/basic-grid": "workspace:*",
-    "@full-event-calendar/daily-grid": "workspace:*",
-    "@full-event-calendar/month-grid": "workspace:*",
-    "@full-event-calendar/locale": "workspace:^"
+    "@roozaneh/group-grid": "workspace:*",
+    "@roozaneh/utils": "workspace:*",
+    "@roozaneh/basic-grid": "workspace:*",
+    "@roozaneh/daily-grid": "workspace:*",
+    "@roozaneh/month-grid": "workspace:*",
+    "@roozaneh/locale": "workspace:^"
   },
   "peerDependencies": {
     "solid-js": ">=1.0.0"

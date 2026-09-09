@@ -1,5 +1,5 @@
-import { EventClass, FComponent } from '@full-event-calendar/shared-ts'
-import { detectLeftButton, formatRange, getDateTimeRange, getEventTimeRange, useSlot } from '@full-event-calendar/utils'
+import { EventClass, FComponent } from '@roozaneh/shared-ts'
+import { detectLeftButton, formatRange, getDateTimeRange, getEventTimeRange, useSlot } from '@roozaneh/utils'
 import './EventItem.scss'
 import { Show, createMemo } from 'solid-js'
 interface EventItem {

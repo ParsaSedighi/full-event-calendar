@@ -1,17 +1,17 @@
 // Types
-import { EventClass, FComponent, Group, SourceEvent } from '@full-event-calendar/shared-ts'
+import { EventClass, FComponent, Group, SourceEvent } from '@roozaneh/shared-ts'
 // Styles
 import './WeeklyAllDayHeader.scss'
 // Utils
-import { filterEventsByDateRange, sortEventByStart } from '@full-event-calendar/utils'
-import { MonthEventPreview, addEventsToRows } from '@full-event-calendar/month-grid'
+import { filterEventsByDateRange, sortEventByStart } from '@roozaneh/utils'
+import { MonthEventPreview, addEventsToRows } from '@roozaneh/month-grid'
 // solid.js
 import { For, createMemo, createSignal, onMount } from 'solid-js'
 import { OpenAllDayBtn } from './OpenAllDayBtn/OpenAllDayBtn'
 import { DateCol } from './DateCol/DateCol'
 import { ShowMoreBtns } from './ShowMoreBtns/ShowMoreBtns'
 import { useContainerAnimtion } from '../openWithAnimtion'
-import { DailyHeader } from '@full-event-calendar/daily-grid'
+import { DailyHeader } from '@roozaneh/daily-grid'
 
 interface WeeklyAllDayHeaderProps {
   events: EventClass[]

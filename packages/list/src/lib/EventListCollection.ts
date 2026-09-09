@@ -1,5 +1,5 @@
-import { EventClass } from '@full-event-calendar/shared-ts'
-import { EventModeFilter, extractMonthDates, formatDDMMYYYY, getWeekDates } from '@full-event-calendar/utils'
+import { EventClass } from '@roozaneh/shared-ts'
+import { EventModeFilter, extractMonthDates, formatDDMMYYYY, getWeekDates } from '@roozaneh/utils'
 
 type Modes = 'day' | 'week' | 'month'
 

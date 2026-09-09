@@ -1,9 +1,9 @@
 // official grid plugins re-exported with react friendly types so
-// everything the calendar needs can be imported from '@full-event-calendar/react'
-import { DailyGridPlugin as DailyGridPluginImpl } from '@full-event-calendar/daily-grid'
-import { WeeklyGridPlugin as WeeklyGridPluginImpl } from '@full-event-calendar/weekly-grid'
-import { MonthGridPlugin as MonthGridPluginImpl } from '@full-event-calendar/month-grid'
-import { ListPlugin as ListPluginImpl } from '@full-event-calendar/list'
+// everything the calendar needs can be imported from 'roozaneh'
+import { DailyGridPlugin as DailyGridPluginImpl } from '@roozaneh/daily-grid'
+import { WeeklyGridPlugin as WeeklyGridPluginImpl } from '@roozaneh/weekly-grid'
+import { MonthGridPlugin as MonthGridPluginImpl } from '@roozaneh/month-grid'
+import { ListPlugin as ListPluginImpl } from '@roozaneh/list'
 import type { GridMode } from './types'
 
 /** a calendar grid plugin */

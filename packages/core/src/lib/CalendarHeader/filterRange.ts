@@ -1,6 +1,6 @@
-import { EventClass } from '@full-event-calendar/shared-ts'
+import { EventClass } from '@roozaneh/shared-ts'
 import { CalendarState } from '../../store/store'
-import { getCalendarMonthDays, getFirstDayOfWeek, getWeekDates } from '@full-event-calendar/utils'
+import { getCalendarMonthDays, getFirstDayOfWeek, getWeekDates } from '@roozaneh/utils'
 
 interface Formater {
   proccess: (calendarState: CalendarState) => string

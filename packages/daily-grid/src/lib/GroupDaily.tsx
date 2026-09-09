@@ -1,12 +1,12 @@
-import { EventClass, FComponent, Group } from '@full-event-calendar/shared-ts'
+import { EventClass, FComponent, Group } from '@roozaneh/shared-ts'
 import { DailyGrid, DailyGridProps, dailyDefaultProps } from './DailyGrid'
-import { GroupGrid } from '@full-event-calendar/group-grid'
+import { GroupGrid } from '@roozaneh/group-grid'
 import './GroupDaily.scss'
 import { DailyTimeRanges } from '..'
 import { GroupDailyHeader } from './GroupDailyHeader/GroupDailyHeader'
 import { DailyCols } from './DailyCols'
 import { mergeProps } from 'solid-js'
-import { useCalenderContainerState } from '@full-event-calendar/utils'
+import { useCalenderContainerState } from '@roozaneh/utils'
 
 export interface GroupDailyProps extends DailyGridProps {
   groups?: Group[]

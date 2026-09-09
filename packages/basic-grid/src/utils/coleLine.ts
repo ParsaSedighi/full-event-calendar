@@ -1,4 +1,4 @@
-import { EventClass } from '@full-event-calendar/shared-ts'
+import { EventClass } from '@roozaneh/shared-ts'
 
 interface ColList {
   [key: number]: EventClass[]

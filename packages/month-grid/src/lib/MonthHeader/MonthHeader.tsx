@@ -1,7 +1,7 @@
-import { FComponent } from '@full-event-calendar/shared-ts'
+import { FComponent } from '@roozaneh/shared-ts'
 import { For, Show } from 'solid-js'
 import { MonthDateObject } from '../MonthGrid'
-import { formatWeekDays, useSlot } from '@full-event-calendar/utils'
+import { formatWeekDays, useSlot } from '@roozaneh/utils'
 import './MonthHeader.scss'
 
 interface ModalHeaderProps {

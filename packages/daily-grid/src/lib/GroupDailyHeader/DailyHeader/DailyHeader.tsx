@@ -1,6 +1,6 @@
-import type { FComponent } from '@full-event-calendar/shared-ts'
+import type { FComponent } from '@roozaneh/shared-ts'
 import './DailyHeader.scss'
-import { formatDayNumber, formatWeekDays, isDateToday } from '@full-event-calendar/utils'
+import { formatDayNumber, formatWeekDays, isDateToday } from '@roozaneh/utils'
 
 export interface DailyHeaderProps {
   headerDate: Date
@@ -11,15 +11,19 @@ export interface DailyHeaderProps {
 }
 // the dates pass throw here are assumed that is not converted by timezone so we convert it here
 export const DailyHeader: FComponent<DailyHeaderProps> = (props) => {
-  function headerClick(e:MouseEvent){
+  function headerClick(e: MouseEvent) {
     e.stopPropagation()
     e.preventDefault()
     props.onDateChange(props.headerDate)
   }
   return (
     <div class={`fec-daily-header ${isDateToday(props.headerDate) ? 'fec-daily-header-today' : ' '}`}>
-      <div class="fec-weekend-narrow">{formatWeekDays(props.headerDate, props.calendar, props.timeZone, props.locale)}</div>
-      <div onClick={headerClick} class="fec-week-day">{formatDayNumber(props.locale, props.calendar, props.timeZone, props.headerDate)}</div>
+      <div class="fec-weekend-narrow">
+        {formatWeekDays(props.headerDate, props.calendar, props.timeZone, props.locale)}
+      </div>
+      <div onClick={headerClick} class="fec-week-day">
+        {formatDayNumber(props.locale, props.calendar, props.timeZone, props.headerDate)}
+      </div>
     </div>
   )
 }

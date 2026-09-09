@@ -1,7 +1,7 @@
 import React, { Component, ComponentType, createElement, createRef, isValidElement, PureComponent } from 'react'
 import type { ReactElement } from 'react'
 import { createPortal, flushSync } from 'react-dom'
-import { Calendar } from '@full-event-calendar/core/dist/index.js'
+import { Calendar } from '@roozaneh/core/dist/index.js'
 import equal from 'fast-deep-equal'
 import type {
   CalendarApi,

@@ -1,7 +1,7 @@
 // Components
-import { BasicGrid } from '@full-event-calendar/basic-grid'
+import { BasicGrid } from '@roozaneh/basic-grid'
 // Types
-import { EventClass, FComponent, Group, SourceEvent } from '@full-event-calendar/shared-ts'
+import { EventClass, FComponent, Group, SourceEvent } from '@roozaneh/shared-ts'
 // solid.js
 import { createMemo, mergeProps } from 'solid-js'
 // utils

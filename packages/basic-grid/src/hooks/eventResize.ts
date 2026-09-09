@@ -1,7 +1,7 @@
-import { EventClass, SourceEvent } from '@full-event-calendar/shared-ts'
+import { EventClass, SourceEvent } from '@roozaneh/shared-ts'
 import { CalendarDragger, drageModes } from './newDragging'
 import { createSignal } from 'solid-js'
-import { useCalenderContainerState } from '@full-event-calendar/utils'
+import { useCalenderContainerState } from '@roozaneh/utils'
 
 export function useResize(
   drageMode: drageModes,

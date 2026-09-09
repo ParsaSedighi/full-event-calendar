@@ -1,5 +1,5 @@
-import { EventClass } from '@full-event-calendar/shared-ts'
-import { NewDraggingController, useCalenderContainerState } from '@full-event-calendar/utils'
+import { EventClass } from '@roozaneh/shared-ts'
+import { NewDraggingController, useCalenderContainerState } from '@roozaneh/utils'
 import { createSignal } from 'solid-js'
 import { DraggerTypes, RowDragger } from './RowDragger'
 

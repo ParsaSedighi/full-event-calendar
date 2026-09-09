@@ -1,5 +1,5 @@
-import { EventClass } from '@full-event-calendar/shared-ts'
-import { getEventsInDate } from '@full-event-calendar/utils'
+import { EventClass } from '@roozaneh/shared-ts'
+import { getEventsInDate } from '@roozaneh/utils'
 import { createMutable } from 'solid-js/store'
 
 interface ColumData {
@@ -36,7 +36,7 @@ class WeeklyGroup extends Group {
     for (let index = 0; index < 7; index++) {
       const y = { props: { events: [], initialDate: null, locale: null, timeZone: null, calendar: null } }
       this.addRow(y)
- 
+
       const dayNumber = iniDay.getDay()
       const extractedEvents = getEventsInDate(mergedProps.events, new Date(iniDay))
       this.editRow(

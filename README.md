@@ -1,18 +1,10 @@
 
-# Full Event Calendar
-
-<img src="https://github.com/persianpack/full-event-calendar/blob/main/docs/public/image0.png" alt="full-event-calendar-v" width="400px" style="border-radius: 14px"><img src="https://github.com/persianpack/full-event-calendar/blob/main/docs/public/video1.gif" alt="full-event-calendar" width="400px" style="border-radius: 14px;margin-left: 10px;">
+# Roozaneh
 
 ## About
-Full Event Calendar is a simple, lightweight, and fast event calendar that renders in any framework or library. It supports 18 calendars and 100 locales, powered by [Solid.js](https://solidjs.com/) and [Intl](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl).
+Roozaneh (Persian: روزانه) is a fork of [full-event-calendar](https://github.com/persianpack/full-event-calendar) by persianpack, continued as a simple, lightweight, and fast event calendar for React. It supports 18 calendars and 100 locales, powered by [Solid.js](https://solidjs.com/) and [Intl](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl).
 
 Inspired by [FullCalendar](https://fullcalendar.io/) and [ClickUp](https://clickup.com/).
-## Demo
-Check out Live demo at [**_https://persianpack.github.io/full-event-calendar/ex.html_**](https://persianpack.github.io/full-event-calendar/ex.html) and full Docs at [**_https://persianpack.github.io/full-event-calendar/_**](https://persianpack.github.io/full-event-calendar/)
-<!-- https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Locale/getCalendars#supported_calendar_types -->
-Connectors:
-
-- [React](https://github.com/persianpack/full-event-calendar/tree/main/packages/react)
 
 ## Features
 - ✔️ Built with typescript and [**_solid.js_**](https://www.solidjs.com/)(fastest ui library).
@@ -29,7 +21,6 @@ Connectors:
 
 # Table of Contents
 
-- [**_Demo_**](#demo)
 - [**_Installation_**](#installation)
 - [**_Basic Usage_**](#basic-usage)
 - [**_Api_**](#Api)
@@ -45,18 +36,18 @@ Connectors:
 ## Installation
 
 ```
-npm i @full-event-calendar/core @full-event-calendar/daily-grid
+npm i @roozaneh/core @roozaneh/daily-grid
 ```
 or
 ```
-pnpm i @full-event-calendar/core @full-event-calendar/daily-grid
+pnpm i @roozaneh/core @roozaneh/daily-grid
 ```
 NOTE : <ins> atleast 1 plugin must be provided </ins>
 available grid plugins:
-  - `@full-event-calendar/daily-grid` - daily view
-  - `@full-event-calendar/weekly-grid` - weekly view
-  - `@full-event-calendar/month-grid` - month view
-  - `@full-event-calendar/list` - list view
+  - `@roozaneh/daily-grid` - daily view
+  - `@roozaneh/weekly-grid` - weekly view
+  - `@roozaneh/month-grid` - month view
+  - `@roozaneh/list` - list view
 
 ## Basic Usage
 
@@ -64,13 +55,13 @@ A simple vanill example would be like this :
 
 Check out [**__Options__**](#props) for properites
 
-[**__React usage__**](#https://github.com/persianpack/full-event-calendar/tree/main/packages/react#basic-usage)
+For the React wrapper, see [packages/react/README.md](packages/react/README.md).
 
 Vanilla JS:
 ```js
 //main.js
-import { Calendar } from '@full-event-calendar/core'
-import { DailyGridPlugin } from '@full-event-calendar/daily-grid'
+import { Calendar } from '@roozaneh/core'
+import { DailyGridPlugin } from '@roozaneh/daily-grid'
 
 const el = document.getElementById('app')
 
@@ -173,16 +164,16 @@ The `Calendar` class represents a calendar component that can be rendered in a s
  - Type : Array
  - Required
   An array of grid plugins for the event calendar different grid views<ins> atleast 1 plugin must be provided </ins> available grid plugins:
-  - `@full-event-calendar/daily-grid` - daily view
-  - `@full-event-calendar/weekly-grid` - weekly view
-  - `@full-event-calendar/month-grid` - month view
-  - `@full-event-calendar/list` - list view
+  - `@roozaneh/daily-grid` - daily view
+  - `@roozaneh/weekly-grid` - weekly view
+  - `@roozaneh/month-grid` - month view
+  - `@roozaneh/list` - list view
 
   ```js
-  import { DailyGridPlugin } from '@full-event-calendar/daily-grid'
-  import { WeeklyGridPlugin } from '@full-event-calendar/weekly-grid'
-  import { MonthGridPlugin } from '@full-event-calendar/month-grid'
-  import { ListPlugin } from '@full-event-calendar/list'
+  import { DailyGridPlugin } from '@roozaneh/daily-grid'
+  import { WeeklyGridPlugin } from '@roozaneh/weekly-grid'
+  import { MonthGridPlugin } from '@roozaneh/month-grid'
+  import { ListPlugin } from '@roozaneh/list'
   // ...
    plugins: [DailyGridPlugin, WeeklyGridPlugin, MonthGridPlugin, ListPlugin],
   // ..
@@ -639,4 +630,4 @@ $ pnpm run dev
 `vanilla-examples:dev:   ➜  Local:   http://localhost:5174`
 ## License
 
-full-event-calendar is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+roozaneh is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).

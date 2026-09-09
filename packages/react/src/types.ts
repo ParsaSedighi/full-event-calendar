@@ -1,5 +1,5 @@
 import type { ComponentType, ReactElement } from 'react'
-import type { CalendarSourceOptions } from '@full-event-calendar/core/dist/index.js'
+import type { CalendarSourceOptions } from '@roozaneh/core/dist/index.js'
 
 // ---------------------------------------------------------------------------
 // core option types (structurally identical to the calendar's own types so

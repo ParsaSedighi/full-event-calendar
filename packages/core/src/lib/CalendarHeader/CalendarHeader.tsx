@@ -1,12 +1,12 @@
 import { For, Show, createMemo, createSignal, onCleanup } from 'solid-js'
 import './CalendarHeader.scss'
-import { FComponent } from '@full-event-calendar/shared-ts'
+import { FComponent } from '@roozaneh/shared-ts'
 import { useGlobalState } from '../../context-injector/context'
 import { GridModes } from '../../api/CalendarImpl'
 import { Transition } from 'solid-transition-group'
 import { HeaderFormat } from './filterRange'
-import { calendarLocale } from '@full-event-calendar/locale'
-import { getTextDirection, useSlot } from '@full-event-calendar/utils'
+import { calendarLocale } from '@roozaneh/locale'
+import { getTextDirection, useSlot } from '@roozaneh/utils'
 interface CalendarHeader {
   onDateChange: (d: Date) => void
   changeGrid: (grid: GridModes) => void

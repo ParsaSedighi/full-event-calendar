@@ -17,7 +17,7 @@
     /* demo imports the package by name - map it to the source */
     "baseUrl": ".",
     "paths": {
-      "@full-event-calendar/react": ["./src/index.ts"]
+      "roozaneh": ["./src/index.ts"]
     },
 
     /* Linting */

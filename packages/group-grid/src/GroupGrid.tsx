@@ -1,11 +1,11 @@
 // Types
-import { EventClass, FComponent } from '@full-event-calendar/shared-ts'
+import { EventClass, FComponent } from '@roozaneh/shared-ts'
 // Solid.js
 import { Dynamic } from 'solid-js/web'
 import { createMemo, mapArray, mergeProps } from 'solid-js'
 // Utils
 import { whichColumWasDropped } from './utils/col'
-import { useCalenderContainerState } from '@full-event-calendar/utils'
+import { useCalenderContainerState } from '@roozaneh/utils'
 
 interface GroupGridProps {
   initialDate?: Date

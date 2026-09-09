@@ -1,5 +1,5 @@
 import { createSignal, onCleanup, onMount } from 'solid-js'
-import { FComponent } from '@full-event-calendar/shared-ts'
+import { FComponent } from '@roozaneh/shared-ts'
 import './TimeBar.scss'
 
 export const TimeBar: FComponent<{ container: any }> = (props) => {

@@ -1,10 +1,10 @@
 //types
-import { EventClass, FComponent } from '@full-event-calendar/shared-ts'
+import { EventClass, FComponent } from '@roozaneh/shared-ts'
 //solid.js
 import { For, Show, createMemo, mergeProps } from 'solid-js'
 //utils
-import { calendarLocale } from '@full-event-calendar/locale'
-import { formatDD, formatDM, formatRange, getFirstDayOfWeek, useSlot, useSlotModal } from '@full-event-calendar/utils'
+import { calendarLocale } from '@roozaneh/locale'
+import { formatDD, formatDM, formatRange, getFirstDayOfWeek, useSlot, useSlotModal } from '@roozaneh/utils'
 
 import { GroupEventMap } from './lib/EventListCollection'
 // Styles

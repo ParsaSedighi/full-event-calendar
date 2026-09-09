@@ -1,6 +1,6 @@
 import { createEffect, on, onCleanup, onMount } from 'solid-js'
 import { useGlobalState } from '../../../context-injector/context'
-import { useCalenderContainerState } from '@full-event-calendar/utils'
+import { useCalenderContainerState } from '@roozaneh/utils'
 
 interface containers {
   containerRef: any
@@ -71,28 +71,27 @@ export function useGridSliderAnimation(containers: containers) {
       makeClone()
     })
     const container = useCalenderContainerState()
- 
-    if(container){
+
+    if (container) {
       // call `observe()`, passing it the element to observe, and the options object
-      observer.observe(container.querySelector('#full-event-calendar-wrapper') as HTMLElement, {
+      observer.observe(container.querySelector('#roozaneh-wrapper') as HTMLElement, {
         subtree: true,
         childList: true,
         attributes: true
       })
-
     }
   })
   const scrollContainer = containers.containerRef.querySelector('.fec-scroll-wrapper')
-  if(scrollContainer){
+  if (scrollContainer) {
     containers.containerRef.querySelector('.fec-scroll-wrapper').addEventListener('scroll', makeClone)
   }
 
   function addListners() {
-  const scrollContainer = containers.containerRef.querySelector('.fec-scroll-wrapper')
-  if(scrollContainer){
-    containers.containerRef.querySelector('.fec-scroll-wrapper')?.removeEventListener('scroll', makeClone)
-    containers.containerRef.querySelector('.fec-scroll-wrapper')?.addEventListener('scroll', makeClone)
-  }
+    const scrollContainer = containers.containerRef.querySelector('.fec-scroll-wrapper')
+    if (scrollContainer) {
+      containers.containerRef.querySelector('.fec-scroll-wrapper')?.removeEventListener('scroll', makeClone)
+      containers.containerRef.querySelector('.fec-scroll-wrapper')?.addEventListener('scroll', makeClone)
+    }
   }
 
   onCleanup(() => {

@@ -1,7 +1,7 @@
 import useRedux from '../store/useRedux'
 import type { Dispatch } from 'redux'
 import { CalendarState, StoreActions } from '../store/store'
-import { Group, SourceEvent } from '@full-event-calendar/shared-ts'
+import { Group, SourceEvent } from '@roozaneh/shared-ts'
 import { RenderStore } from './RenderStore.ts'
 import EventCollection, { EventPayLoads, EventTypes } from './Collection.ts'
 interface CalendarApi {

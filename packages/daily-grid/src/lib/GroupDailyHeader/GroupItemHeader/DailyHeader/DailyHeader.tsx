@@ -1,6 +1,6 @@
-import type { FComponent } from '@full-event-calendar/shared-ts'
+import type { FComponent } from '@roozaneh/shared-ts'
 import './DailyHeader.scss'
-import { formatDayNumber, formatWeekDays, isDateToday, useSlot } from '@full-event-calendar/utils'
+import { formatDayNumber, formatWeekDays, isDateToday, useSlot } from '@roozaneh/utils'
 import { Show } from 'solid-js'
 
 export interface DailyHeaderProps {

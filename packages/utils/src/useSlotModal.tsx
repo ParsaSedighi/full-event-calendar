@@ -1,4 +1,4 @@
-import { EventClass } from '@full-event-calendar/shared-ts'
+import { EventClass } from '@roozaneh/shared-ts'
 
 import { createSignal, onCleanup, onMount } from 'solid-js'
 import { useCalenderContainerState, useSlot } from '.'

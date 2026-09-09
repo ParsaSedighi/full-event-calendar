@@ -1,6 +1,6 @@
-import { FComponent } from '@full-event-calendar/shared-ts'
+import { FComponent } from '@roozaneh/shared-ts'
 import { MonthEventPreview } from '../..'
-import { NewDraggingController } from '@full-event-calendar/utils'
+import { NewDraggingController } from '@roozaneh/utils'
 import { MonthDateObject } from '../MonthGrid'
 import { MonthEventRows } from './MonthRowEvents/MonthEventRows'
 import { MonthRowMoreBtns } from './MonthRowMoreBtns/MonthRowMoreBtns'
@@ -24,7 +24,6 @@ interface MonthGridRowProps {
 }
 
 export const MonthGridRow: FComponent<MonthGridRowProps> = (props) => {
-
   return (
     <div class="fec-month-row">
       <div class="fec-dragging-wrapper">
@@ -39,36 +38,35 @@ export const MonthGridRow: FComponent<MonthGridRowProps> = (props) => {
           endDate={props.monthRowDates[6].date}
         />
       </div>
-        {/* rows of event , maxed out to row limit */}
-        <MonthEventRows
-          locale={props.locale}
-          monthRowIndex={props.monthRowIndex}
-          monthRowDates={props.monthRowDates}
-          rowLimit={props.rowLimit}
-          monthRowData={props.monthRowData}
-          onDragEnd={props.onDragEnd}
-          onDragStart={props.onDragStart}
-          eventClick={props.eventClick}
-        />
-        {/* for showing more bts */}
-        <MonthRowMoreBtns
-          locale={props.locale}
-          monthRowDates={props.monthRowDates}
-          rowLimit={props.rowLimit} 
-          monthRowData={props.monthRowData}
-          openModalEvents={props.openModalEvents}
-        />
-        {/* the data contaner */}
-        <MonthDateContainer
-          locale={props.locale}
-          monthRowIndex={props.monthRowIndex}
-          monthRowDates={props.monthRowDates}
-          calendar={props.calendar}
-          dragClick={props.dragClick}
-          monthDateMouseDown={props.monthDateMouseDown}
-          onMouseEnter={props.onMouseEnter}
-        />
-
+      {/* rows of event , maxed out to row limit */}
+      <MonthEventRows
+        locale={props.locale}
+        monthRowIndex={props.monthRowIndex}
+        monthRowDates={props.monthRowDates}
+        rowLimit={props.rowLimit}
+        monthRowData={props.monthRowData}
+        onDragEnd={props.onDragEnd}
+        onDragStart={props.onDragStart}
+        eventClick={props.eventClick}
+      />
+      {/* for showing more bts */}
+      <MonthRowMoreBtns
+        locale={props.locale}
+        monthRowDates={props.monthRowDates}
+        rowLimit={props.rowLimit}
+        monthRowData={props.monthRowData}
+        openModalEvents={props.openModalEvents}
+      />
+      {/* the data contaner */}
+      <MonthDateContainer
+        locale={props.locale}
+        monthRowIndex={props.monthRowIndex}
+        monthRowDates={props.monthRowDates}
+        calendar={props.calendar}
+        dragClick={props.dragClick}
+        monthDateMouseDown={props.monthDateMouseDown}
+        onMouseEnter={props.onMouseEnter}
+      />
     </div>
   )
 }

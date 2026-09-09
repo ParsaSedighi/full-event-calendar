@@ -1,5 +1,5 @@
 import type { TodayButtonSlotProps } from '../../types'
-import { calendarLocale } from '@full-event-calendar/locale'
+import { calendarLocale } from '@roozaneh/locale'
 import { cx } from '../../utils/classNames'
 
 /** default "today" button of the calendar header.

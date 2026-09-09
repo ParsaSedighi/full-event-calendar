@@ -1,4 +1,4 @@
-import { EventClass } from '@full-event-calendar/shared-ts'
+import { EventClass } from '@roozaneh/shared-ts'
 import { extractMonthDates, filterEventsByDateRange, getEventsInDate, getWeekDates, sortEventByStart } from '../'
 
 interface Handle {

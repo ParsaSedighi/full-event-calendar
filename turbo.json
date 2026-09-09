@@ -15,52 +15,52 @@
       "cache": false,
       "dependsOn": ["^typecheck"]
     },
-    "@full-event-calendar/basic-grid#build": {
-      "dependsOn": ["@full-event-calendar/utils#build", "@full-event-calendar/locale#build"]
+    "@roozaneh/basic-grid#build": {
+      "dependsOn": ["@roozaneh/utils#build", "@roozaneh/locale#build"]
     },
-    "@full-event-calendar/daily-grid#build": {
-      "dependsOn": ["@full-event-calendar/shared-ts#build"]
+    "@roozaneh/daily-grid#build": {
+      "dependsOn": ["@roozaneh/shared-ts#build"]
     },
-    "@full-event-calendar/group-grid#build": {
-      "dependsOn": ["@full-event-calendar/utils#build", "@full-event-calendar/shared-ts#build"]
+    "@roozaneh/group-grid#build": {
+      "dependsOn": ["@roozaneh/utils#build", "@roozaneh/shared-ts#build"]
     },
-    "@full-event-calendar/list#build": {
-      "dependsOn": ["@full-event-calendar/utils#build", "@full-event-calendar/locale#build"]
+    "@roozaneh/list#build": {
+      "dependsOn": ["@roozaneh/utils#build", "@roozaneh/locale#build"]
     },
-    "@full-event-calendar/month-grid#build": {
-      "dependsOn": ["@full-event-calendar/utils#build", "@full-event-calendar/locale#build"]
+    "@roozaneh/month-grid#build": {
+      "dependsOn": ["@roozaneh/utils#build", "@roozaneh/locale#build"]
     },
-    "@full-event-calendar/shared-ts#build": {
+    "@roozaneh/shared-ts#build": {
       "dependsOn": []
     },
-    "@full-event-calendar/utils#build": {
-      "dependsOn": ["@full-event-calendar/shared-ts#build"]
+    "@roozaneh/utils#build": {
+      "dependsOn": ["@roozaneh/shared-ts#build"]
     },
-    "@full-event-calendar/weekly-grid#build": {
+    "@roozaneh/weekly-grid#build": {
       "dependsOn": [
-        "@full-event-calendar/utils#build",
-        "@full-event-calendar/locale#build",
-        "@full-event-calendar/month-grid#build",
-        "@full-event-calendar/daily-grid#build",
-        "@full-event-calendar/basic-grid#build",
-        "@full-event-calendar/group-grid#build"
+        "@roozaneh/utils#build",
+        "@roozaneh/locale#build",
+        "@roozaneh/month-grid#build",
+        "@roozaneh/daily-grid#build",
+        "@roozaneh/basic-grid#build",
+        "@roozaneh/group-grid#build"
       ]
     },
-    "@full-event-calendar/locale#build": {
+    "@roozaneh/locale#build": {
       "dependsOn": []
     },
 
-    "@full-event-calendar/core#build": {
+    "@roozaneh/core#build": {
       "dependsOn": [
-        "@full-event-calendar/basic-grid#build",
-        "@full-event-calendar/daily-grid#build",
-        "@full-event-calendar/group-grid#build",
-        "@full-event-calendar/list#build",
-        "@full-event-calendar/month-grid#build",
-        "@full-event-calendar/shared-ts#build",
-        "@full-event-calendar/utils#build",
-        "@full-event-calendar/weekly-grid#build",
-        "@full-event-calendar/locale#build"
+        "@roozaneh/basic-grid#build",
+        "@roozaneh/daily-grid#build",
+        "@roozaneh/group-grid#build",
+        "@roozaneh/list#build",
+        "@roozaneh/month-grid#build",
+        "@roozaneh/shared-ts#build",
+        "@roozaneh/utils#build",
+        "@roozaneh/weekly-grid#build",
+        "@roozaneh/locale#build"
       ]
     }
   },

@@ -1,4 +1,4 @@
-import { EventClass } from '@full-event-calendar/shared-ts'
+import { EventClass } from '@roozaneh/shared-ts'
 import { ceilDate, floorDate } from '..'
 
 interface Event {

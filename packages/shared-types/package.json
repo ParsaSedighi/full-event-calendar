@@ -1,7 +1,7 @@
 {
-  "name": "@full-event-calendar/shared-ts",
-  "version": "0.0.3",
-  "description": "A grid",
+  "name": "@roozaneh/shared-ts",
+  "version": "0.1.0",
+  "description": "Shared TypeScript types for roozaneh packages.",
   "main": "dist/index.cjs",
   "module": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -11,7 +11,6 @@
     "calendar drag n drop"
   ],
   "author": "Amirkian Adl <amircc1200@gmail.com>",
-  "homepage": "https://github.com/persianpack/full-event-calendar#readme",
   "license": "MIT",
   "type": "module",
   "files": [
@@ -20,14 +19,6 @@
   "sideEffects": false,
   "publishConfig": {
     "access": "public"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/persianpack/full-event-calendar.git",
-    "directory": "packages/shared-grid"
-  },
-  "bugs": {
-    "url": "https://github.com/persianpack/full-event-calendar/issues"
   },
   "devDependencies": {
     "framer-motion": "^10.16.1"

@@ -1,11 +1,6 @@
-import { EventClass } from '@full-event-calendar/shared-ts'
+import { EventClass } from '@roozaneh/shared-ts'
 
-import {
-  NewDomController,
-  NewDraggingController,
-  getDateTimeRange,
-  useCalenderContainerState
-} from '@full-event-calendar/utils'
+import { NewDomController, NewDraggingController, getDateTimeRange, useCalenderContainerState } from '@roozaneh/utils'
 abstract class DraggerHandeler {
   isDragging: boolean = false
   draggingController: NewDraggingController | null = null
@@ -53,7 +48,7 @@ class DailyGridDragger extends DraggerHandeler implements Dragger {
     if (!this.draggingController) return
     if (!this.isDragging) {
       this.isDragging = true
-      this.container.querySelector('#full-event-calendar-core')?.classList.add('fec-calendar-draging')
+      this.container.querySelector('#roozaneh-core')?.classList.add('fec-calendar-draging')
       this.draggingController.setEelementOpacity('0.3')
     }
     const previewieNode = this.getPreviewNode()
@@ -77,7 +72,7 @@ class DailyGridDragger extends DraggerHandeler implements Dragger {
 
     this.isDragging = false
     if (!this.draggingController) return
-    this.container.querySelector('#full-event-calendar-core')?.classList.remove('fec-calendar-draging')
+    this.container.querySelector('#roozaneh-core')?.classList.remove('fec-calendar-draging')
   }
   getPreviewNode() {
     return this.container.querySelector(`#draging-event-${this.draggingController?.item.id}`) as HTMLElement

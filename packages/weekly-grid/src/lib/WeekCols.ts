@@ -1,7 +1,7 @@
 import { createMutable } from 'solid-js/store'
 import { columData } from './WeeklyGrid'
 import { batch, createEffect, createMemo } from 'solid-js'
-import { getEventsInDate, getFirstDayOfWeek } from '@full-event-calendar/utils'
+import { getEventsInDate, getFirstDayOfWeek } from '@roozaneh/utils'
 
 export function useWeekCols(mergedProps: any, onDateChange: any) {
   // first day of the week is resolved from the locale (fa-IR weeks start on Saturday)

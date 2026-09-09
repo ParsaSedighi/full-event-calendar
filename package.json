@@ -1,7 +1,7 @@
 {
   "private": true,
-  "name": "@full-event-calendar/root",
-  "description": "Full-event calendar with drag and drop in JavaScript",
+  "name": "@roozaneh/root",
+  "description": "Roozaneh: a full-featured event calendar for React with drag and drop",
   "version": "0.0.0",
   "type": "module",
   "keywords": [

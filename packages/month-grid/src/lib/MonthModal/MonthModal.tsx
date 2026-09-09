@@ -1,8 +1,8 @@
 // Types
-import { EventClass, FComponent } from '@full-event-calendar/shared-ts'
+import { EventClass, FComponent } from '@roozaneh/shared-ts'
 // import { MonthDateObject } from '../MonthGrid'
 // Utils
-import { formatToShortTime, rightOrLeftInDate, useCalenderContainerState } from '@full-event-calendar/utils'
+import { formatToShortTime, rightOrLeftInDate, useCalenderContainerState } from '@roozaneh/utils'
 // Solid.js
 import { For, Show, onCleanup } from 'solid-js'
 // Styles

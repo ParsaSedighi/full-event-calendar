@@ -1,4 +1,4 @@
-import { EventClass } from '@full-event-calendar/shared-ts'
+import { EventClass } from '@roozaneh/shared-ts'
 import { roundMinutesToMultipleOf5 } from '../'
 import { NewDomController } from './newUiController'
 
@@ -38,8 +38,8 @@ export class NewDraggingController extends NewDomController implements DraggingC
   Xdiff: any
   Ydiff: any
 
-  constructor(mouseEvent: MouseEvent, event: EventClass,container:HTMLElement) {
-    super(event,container)
+  constructor(mouseEvent: MouseEvent, event: EventClass, container: HTMLElement) {
+    super(event, container)
     // const target = domController.getEventNode(e.id)
     // target.style.opacity = '0'
     const targetElementRect = this.getEelementReact(mouseEvent)
@@ -91,7 +91,6 @@ export class NewDraggingController extends NewDomController implements DraggingC
 
     this.eventSourceEnd = newEndDate
     this.eventSourceStart = newStartDate
-
   }
   public shiftEndTime(miliSeconds: number) {
     const newEndDate = new Date(this.item.end.getTime() + miliSeconds)
@@ -118,7 +117,7 @@ export class NewDraggingController extends NewDomController implements DraggingC
     this.dragedStartDate = newStartDate
     this.shiftStartByDaySource(dayNumber)
   }
-  
+
   public shiftStartByDaySource(dayNumber: number) {
     const newStartDate = new Date(this.item.sourceEvent.start)
     newStartDate.setDate(newStartDate.getDate() + dayNumber)

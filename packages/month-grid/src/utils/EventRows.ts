@@ -1,5 +1,5 @@
-import { EventClass } from '@full-event-calendar/shared-ts'
-import { filterEventsByDateRange } from '@full-event-calendar/utils'
+import { EventClass } from '@roozaneh/shared-ts'
+import { filterEventsByDateRange } from '@roozaneh/utils'
 
 interface dateObjects {
   date: Date

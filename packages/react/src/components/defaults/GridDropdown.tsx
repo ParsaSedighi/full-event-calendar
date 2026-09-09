@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import type { GridDropdownSlotProps } from '../../types'
-import { calendarLocale } from '@full-event-calendar/locale'
+import { calendarLocale } from '@roozaneh/locale'
 import { cx } from '../../utils/classNames'
 
 /** default grid picker of the calendar header.

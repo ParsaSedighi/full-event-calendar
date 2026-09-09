@@ -15,9 +15,9 @@ import {
   AllDayEventCard,
   MonthWeekDayLabel,
   ListDateHeader
-} from '@full-event-calendar/react'
-import type { CalendarComponents } from '@full-event-calendar/react'
-import '@full-event-calendar/core/dist/main.css'
+} from 'roozaneh'
+import type { CalendarComponents } from 'roozaneh'
+import '@roozaneh/core/dist/main.css'
 
 import { demoGroups, makeEvents, makeRandomEvent, startOfToday } from './demo/data'
 import type { DemoEvent } from './demo/data'
@@ -274,7 +274,7 @@ function App() {
     <div className={`demo ${theme === 'dark' ? 'demo--dark' : ''}`}>
       <header className="demo-topbar">
         <h1>
-          Full Event Calendar <span>react demo</span>
+          Roozaneh <span>react demo</span>
         </h1>
         <label className="demo-check demo-check--topbar">
           <input type="checkbox" checked={customize} onChange={(e) => setCustomize(e.target.checked)} />

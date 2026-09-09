@@ -1,5 +1,5 @@
-import { EventClass } from '@full-event-calendar/shared-ts'
-import { ceilDate, floorDate, getDayColumn } from '@full-event-calendar/utils'
+import { EventClass } from '@roozaneh/shared-ts'
+import { ceilDate, floorDate, getDayColumn } from '@roozaneh/utils'
 import { createMemo } from 'solid-js'
 
 /**

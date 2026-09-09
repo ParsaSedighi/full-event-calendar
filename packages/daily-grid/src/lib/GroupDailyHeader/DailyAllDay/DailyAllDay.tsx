@@ -1,8 +1,8 @@
-import { EventClass, FComponent } from '@full-event-calendar/shared-ts'
+import { EventClass, FComponent } from '@roozaneh/shared-ts'
 import { For, Show, createEffect, createMemo, on, onMount } from 'solid-js'
 import './DailyAllDay.scss'
 
-import { formatNumber, rightOrLeftInDate, sortEventByStart, useSlot, useSlotModal } from '@full-event-calendar/utils'
+import { formatNumber, rightOrLeftInDate, sortEventByStart, useSlot, useSlotModal } from '@roozaneh/utils'
 
 interface DailyAllDayProps {
   events: EventClass[]

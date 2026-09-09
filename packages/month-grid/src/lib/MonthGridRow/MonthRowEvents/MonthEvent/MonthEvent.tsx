@@ -1,4 +1,4 @@
-import { EventClass, FComponent } from '@full-event-calendar/shared-ts'
+import { EventClass, FComponent } from '@roozaneh/shared-ts'
 import { createMemo, createSignal, Show } from 'solid-js'
 import './MonthEvent.scss'
 import { getLeftPosition, getEndPosition } from '../../../../utils/EventPosition'
@@ -8,8 +8,8 @@ import {
   rightOrLeftInDateInRange,
   useCalenderContainerState,
   useSlot
-} from '@full-event-calendar/utils'
-import { detectLeftButton } from '@full-event-calendar/utils'
+} from '@roozaneh/utils'
+import { detectLeftButton } from '@roozaneh/utils'
 interface EventProps {
   item: EventClass
   endDate: Date

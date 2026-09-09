@@ -2,7 +2,7 @@ import { Calendar } from '../Calendar'
 import { createContext, useContext } from 'solid-js'
 import type { Context } from 'solid-js'
 import { CalendarState } from '../store/store'
-import { FComponent } from '@full-event-calendar/shared-ts'
+import { FComponent } from '@roozaneh/shared-ts'
 
 const CalendarContext = createContext() as Context<ContextProvider>
 interface ContextProvider {

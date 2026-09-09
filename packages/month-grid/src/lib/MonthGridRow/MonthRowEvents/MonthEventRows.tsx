@@ -1,4 +1,4 @@
-import { FComponent } from '@full-event-calendar/shared-ts'
+import { FComponent } from '@roozaneh/shared-ts'
 import { For } from 'solid-js'
 import { MonthEvent } from '../../..'
 import { MonthDateObject } from '../../MonthGrid'

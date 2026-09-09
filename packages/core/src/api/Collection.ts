@@ -1,4 +1,4 @@
-import { EventClass, SourceEvent } from '@full-event-calendar/shared-ts'
+import { EventClass, SourceEvent } from '@roozaneh/shared-ts'
 import { GridModes } from './CalendarImpl'
 
 export type EventTypes = 'eventClicked' | 'eventUpdate' | 'eventAdd' | 'dateUpdate' | 'gridUpdate' | 'addEventStoped'
