@@ -298,16 +298,6 @@ body:has(.demo--dark) {
   pointer-events: none;
 }
 
-/* list event : hover surface around the default list row */
-.demo-list-event {
-  border-radius: 8px;
-  transition: background 0.2s;
-}
-
-.demo-list-event:hover {
-  background: rgba(49, 181, 247, 0.12);
-}
-
 /* topbar "customize sections" checkbox */
 .demo-check--topbar {
   margin: 0 12px 0 auto;

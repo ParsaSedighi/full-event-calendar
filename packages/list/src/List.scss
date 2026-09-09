@@ -94,12 +94,19 @@
           color: var(--on-surface-variant);
           min-width: 250px;
           align-items: center;
+          white-space: nowrap;
+          flex-shrink: 0;
           .fec-event-dot {
             height: 12px;
             width: 12px;
             border-radius: 50%;
             background-color: red;
           }
+        }
+        .fec-event-name-list {
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
         }
       }
     }

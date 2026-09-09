@@ -82,11 +82,7 @@ export function DemoMonthDay(props: MonthDaySlotProps) {
 
 /** the calendar's own list event row - extended with a fake join button */
 export function DemoListEvent(props: ListEventSlotProps) {
-  return (
-    <div className="demo-list-event">
-      <ListEventRow {...props} />
-    </div>
-  )
+  return <ListEventRow {...props} />
 }
 
 /** the calendar's event click modal - wired with a delete action */

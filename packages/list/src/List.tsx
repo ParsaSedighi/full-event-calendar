@@ -69,7 +69,7 @@ const ListEventRow: FComponent<{
             ? calendarLocale(props.locale, 'all_day')
             : formatRange(props.item.start, props.item.end, props.locale)}
         </div>
-        <div>{props.item.name}</div>
+        <div class="fec-event-name-list">{props.item.name}</div>
       </Show>
     </div>
   )
