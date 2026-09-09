@@ -34,7 +34,6 @@ interface rangeProps {
 }
 
 export const DailyTimeRanges: FComponent<rangeProps> = (props) => {
-
   return (
     <div class="fec-daily-time-ranges ">
       <For each={timess}>
@@ -49,24 +48,25 @@ export const DailyTimeRanges: FComponent<rangeProps> = (props) => {
     </div>
   )
 }
-const Time:FComponent<any> = (props)=>{
-
+const Time: FComponent<any> = (props) => {
   let headerSlot: any = {
     el: null
   }
- 
+
   const dd = () => {
-    return { time: props.time}
+    return { time: props.time, locale: props.locale }
   }
 
-  const { isSlotAvalibale } = useSlot(headerSlot, dd, 'timeRange', () => {})
+  const { isSlotAvalibale } = useSlot(headerSlot, dd, 'timeRange', () => [props.time, props.locale])
 
   return (
     <div ref={headerSlot.el}>
       <Show when={!isSlotAvalibale}>
-        <div class="fec-time-range-time">{(props.time && formatToShortTime(props.time as Date, props.locale)) || ''}</div>
+        <div class="fec-time-range-time">
+          {(props.time && formatToShortTime(props.time as Date, props.locale)) || ''}
+        </div>
         <div class="fec-time-range-hairline"></div>
       </Show>
-  </div>
+    </div>
   )
 }

@@ -108,38 +108,58 @@ export const CalendarHeader: FComponent<CalendarHeader> = (props) => {
   }
   const gridData = () => {
     return {
-      grid: data.store.grid
+      grid: data.store.grid,
+      grids: data.instance.getOptions(),
+      changeGrid: (grid: GridModes) => props.changeGrid(grid),
+      locale: data.instance.storeManager.locale
     }
   }
-  const { isSlotAvalibale: isHeaderDateSlotAvalibale } = useSlot(
-    headerSlot,
-    haedderData,
-    'headerDateSlot',
-    () => data.store.initialDate
-  )
-  const { isSlotAvalibale: isGridDropDownSlotAvalibale } = useSlot(
-    gridDropDown,
-    gridData,
-    'gridDropDown',
-    () => data.store.grid
-  )
+  const todayBtnData = () => {
+    return {
+      goToday: () => goToday(),
+      locale: data.instance.storeManager.locale
+    }
+  }
+  const goBackData = () => {
+    return {
+      goBack: () => goBack(),
+      locale: data.instance.storeManager.locale
+    }
+  }
+  const goForwardData = () => {
+    return {
+      goForward: () => goForward(),
+      locale: data.instance.storeManager.locale
+    }
+  }
+  const { isSlotAvalibale: isHeaderDateSlotAvalibale } = useSlot(headerSlot, haedderData, 'headerDateSlot', () => [
+    data.store.initialDate,
+    data.store.locale,
+    data.store.calendar,
+    data.store.grid,
+    data.store.listMode
+  ])
+  const { isSlotAvalibale: isGridDropDownSlotAvalibale } = useSlot(gridDropDown, gridData, 'gridDropDown', () => [
+    data.store.grid,
+    data.store.locale
+  ])
   const { isSlotAvalibale: isTodayBtnSlotAvalibale } = useSlot(
     todayBtnSlot,
-    () => {},
+    todayBtnData,
     'todayBtn',
-    () => {}
+    () => data.store.locale
   )
   const { isSlotAvalibale: isGoBackDateSlotAvalibale } = useSlot(
     goBackDateBtnSlot,
-    () => {},
+    goBackData,
     'goBackDate',
-    () => {}
+    () => data.store.initialDate
   )
   const { isSlotAvalibale: isGoForwardDateSlotAvalibale } = useSlot(
     goForwardDateBtnSlot,
-    () => {},
+    goForwardData,
     'goForwardDate',
-    () => {}
+    () => data.store.initialDate
   )
 
   return (

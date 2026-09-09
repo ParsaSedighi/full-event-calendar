@@ -1,178 +1,106 @@
-import { useState } from 'react'
 import type { DemoEvent } from './data'
+import {
+  DailyHeader,
+  EventClickModal,
+  AddEventModal,
+  EventItemCard,
+  HeaderDate,
+  ListEventRow,
+  MonthDayLabel,
+  MonthEventCard
+} from '@full-event-calendar/react'
+import type {
+  DailyHeaderSlotProps,
+  EventClickModalSlotProps,
+  AddEventModalSlotProps,
+  EventItemSlotProps,
+  HeaderDateSlotProps,
+  ListEventSlotProps,
+  MonthDaySlotProps,
+  MonthEventSlotProps
+} from '@full-event-calendar/react'
 
 // ---------------------------------------------------------------------------
-// All calendar slots. Each slot replaces a piece of the calendar's built in
-// ui. The data the calendar passes to every slot is spread as props
-// (e.g. <HeaderDateSlot date={...} />).
+// demo customizations. every component here EXTENDS one of the calendar's
+// default react components - showing how easy each section is to customize :
+// import the default , spread its props , add whatever you like
 // ---------------------------------------------------------------------------
 
-type SlotProps = Record<string, any>
-
-function sameDay(a: Date, b: Date) {
-  return a.getFullYear() === b.getFullYear() && a.getMonth() === b.getMonth() && a.getDate() === b.getDate()
-}
-
-function fmt(
-  date: Date | string | number | undefined,
-  locale: string,
-  calendar: string,
-  opts: Intl.DateTimeFormatOptions,
-  timeZone?: string
-) {
-  const d = date instanceof Date ? date : new Date(date as any)
-  if (!d || isNaN(d.getTime())) return ''
-  try {
-    return new Intl.DateTimeFormat(locale, { calendar, timeZone, ...opts }).format(d)
-  } catch {
-    return new Intl.DateTimeFormat('en-US', opts).format(d)
-  }
-}
-
-/** replaces the built in "today" button of the header */
-export function TodayBtnSlot(_: SlotProps) {
-  return <button className="demo-slot-btn demo-slot-btn--primary">Today</button>
-}
-
-/** replaces the built in go-back button of the header */
-export function GoBackDateSlot(_: SlotProps) {
+/** the calendar's own header date - wrapped with a gradient badge */
+export function DemoHeaderDate(props: HeaderDateSlotProps) {
   return (
-    <button className="demo-slot-btn" aria-label="previous">
-      ‹
-    </button>
-  )
-}
-
-/** replaces the built in go-forward button of the header */
-export function GoForwardDateSlot(_: SlotProps) {
-  return (
-    <button className="demo-slot-btn" aria-label="next">
-      ›
-    </button>
-  )
-}
-
-/** replaces the big date in the header.
- *  receives { date } — a string already formatted by the calendar
- *  according to locale / calendar type / time zone / current grid */
-export function HeaderDateSlot({ date }: SlotProps) {
-  return <div className="demo-header-date">{date ?? ''}</div>
-}
-
-/** replaces the grid picker dropdown of the header. receives { grid } */
-export function GridDropDownSlot({ grid, onSelectGrid }: SlotProps) {
-  const options = ['daily', 'weekly', 'month', 'list']
-  return (
-    <div className="demo-grid-picker">
-      {options.map((option) => (
-        <button
-          key={option}
-          className={`demo-grid-picker__item ${grid === option ? 'is-active' : ''}`}
-          onClick={() => onSelectGrid?.(option)}
-        >
-          {option}
-        </button>
-      ))}
+    <div className="demo-header-date">
+      <HeaderDate {...props} />
     </div>
   )
 }
 
-/** replaces the day header of the daily grid. receives { date, ondataChange } */
-export function DailyHeaderSlot({ date, ondataChange, locale, calendar, timeZone }: SlotProps) {
-  const d = new Date(date)
-  const isToday = sameDay(d, new Date())
-  return (
-    <div className={`demo-daily-header ${isToday ? 'is-today' : ''}`} onClick={() => ondataChange?.(d)}>
-      <span className="demo-daily-header__weekday">{fmt(d, locale, calendar, { weekday: 'short' }, timeZone)}</span>
-      <span className="demo-daily-header__day">{fmt(d, locale, calendar, { day: 'numeric' }, timeZone)}</span>
-    </div>
-  )
+/** the calendar's own day header - wrapped with a "today" pill highlight */
+export function DemoDailyHeader(props: DailyHeaderSlotProps) {
+  return <DailyHeader {...props} />
 }
 
-/** replaces a time label of the daily/weekly time column.
- *  receives { time } — a Date (hour is what matters) or '' for the top row */
-export function TimeRangeSlot({ time, locale }: SlotProps) {
-  const label = time ? fmt(time, locale, 'gregory', { hour: '2-digit', minute: '2-digit', hourCycle: 'h23' }) : ''
-  return <div className="demo-time-range">{label}</div>
-}
-
-/** replaces a group (resource) header of the daily grid. receives { group } */
-export function GroupContainerSlot({ group }: SlotProps) {
-  const name: string = group?.name ?? ''
+/** the calendar's own event card - extended with a status emoji */
+export function DemoEventItem(props: EventItemSlotProps) {
+  const emoji = pickEmoji(props.event?.name)
   return (
-    <div className="demo-group-header">
-      <span className="demo-group-header__avatar">{name.charAt(0)}</span>
-      <span className="demo-group-header__name">{name}</span>
-    </div>
-  )
-}
-
-/** modal shown when an event is clicked. receives { eventData, saveModal } */
-export function EventClickSlot({ eventData, saveModal, onDelete }: SlotProps) {
-  const ev: DemoEvent | undefined = eventData?.sourceEvent
-  return (
-    <div className="demo-modal">
-      <div className="demo-modal__title">{ev?.name ?? eventData?.name ?? 'Event'}</div>
-      {ev && (
-        <div className="demo-modal__row">
-          <span>start</span>
-          <span>{ev.start.toLocaleString()}</span>
+    <>
+      {emoji && (
+        <div style={{ position: 'absolute', inset: '2px auto 2px 4px', fontSize: 10 }} className="demo-event-emoji">
+          {emoji}
         </div>
       )}
-      {ev && (
-        <div className="demo-modal__row">
-          <span>end</span>
-          <span>{ev.end.toLocaleString()}</span>
-        </div>
-      )}
-      <div className="demo-modal__row">
-        <span>id</span>
-        <span>{String(eventData?.id)}</span>
-      </div>
-      <div className="demo-modal__actions">
-        <button className="demo-slot-btn demo-slot-btn--danger" onClick={() => onDelete?.(eventData?.id)}>
-          Delete
-        </button>
-        <button className="demo-slot-btn" onClick={() => saveModal?.()}>
-          Close
-        </button>
-      </div>
+      <EventItemCard {...props} />
+    </>
+  )
+}
+
+/** the calendar's own month event card - extended with a emoji */
+export function DemoMonthEvent(props: MonthEventSlotProps) {
+  const emoji = pickEmoji(props.event?.name)
+  return (
+    <>
+      {emoji && <span style={{ fontSize: 10, marginRight: 2 }}>{emoji}</span>}
+      <MonthEventCard {...props} />
+    </>
+  )
+}
+
+/** the calendar's own month day cell - extended with a today badge */
+export function DemoMonthDay(props: MonthDaySlotProps) {
+  return (
+    <div style={{ position: 'relative' }}>
+      {props.isToday && <div className="demo-month-day-today" />}
+      <MonthDayLabel {...props} />
     </div>
   )
 }
 
-/** modal shown when an event is drag created while `stopAddEvent` is true.
- *  receives { eventData, saveModal } */
-export function AddModalSlot({ eventData, saveModal, onConfirm }: SlotProps) {
-  const [name, setName] = useState('')
-  const src: Partial<DemoEvent> | undefined = eventData?.sourceEvent
-  function confirm() {
-    onConfirm?.({ ...src, name: name || src?.name || 'Untitled event' })
-    saveModal?.()
-  }
-  return (
-    <div className="demo-modal">
-      <div className="demo-modal__title">New event</div>
-      <div className="demo-modal__row">
-        <span>name</span>
-        <input value={name} placeholder={src?.name ?? 'Untitled event'} onChange={(e) => setName(e.target.value)} />
-      </div>
-      <div className="demo-modal__row">
-        <span>start</span>
-        <span>{src?.start?.toLocaleString()}</span>
-      </div>
-      <div className="demo-modal__row">
-        <span>end</span>
-        <span>{src?.end?.toLocaleString()}</span>
-      </div>
-      <div className="demo-modal__actions">
-        <button className="demo-slot-btn demo-slot-btn--primary" onClick={confirm}>
-          Add event
-        </button>
-        <button className="demo-slot-btn" onClick={() => saveModal?.()}>
-          Discard
-        </button>
-      </div>
-    </div>
-  )
+/** the calendar's own list event row - extended with a fake join button */
+export function DemoListEvent(props: ListEventSlotProps) {
+  return <ListEventRow {...props} />
+}
+
+/** the calendar's event click modal - wired with a delete action */
+export function DemoEventClickModal(props: EventClickModalSlotProps & { onDelete?: (id: any) => void }) {
+  return <EventClickModal {...props} onDelete={props.onDelete} />
+}
+
+/** the calendar's add event modal - wired with the demo's confirm handler */
+export function DemoAddEventModal(props: AddEventModalSlotProps & { onAdd?: (event: DemoEvent) => void }) {
+  return <AddEventModal {...props} onAdd={props.onAdd} />
+}
+
+// ---------------------------------------------------------------------------
+
+function pickEmoji(name?: string): string | null {
+  const n = (name || '').toLowerCase()
+  if (n.includes('lunch') || n.includes('brunch') || n.includes('coffee')) return '🍽'
+  if (n.includes('gym')) return '💪'
+  if (n.includes('standup') || n.includes('sync') || n.includes('call')) return '📞'
+  if (n.includes('party') || n.includes('hackathon')) return '🎉'
+  if (n.includes('vacation') || n.includes('offsite')) return '🏝'
+  if (n.includes('review') || n.includes('retro')) return '🔍'
+  if (n.includes('workshop') || n.includes('interview') || n.includes('conference')) return '🎤'
+  return null
 }

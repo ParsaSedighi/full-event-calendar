@@ -151,7 +151,12 @@ export function useSlotModal(modalType: string, clearDataCb?: any) {
   }
 
   const slotDependencies = () => {
-    return { eventData: slotModalData(), saveModal: saveModal }
+    return {
+      eventData: slotModalData(),
+      event: slotModalData(),
+      saveModal: saveModal,
+      close: saveModal
+    }
   }
 
   useSlot(headerSlot, slotDependencies, modalType, slotModalData)

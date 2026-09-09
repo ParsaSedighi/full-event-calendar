@@ -78,7 +78,7 @@ export function App() {
       <div
         class={`full-event-calendar-core calendar-theme-${data.store.theme} ${isRtl() ? 'fec-rtl' : 'fec-ltr'} ${
           getLocaleLanguage(data.store.locale) === 'fa' ? 'fec-locale-fa' : ''
-        }`}
+        } ${data.store.className ?? ''}`}
         id="full-event-calendar-core"
         dir={direction()}
         style={`height:${data.store.containerHeight}px`}

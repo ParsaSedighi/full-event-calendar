@@ -35,6 +35,8 @@ export interface CalendarSourceOptions {
   avalibalSots?: AppSlots[]
   stopAddEvent?: boolean
   direction?: CalendarDirection
+  /** extra css classes appended to the calendar root element ( e.g. tailwind utilities ) */
+  className?: string
 }
 
 export type CalendarDirection = 'rtl' | 'ltr' | 'auto'
@@ -74,7 +76,8 @@ export class CalendarImpl implements CalendarApi {
       avalibalSots: [], //
       stopAddEvent: false,
       containerHeight: 900, //
-      direction: 'auto' //
+      direction: 'auto', //
+      className: '' //
     }
 
     const { store, dispatch } = useRedux(defaultState)
@@ -152,6 +155,9 @@ export class CalendarImpl implements CalendarApi {
   public changeDirection(val: CalendarDirection) {
     this.storeDispatch({ type: 'CHANGE_DIRECTION', val })
   }
+  public changeClassName(val: string) {
+    this.storeDispatch({ type: 'SET_CLASS_NAME', val })
+  }
 
   public resetOptions<T extends CalendarSourceOptions>(options: T, catchErrors?: boolean) {
     if (options?.plugins?.length > 0) {
@@ -204,6 +210,9 @@ export class CalendarImpl implements CalendarApi {
     }
     if (Object.keys(options).includes('editable')) {
       this.updateEditable(Boolean(options.editable))
+    }
+    if ('className' in options) {
+      this.changeClassName(options.className ?? '')
     }
   }
 

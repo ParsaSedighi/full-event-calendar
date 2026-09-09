@@ -14,6 +14,12 @@
     "noEmit": true,
     "jsx": "react-jsx",
 
+    /* demo imports the package by name - map it to the source */
+    "baseUrl": ".",
+    "paths": {
+      "@full-event-calendar/react": ["./src/index.ts"]
+    },
+
     /* Linting */
     "strict": true,
     "noUnusedLocals": true,

@@ -250,143 +250,67 @@ body:has(.demo--dark) {
   background: transparent;
 }
 
-/* header date slot ---------------------------------------------------------- */
+/* customized slots ( wrappers around the calendar's default components ) ------- */
 
 .demo-header-date {
   font-weight: 700;
-  font-size: 15px;
+}
+
+/* daily header : wraps the default DailyHeader , highlights today */
+.demo-daily-header {
+  position: relative;
+  border-radius: 10px;
+  transition: background 0.2s;
+  cursor: pointer;
+}
+
+.demo-daily-header:hover {
+  background: rgba(49, 181, 247, 0.12);
+}
+
+.demo-daily-header.is-today::after {
+  content: '';
+  position: absolute;
+  inset-inline-start: 50%;
+  transform: translateX(-50%);
+  bottom: 2px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #ea4335;
+}
+
+/* event item : emoji badge added next to the default card content */
+.demo-event-emoji {
+  line-height: 1;
+}
+
+/* month day : today ring around the default day number ( 40px number ,
+   34px ring -> 3px inset centers it ) */
+.demo-month-day-today {
+  position: absolute;
+  inset-inline-start: 3px;
+  top: 3px;
+  width: 34px;
+  height: 34px;
+  border: 2px solid #ea4335;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+/* topbar "customize sections" checkbox */
+.demo-check--topbar {
+  margin: 0 12px 0 auto;
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  font-size: 12px;
+  color: #6b7280;
   white-space: nowrap;
 }
 
-/* grid dropdown slot -------------------------------------------------------- */
-
-.demo-grid-picker {
-  display: flex;
-  gap: 4px;
-}
-
-.demo-grid-picker__item {
-  border: 1px solid #d0d7de;
-  background: transparent;
-  color: inherit;
-  border-radius: 999px;
-  padding: 3px 12px;
-  font-size: 12px;
-  cursor: pointer;
-  text-transform: capitalize;
-}
-
-.demo-grid-picker__item.is-active {
-  border-color: #31b5f7;
-  background: #31b5f7;
-  color: #ffffff;
-}
-
-/* daily header slot --------------------------------------------------------- */
-
-.demo-daily-header {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 4px 0;
-  cursor: pointer;
-}
-
-.demo-daily-header__weekday {
-  font-size: 11px;
-  text-transform: uppercase;
-  color: #6b7280;
-}
-
-.demo-daily-header__day {
-  font-size: 16px;
-  font-weight: 600;
-}
-
-.demo-daily-header.is-today .demo-daily-header__day {
-  color: #ea4335;
-}
-
-/* time range slot ------------------------------------------------------------ */
-
-.demo-time-range {
-  font-size: 11px;
-  color: #6b7280;
-  padding-right: 6px;
-  text-align: right;
-  min-width: 42px;
-}
-
-/* group container slot --------------------------------------------------------- */
-
-.demo-group-header {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 6px 10px;
-  font-weight: 600;
-  font-size: 13px;
-}
-
-.demo-group-header__avatar {
-  width: 26px;
-  height: 26px;
-  border-radius: 50%;
-  background: #31b5f7;
-  color: #ffffff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 12px;
-  flex-shrink: 0;
-}
-
-/* modal slots (eventClick / addModal) ------------------------------------------ */
-
-.demo-modal {
-  background: #ffffff;
-  color: #1f2328;
-  border-radius: 12px;
-  box-shadow: 0 10px 34px rgba(0, 0, 0, 0.22);
-  padding: 14px;
-  width: 240px;
-  font-size: 13px;
-  border: 1px solid #e3e6ea;
-}
-
-.demo-modal__title {
-  font-weight: 700;
-  font-size: 14px;
-  margin-bottom: 10px;
-}
-
-.demo-modal__row {
-  display: flex;
-  justify-content: space-between;
-  gap: 10px;
-  padding: 3px 0;
-}
-
-.demo-modal__row span:first-child {
-  opacity: 0.55;
-  text-transform: capitalize;
-}
-
-.demo-modal__row input {
-  flex: 1;
-  min-width: 0;
-  border: 1px solid #d0d7de;
-  border-radius: 6px;
-  padding: 3px 6px;
-  font-size: 13px;
-}
-
-.demo-modal__actions {
-  display: flex;
-  justify-content: flex-end;
-  gap: 6px;
-  margin-top: 12px;
-}
+/* modal slots are the calendar's default EventClickModal / AddEventModal
+   ( themed with the calendar's css variables ) ------------------------------- */
 
 /* responsive -------------------------------------------------------------------- */
 

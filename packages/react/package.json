@@ -1,6 +1,6 @@
 {
   "name": "@full-event-calendar/react",
-  "version": "0.0.3",
+  "version": "1.0.0",
   "description": "A grid",
   "main": "dist/index.cjs",
   "module": "dist/index.js",
@@ -38,13 +38,14 @@
   },
   "dependencies": {
     "@full-event-calendar/core": "workspace:^",
+    "@full-event-calendar/daily-grid": "workspace:^",
+    "@full-event-calendar/list": "workspace:^",
+    "@full-event-calendar/locale": "workspace:^",
+    "@full-event-calendar/month-grid": "workspace:^",
+    "@full-event-calendar/weekly-grid": "workspace:^",
     "fast-deep-equal": "^3.1.3"
   },
   "devDependencies": {
-    "@full-event-calendar/daily-grid": "workspace:*",
-    "@full-event-calendar/list": "workspace:*",
-    "@full-event-calendar/month-grid": "workspace:*",
-    "@full-event-calendar/weekly-grid": "workspace:*",
     "@types/react": "^18.2.55",
     "@types/react-dom": "^18.2.19",
     "@typescript-eslint/eslint-plugin": "^6.21.0",
